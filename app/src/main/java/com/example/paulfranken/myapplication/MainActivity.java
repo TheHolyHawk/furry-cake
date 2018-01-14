@@ -274,6 +274,9 @@ public class MainActivity extends AppCompatActivity
                     if (input.getText().toString().equals("1234")){
                         Toast.makeText(getApplicationContext(), "Hallo", Toast.LENGTH_SHORT).show();
                     }
+                    if (input.getText().toString().equals("84110")){
+                        Toast.makeText(getApplicationContext(), "Hallo", Toast.LENGTH_SHORT).show();
+                    }
                     if (input.getText().toString().equals("fuckgoogle")){
                         Toast.makeText(getApplicationContext(), "Ads aus", Toast.LENGTH_SHORT).show();
                         adView.setVisibility(View.GONE);
