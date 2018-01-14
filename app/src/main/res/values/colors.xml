@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4c94ff</color>
+    <color name="colorPrimaryDark">#217bff</color>
+    <color name="colorAccent">#000</color>
+
+    <color name="border">#FAFAFA</color>
+
+    <color name="yourcolor">#CF4232</color>
+    <color name="raum">#50E814</color>
+
+
+    <color name="f1">#CF4232</color>
+    <color name="f2">#EB7f23</color>
+    <color name="f3">#FAC023</color>
+    <color name="f4">#068675</color>
+
+    <color name="f5">#ff2196f3</color>
+    <color name="f6">#ff03a9f5</color>
+    <color name="f7">#ff00bcd5</color>
+    <color name="f8">#ff4cb050</color>
+    <color name="f9">#ff89c348</color>
+    <color name="f10">#ffc7d161</color>
+    <color name="f11">#fff44236</color>
+    <color name="f12">#ffea1e63</color>
+    <color name="f13">#ff9c28b1</color>
+    <color name="f14">#ff3f51b5</color>
+
+    <color name="f15">#ffffeb3c</color>
+    <color name="f16">#fffec107</color>
+    <color name="f17">#ffff9700</color>
+    <color name="f18">#fffe5722</color>
+    <color name="f19">#ff795547</color>
+    <color name="f20">#cdcccc</color>
+    <color name="f21">#ff607d8b</color>
+    <color name="f22">#000</color>
+
+
+</resources>

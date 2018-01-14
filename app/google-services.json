@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "762103443974",
+    "firebase_url": "https://stundenplan-2.firebaseio.com",
+    "project_id": "stundenplan-2",
+    "storage_bucket": "stundenplan-2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:762103443974:android:975ec91eb3edf32f",
+        "android_client_info": {
+          "package_name": "com.example.paulfranken.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "762103443974-f8o1iktmba0447n5mr9nhescjmedii6f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.paulfranken.myapplication",
+            "certificate_hash": "292b461bd8374745ffeacee379a00580c31fc68d"
+          }
+        },
+        {
+          "client_id": "762103443974-j6sqgn8f83vkb304tnsm2lkr9vq043eg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDli29X6DvGiQ6y5X3KjGbiZI4SoZhxWEQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "762103443974-j6sqgn8f83vkb304tnsm2lkr9vq043eg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

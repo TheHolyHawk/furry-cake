@@ -1,0 +1,114 @@
+<resources>
+    <string name="app_name">Stundenplan 2.0</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+    <item name="visible" type="id" />
+    <item name="masked" type="id" />
+    <string name="tag">Montag 25.09.2017</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_neue_stunde">neueStunde</string>
+    <string name="fach">Fach</string>
+
+    <string name="kurs">Kurs</string>
+    <string name="Klausur">Klausur</string>
+    <string name="nummer">Nummer</string>
+    <string name="Kurs">LK oder GK</string>
+    <string name="Kursnummer">Kursnummer</string>
+    <string-array name="facher">
+        <item>Englisch</item>
+        <item>Religion</item>
+        <item>Musik</item>
+        <item>Erdkunde</item>
+        <item>Deutsch</item>
+        <item>Mathe</item>
+        <item>Latein</item>
+        <item>Politik</item>
+        <item>Info</item>
+        <item>Sport</item>
+        <item>Biologie</item>
+        <item>Spanisch</item>
+        <item>Chemie</item>
+        <item>Geschichte</item>
+        <item>Physik</item>
+        <item>Kunst</item>
+        <item>Philosophie</item>
+        <item>Latein</item>
+        <item>Literatur</item>
+        <item>K.Religion</item>
+        <item>S8</item>
+    </string-array>
+    <string name="Klasse">Klasse</string>
+    <string-array name="klassen">
+        <item>5A</item>
+        <item>5B</item>
+        <item>5C</item>
+        <item>5D</item>
+        <item>5E</item>
+        <item>6A</item>
+        <item>6B</item>
+        <item>6C</item>
+        <item>6D</item>
+        <item>6E</item>
+        <item>7A</item>
+        <item>7B</item>
+        <item>7C</item>
+        <item>7D</item>
+        <item>7E</item>
+        <item>8A</item>
+        <item>8B</item>
+        <item>8C</item>
+        <item>8D</item>
+        <item>8E</item>
+        <item>9A</item>
+        <item>9B</item>
+        <item>9C</item>
+        <item>9D</item>
+        <item>9E</item>
+        <item>EF</item>
+        <item>Q1</item>
+        <item>Q2</item>
+
+    </string-array>
+
+    <string-array name="klausur">
+        <item>Wähle ein Datum</item>
+
+
+    </string-array>
+
+    <string-array name="kurs">
+
+        <item>GK</item>
+        <item>LK</item>
+
+    </string-array>
+    <string-array name="nummer">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+
+    </string-array>
+    <string name="title_activity_neue_stunde2">neueStunde2</string>
+    <string name="title_activity_neue_stunde_java">neueStunde_java</string>
+    <string name="title_activity_klausurplan">Klausurplan</string>
+    <string name="title_activity_einstellungen">Einstellungen</string>
+    <string name="title_activity_stunde__bearbeiten">Stunde Info</string>
+
+
+
+
+    <string name="contact_form">Kontaktiere uns</string>
+    <string name="contact_form_name">Dein Name</string>
+    <string name="contact_form_email">Deine Email</string>
+    <string name="contact_form_subject">Betreff</string>
+    <string name="contact_form_message">Nachricht</string>
+    <string name="contact_form_button">Senden</string>
+    <string name="contact_form_post_message">Bitte warten! Die Nachricht wird verschickt...</string>
+    <string name="contact_posted">Die Nachricht wurde erfolgreich zugestellt.</string>
+</resources>

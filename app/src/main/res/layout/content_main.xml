@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.paulfranken.myapplication.MainActivity"
+    android:id="@+id/t"
+    tools:showIn="@layout/app_bar_main">
+
+
+    <ScrollView
+
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp">
+        >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text0"
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:text=""
+                android:layout_weight="0.8"
+
+                android:layout_height="40dp"
+                android:textColor="#000"
+                android:background="@drawable/back"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/text101010"
+                android:layout_width="0dp"
+
+                android:text="Mo."
+
+                android:gravity="center"
+                android:layout_weight="1"
+
+                android:layout_height="40dp"
+                android:textColor="#FFF"
+                android:background="@drawable/back"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="0dp"
+
+                android:text="Di."
+
+                android:layout_weight="1"
+                android:gravity="center"
+
+                android:layout_height="40dp"
+                android:textColor="#FFF"
+                android:background="@drawable/back"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/text3"
+                android:layout_width="0dp"
+
+                android:text="Mi."
+
+                android:gravity="center"
+                android:layout_weight="1"
+
+                android:layout_height="40dp"
+                android:textColor="#FFF"
+                android:background="@drawable/back"
+                android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/text9"
+                android:layout_width="0dp"
+
+                android:text="Do."
+                android:gravity="center"
+                android:layout_weight="1"
+
+                android:layout_height="40dp"
+                android:textColor="#FFF"
+                android:background="@drawable/back"
+                android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/text10"
+                android:layout_width="0dp"
+
+                android:text="Fr."
+                android:gravity="center"
+                android:layout_weight="1"
+
+                android:layout_height="40dp"
+                android:textColor="#FFF"
+                android:background="@drawable/back"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text4"
+                android:layout_width="0dp"
+
+                android:textColor="#000"
+                android:textAlignment="center"
+                android:layout_height="@dimen/groesse"
+
+                android:background="@drawable/back2"
+                android:layout_weight="0.8" />
+
+            <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text1"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1"
+
+
+
+
+
+
+                android:textAlignment="center"
+
+
+                android:background="@drawable/back2"
+
+                />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text5101"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                 android:textAlignment="center"
+                 android:background="@drawable/back2"
+                android:layout_weight="1" />
+
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text5201"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:background="@drawable/back2"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/t121"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/text451"
+                 android:textAlignment="center"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text16"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="0.8"
+
+                android:background="@drawable/back2"
+                android:textColor="#000"
+                android:text="\n2"
+                android:textAlignment="center" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text101"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1"
+                android:background="@drawable/back2" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text17"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:layout_height="@dimen/groesse"
+                android:background="@drawable/back2"
+                android:layout_weight="1" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text18"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+
+                android:background="@drawable/back2"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/text19"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/text120"
+                 android:textAlignment="center"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text102"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:background="@drawable/back2"
+                android:text="\n3"
+                android:textColor="#000"
+                android:textAlignment="center"
+                android:layout_weight="0.8" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text21"
+                 android:textAlignment="center"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:background="@drawable/back2"
+                android:layout_weight="1" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text22"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                 android:textAlignment="center"
+                android:background="@drawable/back2"
+                android:layout_weight="1" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text23"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:background="@drawable/back2"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/text24"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/text25"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text26"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:background="@drawable/back2"
+                android:text="\n4"
+                android:textColor="#000"
+                android:textAlignment="center"
+                android:layout_weight="0.8" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text103"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                 android:textAlignment="center"
+                android:background="@drawable/back2"
+                android:layout_weight="1" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text27"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:layout_height="@dimen/groesse"
+                android:background="@drawable/back2"
+                android:layout_weight="1" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text28"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+
+                android:background="@drawable/back2"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/text29"
+                 android:textAlignment="center"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/text30"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text31"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:background="@drawable/back2"
+                android:text="\n5"
+                android:textColor="#000"
+                android:textAlignment="center"
+                android:layout_weight="0.8" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text104"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                 android:textAlignment="center"
+                android:background="@drawable/back2"
+                android:layout_weight="1" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text32"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:layout_height="@dimen/groesse"
+                android:background="@drawable/back2"
+                android:layout_weight="1" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text33"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+
+                android:background="@drawable/back2"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/text34"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                 android:textAlignment="center"
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/text36"
+                 android:textAlignment="center"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text37"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:background="@drawable/back2"
+                android:text="\n6"
+                android:textColor="#000"
+                android:textAlignment="center"
+                android:layout_weight="0.8" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text105"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                 android:textAlignment="center"
+                android:background="@drawable/back2"
+                android:layout_weight="1" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text38"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                 android:textAlignment="center"
+                android:background="@drawable/back2"
+                android:layout_weight="1" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text39"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:background="@drawable/back2"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/text8"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                 android:textAlignment="center"
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/text40"
+                 android:textAlignment="center"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text41"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:background="@drawable/back2"
+                android:text="\n7"
+                android:textColor="#000"
+                android:textAlignment="center"
+                android:layout_weight="0.8" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text106"
+                 android:textAlignment="center"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:background="@drawable/back2"
+                android:layout_weight="1" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text42"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                 android:textAlignment="center"
+                android:background="@drawable/back2"
+                android:layout_weight="1" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text43"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:background="@drawable/back2"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/text44"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/text45"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                 android:textAlignment="center"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text46"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:background="@drawable/back2"
+                android:text="\n8"
+                android:textColor="#000"
+                android:textAlignment="center"
+                android:layout_weight="0.8" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text107"
+                 android:textAlignment="center"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:background="@drawable/back2"
+                android:layout_weight="1" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text47"
+                 android:textAlignment="center"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:background="@drawable/back2"
+                android:layout_weight="1" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text48"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+
+                android:background="@drawable/back2"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/text49"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/text50"
+                 android:textAlignment="center"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text108"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:background="@drawable/back2"
+                android:text="\n9"
+                android:textColor="#000"
+                android:textAlignment="center"
+                android:layout_weight="0.8" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text51"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+
+                android:layout_height="@dimen/groesse"
+                android:background="@drawable/back2"
+                android:layout_weight="1" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text52"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:layout_height="@dimen/groesse"
+                android:background="@drawable/back2"
+                android:layout_weight="1" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text53"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:background="@drawable/back2"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/text54"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                 android:textAlignment="center"
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/text55"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text56"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:background="@drawable/back2"
+                android:text="\n10"
+                android:textColor="#000"
+                android:textAlignment="center"
+                android:layout_weight="0.8" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text109"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:layout_height="@dimen/groesse"
+                android:background="@drawable/back2"
+                android:layout_weight="1" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text57"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                 android:textAlignment="center"
+                android:background="@drawable/back2"
+                android:layout_weight="1" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text58"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:background="@drawable/back2"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/text59"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/text60"
+                 android:textAlignment="center"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text65"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:background="@drawable/back2"
+                android:text="\n11"
+                android:textColor="#000"
+                android:textAlignment="center"
+                android:layout_weight="0.8" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text66"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                 android:textAlignment="center"
+                android:background="@drawable/back2"
+                android:layout_weight="1" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text76"
+                android:layout_width="0dp"
+                 android:textAlignment="center"
+                android:layout_height="@dimen/groesse"
+                android:background="@drawable/back2"
+                android:layout_weight="1" />
+
+             <com.example.paulfranken.myapplication.TextView2
+                android:id="@+id/text68"
+                android:layout_width="0dp"
+
+                android:background="@drawable/back2"
+                android:layout_height="@dimen/groesse"
+                 android:textAlignment="center"
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/text69"
+                 android:textAlignment="center"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                android:layout_weight="1" />
+             <com.example.paulfranken.myapplication.TextView2
+                android:background="@drawable/back2"
+                android:id="@+id/text70"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/groesse"
+                 android:textAlignment="center"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.google.android.gms.ads.AdView android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/testadview"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                ads:adSize="BANNER"
+                ads:adUnitId="ca-app-pub-8946228610769097/1219447711">
+
+            </com.google.android.gms.ads.AdView>
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+
+
+</ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>
+
+

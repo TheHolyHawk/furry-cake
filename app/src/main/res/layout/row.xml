@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+
+   >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout">
+
+         <TextView
+
+       android:id="@+id/stunde"
+
+       android:layout_width="match_parent"
+
+       android:layout_height="wrap_content"
+       android:textColor="#7D7C75"
+       android:layout_marginLeft="8dp"
+
+
+
+       />
+      <TextView
+
+        android:id="@android:id/text1"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="20dp"
+
+        android:text="Musik"
+        android:layout_marginLeft="8dp"
+        android:textColor="#000"
+        android:textStyle="bold"
+
+        />
+        </RelativeLayout>
+
+    <TextView  xmlns:android="http://schemas.android.com/apk/res/android"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:paddingEnd="8dp"
+        android:textColor="#7D7C75"
+
+        android:id="@+id/zeiten"
+        android:layout_alignParentTop="true"
+        android:text="7:50-8:35" />
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/raum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Raum D11"
+        android:textColor="#7D7C75"
+        android:paddingEnd="8dp"
+        android:layout_alignBottom="@+id/relativeLayout"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

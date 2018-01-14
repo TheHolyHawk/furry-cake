@@ -1,0 +1,51 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.paulfranken.myapplication.MainActivity"
+    xmlns:compat="http://schemas.android.com/apk/res-auto/android">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="Alle Stunden Löschen"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/einstellung"
+        android:orderInCategory="100"
+        android:title="Einstellungen"
+        app:showAsAction="never" />
+
+
+
+
+    <item
+        android:id="@+id/action_refresh"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/refresh"/>
+    <item
+        android:id="@+id/action_settings2"
+        android:orderInCategory="100"
+        android:title="Klausur"
+        android:icon="@drawable/klausur"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/testy"
+        android:orderInCategory="100"
+        android:title="Code"/>
+    <item
+        android:id="@+id/kon"
+        android:orderInCategory="100"
+        android:title="Kontakt"/>
+
+
+
+
+
+
+
+
+</menu>

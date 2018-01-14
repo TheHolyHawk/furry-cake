@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.paulfranken.myapplication.Einstellungen"
+    tools:showIn="@layout/activity_einstellungen">
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/text0"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+
+                android:layout_weight="0.5"
+
+                android:gravity="center"
+                android:paddingTop="0dp"
+
+                android:text="Klasse"
+                android:textColor="#939393"
+                android:textSize="20sp" />
+
+
+        <Spinner
+
+            android:id="@+id/spinner"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+
+            android:layout_below="@+id/editText"
+            android:layout_weight="1"
+
+
+            android:background="#FAFAFA"
+            android:entries="@array/klassen"
+            android:gravity="center"
+            android:paddingTop="0dp"
+            android:prompt="@string/Klasse"
+            android:spinnerMode="dialog"
+            android:tag="@string/app_name" />
+
+
+
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</android.support.constraint.ConstraintLayout>

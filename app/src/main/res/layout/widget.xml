@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/layout"
+  >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/relativeLayout">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorPrimary"
+
+            android:textColor="#ffffff"
+            android:text="Freitag"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:id="@+id/widget_tag"
+
+
+
+
+
+            />
+
+
+
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="7dp"
+
+
+            android:background="@drawable/left"
+            android:layout_marginLeft="5dp" />
+
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+
+            android:background="@drawable/right"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp" />
+
+
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:id="@+id/words"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/relativeLayout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="#FFF"
+            />
+
+
+
+     
+</RelativeLayout>
