@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -628,6 +630,7 @@ widget_speichern();
                 }, 5, 4, 2);
 
         colorPickerDialog.setOnColorSelectedListener(new ColorPickerSwatch.OnColorSelectedListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onColorSelected(int colour) {
                 farbeint=colour;
@@ -944,9 +947,13 @@ widget_speichern();
         if (tester.contains(",")) {
            test= tester.replace(",", "");;
 
+            raum2 = test;
+        }
+        else {
+            raum2 = tester;
 
         }
-        raum2 = test;
+
     }
 
 }

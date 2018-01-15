@@ -573,12 +573,15 @@ if(test!=null){
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
+
+
         builder.setMessage("Wollen sie diese Stunde löschen?");
         builder.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int which) {
 
                 test.löschen();
+                speichern();
                 dialog.dismiss();
             }
         });
@@ -592,17 +595,12 @@ if(test!=null){
                 dialog.dismiss();
             }
         });
-
-
-
         AlertDialog alert = builder.create();
         alert.show();
-
-
-        speichern();
-
         return true;
     }
+
+
     public  void speichern(){
         umwandelnhin();
         if(texte.size()>0){
