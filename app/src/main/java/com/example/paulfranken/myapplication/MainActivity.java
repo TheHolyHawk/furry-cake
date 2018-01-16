@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity
     public String kurs, kursid,text,raum2;
     public static ArrayList<String> raum_vorschlage=new ArrayList<>();
     public static String Stest="";
-
+public SwipeRefreshLayout l;
     private AdView adView;
 
 
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity
 
 
         //Swipe Layout
-        final SwipeRefreshLayout l=(SwipeRefreshLayout)findViewById(R.id.swipe);
+          l=(SwipeRefreshLayout)findViewById(R.id.swipe);
         l.setColorSchemeResources(R.color.f1,R.color.f4,R.color.f7);//Farben festlegen
         l.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity
                 (new Handler()).postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        l.setRefreshing(false);
+
 
                         aktualisieren();
 
@@ -1095,7 +1095,7 @@ if(!textviews.get(i).farbe.equals("")) {
             Toast toast;
 
 
-
+            l.setRefreshing(false);
 
             if (heute == true && morgen == false&&montag==false) {
                 context = getApplicationContext();
