@@ -1,29 +1,208 @@
 package com.example.paulfranken.myapplication;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class Einstellungen extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 Spinner klasse;
+public Button btn1,btn2;
+public ArrayList<String>texte;
+Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_einstellungen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        context=getApplicationContext();
 
         klasse=(Spinner)findViewById(R.id.spinner);
         klasse.setOnItemSelectedListener(this);
        setzeKlasse();
+         //Button zum Erstellen eines Backups des Stundenplans
+        btn1=(Button)findViewById(R.id.backup1);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+               //Abfrage ob bereites ein BackUp besteht
+                SharedPreferences settings=getSharedPreferences("Sicherheit",0);
+                String test= settings.getString("s",null);
+                if(test!=null){//Wenn bereits eins besteht
+
+                    new AlertDialog.Builder( Einstellungen.this )
+                            .setTitle( "BackUp" )
+                            .setMessage("Es exestiert bereits eine Sicherheitsdatei. Möchtest du diese überschreiben?")
+
+                            .setPositiveButton( "Save", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                   speichern();
+                                }
+                            })
+                            .setNegativeButton( "Cancel", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            } )
+                            .show();
+                }else{//Noch keine BackUPversion besteht
+                  speichern();
+                }
+
+
+
+
+
+
+                }
+        });
+//Button zum Laden eines Backups des Stundenplans
+        btn2=(Button)findViewById(R.id.backup2);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+      Laden();
+            speichern2();
+
+            }
+        });
 
     }
+
+
+
+    public  void speichern(){
+        umwandelnhin();
+        if(texte.size()>0){
+            StringBuilder stringBuilder=new StringBuilder();
+            for(String s: MainActivity.texte){
+
+                stringBuilder.append(s);
+                stringBuilder.append(",");
+
+
+            }
+
+
+            SharedPreferences settings=getSharedPreferences("Sicherheit",0);
+            SharedPreferences.Editor editor=settings.edit();
+
+            editor.putString("s",stringBuilder.toString());
+
+            editor.commit();
+
+        }else if(texte.size()==0){
+            SharedPreferences settings=getSharedPreferences("raume",0);
+            SharedPreferences.Editor editor=settings.edit();
+            editor.clear();
+            editor.commit();
+        }
+
+    }
+    public void   Laden(){
+
+
+        SharedPreferences settings=getSharedPreferences("Sicherheit",0);
+
+
+        String test= settings.getString("s",null);
+
+        if(test!=null){
+            String[]itemwors=test.split(",");
+            ArrayList<String>worte=new ArrayList<>();
+            for(int i=0;i<itemwors.length;i++) {
+
+                worte.add(itemwors[i]);
+                texte = worte;
+
+
+            }
+        }
+
+
+
+        umwandelnzuruck();
+
+
+
+    }
+    public void umwandelnzuruck() {
+        int platz;
+
+
+        if(texte.size()!=0) {
+            for (int i = 0; i < texte.size(); i++) {
+                platz=Integer.parseInt(texte.get(i+5));
+
+
+
+                MainActivity.textviews.get(platz).setText(texte.get(i+6)+"\n"+"\n"+texte.get(i+7));
+                MainActivity.textviews.get(platz).farbe = texte.get(i+1);
+                MainActivity.textviews.get(platz).kurs = texte.get(i + 2);
+                MainActivity.textviews.get(platz).nummer = texte.get(i + 3);
+                MainActivity.textviews.get(platz).datum = texte.get(i + 4);
+                MainActivity.textviews.get(platz).aktualisieren();
+                MainActivity.textviews.get(platz).platz = texte.get(i + 5);
+                MainActivity.textviews.get(platz).fach = texte.get(i + 6);
+                MainActivity.textviews.get(platz).raum=texte.get(i+7);
+
+
+
+                i = i + 7;
+
+
+
+            }
+        }
+    }
+
+
+    public  void speichern2(){
+        umwandelnhin();
+        if(texte.size()>0){
+            StringBuilder stringBuilder=new StringBuilder();
+            for(String s: MainActivity.texte){
+
+                stringBuilder.append(s);
+                stringBuilder.append(",");
+
+
+            }
+
+
+            SharedPreferences settings=getSharedPreferences("PREFS",0);
+            SharedPreferences.Editor editor=settings.edit();
+
+            editor.putString("words",stringBuilder.toString());
+
+            editor.commit();
+
+        }else if(texte.size()==0){
+            SharedPreferences settings=getSharedPreferences("raume",0);
+            SharedPreferences.Editor editor=settings.edit();
+            editor.clear();
+            editor.commit();
+        }
+
+    }
+
+
+
+
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -162,5 +341,38 @@ Spinner klasse;
 
             klasse.setSelection(24);
         }
+    }
+
+    public void umwandelnhin() {
+        ArrayList<String> t=new ArrayList<String>();
+        texte=t;
+
+        for (int i = 0; i < MainActivity.textviews.size(); i++) {
+
+            if(! MainActivity.textviews.get(i).farbe.equals("")) {
+
+                texte.add(String.valueOf( MainActivity.textviews.get(i).getText()));
+                texte.add(String.valueOf( MainActivity.textviews.get(i).farbe));
+                texte.add(String.valueOf( MainActivity.textviews.get(i).kurs));
+                texte.add(String.valueOf( MainActivity.textviews.get(i).nummer));
+                texte.add(String.valueOf( MainActivity.textviews.get(i).datum));
+                texte.add(String.valueOf( MainActivity.textviews.get(i).platz));
+                texte.add(String.valueOf( MainActivity.textviews.get(i).fach));
+                texte.add(String.valueOf( MainActivity.textviews.get(i).raum));
+
+
+
+            }
+
+
+
+
+
+
+
+
+        }
+
+
     }
 }

@@ -107,7 +107,11 @@ public SwipeRefreshLayout l;
 
     public static Context context;
 
-
+    @Override
+    protected void onResume() {
+        speichern();
+        super.onResume();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,7 +125,7 @@ public SwipeRefreshLayout l;
 
 
         //Swipe Layout
-          l=(SwipeRefreshLayout)findViewById(R.id.swipe);
+        l=(SwipeRefreshLayout)findViewById(R.id.swipe);
         l.setColorSchemeResources(R.color.f1,R.color.f4,R.color.f7);//Farben festlegen
         l.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -171,7 +175,7 @@ public SwipeRefreshLayout l;
     }
 
 
-    @Override
+        @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -358,6 +362,7 @@ public SwipeRefreshLayout l;
         return super.onOptionsItemSelected(item);
     }
     public void setzeZeiten(){
+
         MainActivity.textviews.get(0).setText("7:50"+"\n"+"-"+"\n8:35");
         MainActivity.textviews.get(6).setText("8:40"+"\n"+"-"+"\n9:25");
         MainActivity.textviews.get(12).setText("9:45"+"\n"+"-"+"\n10:30");
@@ -416,7 +421,7 @@ public SwipeRefreshLayout l;
 
         }
     }
-    public void Laden(){
+    public void   Laden(){
 
 
         SharedPreferences settings=getSharedPreferences("PREFS",0);
