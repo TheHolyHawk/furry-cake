@@ -1,5 +1,6 @@
 package com.example.paulfranken.myapplication;
 
+
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +30,7 @@ public class Stunde_bearbeiten extends AppCompatActivity implements AdapterView.
     Spinner kurs;
     public Calendar datumheute = Calendar.getInstance();
     Spinner nummer;
+    public String raum2="";
     TextView raum;
     static int farbeint=-769482;
     public ArrayList<String>facher=new ArrayList<>();
@@ -99,8 +101,9 @@ public class Stunde_bearbeiten extends AppCompatActivity implements AdapterView.
         if (id == R.id.action_settings2) {
 
 
+            testRaum();
 
-            MainActivity.textviews.get(MainActivity.testi).setText(fach.getSelectedItem().toString()+"\n"+"\n"+raum.getText());
+            MainActivity.textviews.get(MainActivity.testi).setText(fach.getSelectedItem().toString()+"\n"+"\n"+raum2);
             MainActivity.textviews.get(MainActivity.testi).farbe=String.valueOf(farbeint);
             MainActivity.textviews.get(MainActivity.testi).kurs=kurs.getSelectedItem().toString();
             MainActivity.textviews.get(MainActivity.testi).nummer=nummer.getSelectedItem().toString();
@@ -484,8 +487,8 @@ public class Stunde_bearbeiten extends AppCompatActivity implements AdapterView.
             MainActivity.textviews.get(MainActivity.testi).fach=fach.getSelectedItem().toString();
 
             MainActivity.textviews.get(MainActivity.testi).platz=String.valueOf(MainActivity.testi);
-            if(!String.valueOf(raum.getText()).equals("")){
-                MainActivity.textviews.get(MainActivity.testi).raum=String.valueOf(raum.getText());
+            if(!String.valueOf(raum2).equals("")){
+                MainActivity.textviews.get(MainActivity.testi).raum=String.valueOf(raum2);
             }else{
                 MainActivity.textviews.get(MainActivity.testi).raum=" ";
             }
@@ -494,7 +497,7 @@ public class Stunde_bearbeiten extends AppCompatActivity implements AdapterView.
             for(int i=0;i<MainActivity.textviews.size();i++){
                 if(MainActivity.textviews.get(i).fach.equals(MainActivity.test.fach)){
                     if(!String.valueOf(raum.getText()).equals("")){
-                        MainActivity.textviews.get(MainActivity.testi).raum=String.valueOf(raum.getText());
+                        MainActivity.textviews.get(MainActivity.testi).raum=String.valueOf(raum2);
                     }else{
                         MainActivity.textviews.get(MainActivity.testi).raum=" ";
                     }
@@ -510,8 +513,8 @@ public class Stunde_bearbeiten extends AppCompatActivity implements AdapterView.
             }
 
             speichern();
-        
-widget_speichern();
+
+            widget_speichern();
             WidgetProvider.updateWidget(getApplicationContext());
             this.finish();
 
@@ -557,62 +560,62 @@ widget_speichern();
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-            if(bearbeiten==false){
-                boolean Z=false;
+        if(bearbeiten==false){
+            boolean Z=false;
 
-                int f=0;
+            int f=0;
 
-                for(int m=0;m<MainActivity.textviews.size();m++){
-                    if(!MainActivity.textviews.get(m).fach.equals(fach.getSelectedItem())){
-
-
-                    }else{
-                        Z=true;
-                        f=m;
-
-                    }
-
-                }
-                if(Z==true){
+            for(int m=0;m<MainActivity.textviews.size();m++){
+                if(!MainActivity.textviews.get(m).fach.equals(fach.getSelectedItem())){
 
 
-                    if(MainActivity.textviews.get(f).kurs.equals("LK")){
-                        kurs.setSelection(1);
-                    }else{
-                        kurs.setSelection(0);
-                    }
+                }else{
+                    Z=true;
+                    f=m;
 
-
-
-                    if(MainActivity.textviews.get(f).nummer.equals("1")){
-                        nummer.setSelection(0);
-                    }
-                    else if(MainActivity.textviews.get(f).nummer.equals("2")){
-                        nummer.setSelection(1);
-                    }
-                    else if(MainActivity.textviews.get(f).nummer.equals("3")){
-                        nummer.setSelection(2);
-                    }
-                    else if(MainActivity.textviews.get(f).nummer.equals("4")){
-                        nummer.setSelection(3);
-                    }
-                    else if(MainActivity.textviews.get(f).nummer.equals("5")){
-                        nummer.setSelection(4);
-                    }
-
-
-
-
-
-
-
-
-
-                    farbeint=Integer.parseInt(MainActivity.textviews.get(f).farbe);
-                    farbe.setBackgroundTintList(ColorStateList.valueOf(farbeint));
                 }
 
             }
+            if(Z==true){
+
+
+                if(MainActivity.textviews.get(f).kurs.equals("LK")){
+                    kurs.setSelection(1);
+                }else{
+                    kurs.setSelection(0);
+                }
+
+
+
+                if(MainActivity.textviews.get(f).nummer.equals("1")){
+                    nummer.setSelection(0);
+                }
+                else if(MainActivity.textviews.get(f).nummer.equals("2")){
+                    nummer.setSelection(1);
+                }
+                else if(MainActivity.textviews.get(f).nummer.equals("3")){
+                    nummer.setSelection(2);
+                }
+                else if(MainActivity.textviews.get(f).nummer.equals("4")){
+                    nummer.setSelection(3);
+                }
+                else if(MainActivity.textviews.get(f).nummer.equals("5")){
+                    nummer.setSelection(4);
+                }
+
+
+
+
+
+
+
+
+
+                farbeint=Integer.parseInt(MainActivity.textviews.get(f).farbe);
+                farbe.setBackgroundTintList(ColorStateList.valueOf(farbeint));
+            }
+
+        }
         if(bearbeiten==true) {
             boolean Z2 = false;
             int selection = 0;
@@ -960,6 +963,21 @@ widget_speichern();
             SharedPreferences.Editor editor=settings.edit();
             editor.clear();
             editor.commit();
+        }
+
+    }
+
+    public void testRaum(){
+        String tester = raum.getText().toString();
+        String test="";
+        if (tester.contains(",")) {
+            test= tester.replace(",", "");;
+
+            raum2 = test;
+        }
+        else {
+            raum2 = tester;
+
         }
 
     }

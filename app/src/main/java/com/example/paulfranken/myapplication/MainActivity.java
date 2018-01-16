@@ -22,8 +22,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 
-
-
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.util.Log;
@@ -119,6 +119,29 @@ public class MainActivity extends AppCompatActivity
 
 
 
+
+        //Swipe Layout
+        final SwipeRefreshLayout l=(SwipeRefreshLayout)findViewById(R.id.swipe);
+        l.setColorSchemeResources(R.color.f1,R.color.f4,R.color.f7);//Farben festlegen
+        l.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                l.setRefreshing(true);
+                (new Handler()).postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        l.setRefreshing(false);
+
+                        aktualisieren();
+
+
+                    }
+                },3000);
+
+            }
+        });
+//Swipe Layout ende
+
         speichernlayouts();
         Laden();
         setTage();
@@ -157,6 +180,17 @@ public class MainActivity extends AppCompatActivity
 
 
         return true;
+    }
+
+    //kontrolliert ob ein neuer Vertretungsplan zur Verfügung steht und vergleicht diesen mit dem Stundenplan
+    public void aktualisieren(){
+
+        widget_speichern();
+
+        stunden.clear();
+        new MyTask(this).execute();
+
+        new MyTask2(this).execute();
     }
 
     @Override
