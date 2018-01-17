@@ -2,6 +2,7 @@ package com.example.paulfranken.myapplication;
 
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.TimePickerDialog;
 import android.app.TimePickerDialog.OnTimeSetListener;
 import android.appwidget.AppWidgetManager;
@@ -18,6 +19,8 @@ import org.jsoup.select.Elements;
 import org.jsoup.nodes.Element;
 
 import android.graphics.Picture;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
 

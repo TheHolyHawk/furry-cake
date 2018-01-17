@@ -22,6 +22,11 @@ private RelativeLayout layout;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        String raum2="";
+        String string;
+        string="    "+MainActivity.textviews.get(MainActivity.testi).stunde+".Stunde "+MainActivity.textviews.get(MainActivity.testi).tag;
+        setTitle(string);
+
         layout=(RelativeLayout)findViewById(R.id.relativeLayout);
         layout.setBackgroundColor(Integer.parseInt(MainActivity.test.farbe));
         fach=(TextView)findViewById(R.id.fach);
