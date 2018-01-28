@@ -357,7 +357,7 @@ public class MainActivity extends AppCompatActivity
 
         }
         if (id == R.id.kon){
-            Intent intent = new Intent(MainActivity.this, Kontakt.class);
+            Intent intent = new Intent(MainActivity.this, SendMailActivity.class);
 
             startActivity(intent);
 
