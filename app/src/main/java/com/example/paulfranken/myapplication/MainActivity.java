@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity
     public String kurs, kursid,text,raum2;
     public static ArrayList<String> raum_vorschlage=new ArrayList<>();
     public static String Stest="";
-public SwipeRefreshLayout l;
+    public SwipeRefreshLayout l;
     private AdView adView;
 
 
@@ -148,6 +148,7 @@ public SwipeRefreshLayout l;
             }
         });
 //Swipe Layout ende
+
 
         speichernlayouts();
         Laden();
@@ -1420,5 +1421,4 @@ if(!textviews.get(i).farbe.equals("")) {
         }
 
     }
-
 }
