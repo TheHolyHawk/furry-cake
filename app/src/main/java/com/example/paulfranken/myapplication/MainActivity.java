@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity
     public String kurs, kursid,text,raum2;
     public static ArrayList<String> raum_vorschlage=new ArrayList<>();
     public static String Stest="";
-public SwipeRefreshLayout l;
+    public SwipeRefreshLayout l;
     private AdView adView;
 
 
@@ -148,6 +148,7 @@ public SwipeRefreshLayout l;
             }
         });
 //Swipe Layout ende
+
 
         speichernlayouts();
         Laden();
@@ -356,7 +357,7 @@ public SwipeRefreshLayout l;
 
         }
         if (id == R.id.kon){
-            Intent intent = new Intent(MainActivity.this, Kontakt.class);
+            Intent intent = new Intent(MainActivity.this, SendMailActivity.class);
 
             startActivity(intent);
 
@@ -1420,5 +1421,4 @@ if(!textviews.get(i).farbe.equals("")) {
         }
 
     }
-
 }

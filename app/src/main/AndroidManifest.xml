@@ -44,6 +44,7 @@
             android:name=".Stunde_bearbeiten"
             android:label="@string/title_activity_stunde__bearbeiten"
             android:screenOrientation="portrait" />
+        <activity android:name=".SendMailActivity" />
 
         <receiver
             android:name=".WidgetProvider"
@@ -64,7 +65,6 @@
             android:name=".WidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
-        <activity android:name=".Kontakt"></activity>
     </application>
 
 </manifest>
