@@ -1,7 +1,8 @@
 package com.example.paulfranken.myapplication;
 
 /**
- * Created by timst on 28.01.2018.
+ * Erstellt by timst on 28.01.2018.
+ * Bearbeitet von Call-Paul 28.01.2018
  */
 
 import android.app.Activity;
@@ -15,13 +16,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SendMailActivity extends Activity {
-
+    public static Activity fa;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mail);
         final Button send = (Button) this.findViewById(R.id.send);
-
+fa=this;
         send.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -38,7 +39,7 @@ public class SendMailActivity extends Activity {
                         .getText().toString();
                 new SendMailTask(SendMailActivity.this).execute(fromEmail,
                         fromPassword, toEmail, emailSubject, emailBody);
-                finish();
+
             }
         });
     }

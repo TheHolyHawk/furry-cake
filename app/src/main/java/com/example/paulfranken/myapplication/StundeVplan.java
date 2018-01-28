@@ -96,6 +96,9 @@ public class StundeVplan {
         else if (fach.equals("S8")) {
             fach = "S8";
         }
+        else if (fach.equals("ER")) {
+            fach = "Religion";
+        }
 
 
         if (pkurs.equals("L")) {

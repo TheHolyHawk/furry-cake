@@ -58,6 +58,7 @@ public class SendMailTask extends AsyncTask {
 
     @Override
     public void onPostExecute(Object result) {
+        SendMailActivity.fa.finish();
         statusDialog.dismiss();
     }
 

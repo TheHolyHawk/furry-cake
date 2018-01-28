@@ -1,51 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
+
+    android:background="#fff"
+
     android:orientation="vertical"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    android:paddingTop="30dp">
+
+    android:padding="16dp">
+
 
 
     <TextView
-        android:id="@+id/textView4"
+
+        android:id="@+id/contact_form_title"
+
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:text="Betreff" />
+
+        android:layout_gravity="center_horizontal"
+
+        android:layout_marginBottom="16dp"
+
+        android:layout_marginTop="5dp"
+
+        android:text="Kontakt"
+
+        android:textColor="#ce3232"
+
+        android:textSize="40sp"
+
+        android:typeface="serif" />
+
+
 
     <EditText
+
+        android:layout_width="fill_parent"
+
+        android:layout_height="wrap_content"
+
         android:id="@+id/editText4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffffff"
-        android:ems="10"
-        android:padding="5dp"
-        android:textColor="#000000" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:text="Nachricht" />
+        android:backgroundTint="@color/colorPrimaryDark"
+
+        android:hint="Betreff"
+
+        android:inputType="textPersonName" />
+
 
     <EditText
+
+        android:layout_width="fill_parent"
+
+        android:layout_height="196dp"
+
+        android:layout_marginBottom="10dp"
+
+        android:layout_marginTop="10dp"
+
+        android:backgroundTint="@color/colorPrimaryDark"
+
+        android:breakStrategy="balanced"
+
+        android:fitsSystemWindows="true"
+
+        android:gravity="top"
+
         android:id="@+id/editText5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffffff"
-        android:ems="10"
+
+        android:hint="Deine Nachicht"
+
         android:inputType="textMultiLine"
-        android:padding="35dp"
-        android:textColor="#000000" />
+
+        android:padding="5dp"
+
+        android:singleLine="false" />
+
+
 
     <Button
-        android:id="@+id/send"
+
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
-        android:text="Senden" />
+
+        android:id="@+id/send"
+
+        android:layout_gravity="center_horizontal"
+
+        android:background="@color/colorPrimaryDark"
+
+        android:elevation="4dp"
+
+        android:paddingLeft="70dp"
+
+        android:paddingRight="70dp"
+
+        android:text="Senden"
+
+        android:textColor="#fff" />
 
 </LinearLayout>
