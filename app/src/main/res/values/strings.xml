@@ -19,27 +19,31 @@
     <string name="Kurs">LK oder GK</string>
     <string name="Kursnummer">Kursnummer</string>
     <string-array name="facher">
-        <item>Englisch</item>
-        <item>Religion</item>
-        <item>Musik</item>
-        <item>Erdkunde</item>
         <item>Deutsch</item>
-        <item>Mathe</item>
+        <item>Englisch</item>
+        <item>Französisch</item>
         <item>Latein</item>
-        <item>SoWi</item>
-        <item>Info</item>
-        <item>Sport</item>
-        <item>Biologie</item>
         <item>Spanisch</item>
-        <item>Chemie</item>
-        <item>Geschi</item>
+        <item>Spanisch8</item>
+        <item>Mathematik</item>
         <item>Physik</item>
+        <item>Chemie</item>
+        <item>Biologie</item>
+        <item>Informatik</item>
+        <item>Technik</item>
+        <item>Geschichte</item>
+        <item>Sozialwissenschaften</item>
+        <item>Erdkunde</item>
+        <item>Philosophie</item>
+        <item>Reli(E)</item>
+        <item>Reli(K)</item>
         <item>Kunst</item>
-        <item>Philo</item>
-        <item>Latein</item>
+        <item>Musik</item>
         <item>Literatur</item>
-        <item>K.Religion</item>
-        <item>S8</item>
+        <item>Sport</item>
+        <item>Chor</item>
+        <item>Orchester</item>
+        <item>Big Band</item>
     </string-array>
     <string name="Klasse">Klasse</string>
     <string-array name="klassen">
