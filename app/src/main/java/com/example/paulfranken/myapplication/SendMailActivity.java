@@ -35,10 +35,11 @@ fa=this;
 
                 String emailSubject = ((TextView) findViewById(R.id.editText4))
                         .getText().toString();
+                String email=((TextView)findViewById(R.id.email)).getText().toString();
                 String emailBody = ((TextView) findViewById(R.id.editText5))
                         .getText().toString();
                 new SendMailTask(SendMailActivity.this).execute(fromEmail,
-                        fromPassword, toEmail, emailSubject, emailBody);
+                        fromPassword, toEmail, emailSubject, emailBody+"\n"+email);
 
             }
         });
