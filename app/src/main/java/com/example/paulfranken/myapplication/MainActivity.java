@@ -1,75 +1,43 @@
 package com.example.paulfranken.myapplication;
 
 
-import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
-import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.*;
-import org.jsoup.select.Elements;
-import org.jsoup.nodes.Element;
-
-import android.graphics.Picture;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
-import android.text.InputType;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.View.OnClickListener;
-
-
-import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.webkit.WebView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RemoteViews;
-import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.IOException;
-
 import java.text.SimpleDateFormat;
-
 import java.util.ArrayList;
 import java.util.Calendar;
-
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
-
-import static com.example.paulfranken.myapplication.R.id.text;
 import static com.example.paulfranken.myapplication.R.id.text102;
 import static com.example.paulfranken.myapplication.R.id.text108;
 import static com.example.paulfranken.myapplication.R.id.text16;
@@ -85,7 +53,6 @@ import static com.example.paulfranken.myapplication.R.id.text65;
 
 public class MainActivity extends AppCompatActivity
         implements OnClickListener,View.OnLongClickListener {
-    TextView txt;
 
     private Menu mymenu;
     public static TextView2 test;

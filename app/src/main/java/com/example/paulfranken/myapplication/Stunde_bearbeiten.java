@@ -3,6 +3,8 @@ package com.example.paulfranken.myapplication;
 
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +16,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.colorpicker.ColorPickerDialog;
 import com.android.colorpicker.ColorPickerSwatch;
@@ -58,27 +61,15 @@ public class Stunde_bearbeiten extends AppCompatActivity implements AdapterView.
         kurs=(Spinner)findViewById(R.id.spinner2);
         raum=(AutoCompleteTextView) findViewById(R.id.editText);
         nummer=(Spinner) findViewById(R.id.spinner3);
-        facher.add("Englisch");
-        facher.add("Religion");
-        facher.add("Musik");
-        facher.add("Erdkunde");
-        facher.add("Deutsch");
-        facher.add("Mathe");
-        facher.add("Latein");
-        facher.add("Politik");
-        facher.add("Info");
-        facher.add("Sport");
-        facher.add("Biologie");
-        facher.add("Spanisch");
-        facher.add("Chemie");
-        facher.add("Geschichte");
-        facher.add("Physik");
-        facher.add("Kunst");
-        facher.add("Philosophie");
-        facher.add("Latein");
-        facher.add("Literatur");
-        facher.add("K.Religion");
-        facher.add("S8");
+
+
+        String[] faecher;
+        faecher = getResources().getStringArray(R.array.facher);
+
+       for(int i =0; i< faecher.length; i++){
+           facher.add(faecher[i]);
+
+       }
 
 
 
@@ -558,6 +549,7 @@ public class Stunde_bearbeiten extends AppCompatActivity implements AdapterView.
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         if(bearbeiten==false){
@@ -732,6 +724,7 @@ public class Stunde_bearbeiten extends AppCompatActivity implements AdapterView.
                 }, 5, 4, 2);
 
         colorPickerDialog.setOnColorSelectedListener(new ColorPickerSwatch.OnColorSelectedListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onColorSelected(int colour) {
                 farbeint=colour;

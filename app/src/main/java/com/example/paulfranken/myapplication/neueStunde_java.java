@@ -83,27 +83,13 @@ public class neueStunde_java extends AppCompatActivity implements View.OnClickLi
         raum.setAdapter(adapter);
 
 
-        facher.add("Englisch");
-        facher.add("Religion");
-        facher.add("Musik");
-        facher.add("Erdkunde");
-        facher.add("Deutsch");
-        facher.add("Mathe");
-        facher.add("Latein");
-        facher.add("Politik");
-        facher.add("Info");
-        facher.add("Sport");
-        facher.add("Biologie");
-        facher.add("Spanisch");
-        facher.add("Chemie");
-        facher.add("Geschichte");
-        facher.add("Physik");
-        facher.add("Kunst");
-        facher.add("Philosophie");
-        facher.add("Latein");
-        facher.add("Literatur");
-        facher.add("K.Religion");
-        facher.add("S8");
+        String[] faecher;
+        faecher = getResources().getStringArray(R.array.facher);
+
+        for(int i =0; i< faecher.length; i++){
+            facher.add(faecher[i]);
+
+        }
 
 
 
@@ -646,6 +632,7 @@ widget_speichern();
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
