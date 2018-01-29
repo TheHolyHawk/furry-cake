@@ -72,9 +72,9 @@ public String farbe="";
     public void aktualisieren2(){
         GradientDrawable gd = new GradientDrawable();
 
-        int greenColorValue =Integer.parseInt(farbe2);
 
-        gd.setColor(greenColorValue); // Changes this drawbale to use a single color instead of a gradient
+
+        gd.setColor(Color.DKGRAY); // Changes this drawbale to use a single color instead of a gradient
 
         gd.setStroke(1, 0xFF000000);
 

@@ -24,19 +24,19 @@ private RelativeLayout layout;
 
         String raum2="";
         String string;
-        string="    "+MainActivity.textviews.get(MainActivity.testi).stunde+".Stunde "+MainActivity.textviews.get(MainActivity.testi).tag;
+        string="    "+MainActivity.alleStunden.get(MainActivity.bearbeiteni).stunde+".Stunde "+MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag;
         setTitle(string);
 
         layout=(RelativeLayout)findViewById(R.id.relativeLayout);
-        layout.setBackgroundColor(Integer.parseInt(MainActivity.test.farbe));
+        layout.setBackgroundColor(Integer.parseInt(MainActivity.bearbeiten.farbe));
         fach=(TextView)findViewById(R.id.fach);
-        fach.setText(MainActivity.test.fach);
+        fach.setText(MainActivity.bearbeiten.fach);
         raum=(TextView)findViewById(R.id.raum);
-        raum.setText(MainActivity.test.raum);
+        raum.setText(MainActivity.bearbeiten.raum);
         kurs=(TextView)findViewById(R.id.Kurs);
-        kurs.setText(MainActivity.test.kurs);
+        kurs.setText(MainActivity.bearbeiten.kurs);
         nummer=(TextView)findViewById(R.id.nummer);
-        nummer.setText(MainActivity.test.nummer);
+        nummer.setText(MainActivity.bearbeiten.nummer);
 
         btn=(Button) findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {

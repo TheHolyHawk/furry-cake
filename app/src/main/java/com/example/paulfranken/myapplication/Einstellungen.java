@@ -150,15 +150,15 @@ Context context;
 
 
 
-                MainActivity.textviews.get(platz).setText(texte.get(i+6)+"\n"+"\n"+texte.get(i+7));
-                MainActivity.textviews.get(platz).farbe = texte.get(i+1);
-                MainActivity.textviews.get(platz).kurs = texte.get(i + 2);
-                MainActivity.textviews.get(platz).nummer = texte.get(i + 3);
-                MainActivity.textviews.get(platz).datum = texte.get(i + 4);
-                MainActivity.textviews.get(platz).aktualisieren();
-                MainActivity.textviews.get(platz).platz = texte.get(i + 5);
-                MainActivity.textviews.get(platz).fach = texte.get(i + 6);
-                MainActivity.textviews.get(platz).raum=texte.get(i+7);
+                MainActivity.alleStunden.get(platz).setText(texte.get(i+6)+"\n"+"\n"+texte.get(i+7));
+                MainActivity.alleStunden.get(platz).farbe = texte.get(i+1);
+                MainActivity.alleStunden.get(platz).kurs = texte.get(i + 2);
+                MainActivity.alleStunden.get(platz).nummer = texte.get(i + 3);
+                MainActivity.alleStunden.get(platz).datum = texte.get(i + 4);
+                MainActivity.alleStunden.get(platz).aktualisieren();
+                MainActivity.alleStunden.get(platz).platz = texte.get(i + 5);
+                MainActivity.alleStunden.get(platz).fach = texte.get(i + 6);
+                MainActivity.alleStunden.get(platz).raum=texte.get(i+7);
 
 
 
@@ -347,18 +347,18 @@ Context context;
         ArrayList<String> t=new ArrayList<String>();
         texte=t;
 
-        for (int i = 0; i < MainActivity.textviews.size(); i++) {
+        for (int i = 0; i < MainActivity.alleStunden.size(); i++) {
 
-            if(! MainActivity.textviews.get(i).farbe.equals("")) {
+            if(! MainActivity.alleStunden.get(i).farbe.equals("")) {
 
-                texte.add(String.valueOf( MainActivity.textviews.get(i).getText()));
-                texte.add(String.valueOf( MainActivity.textviews.get(i).farbe));
-                texte.add(String.valueOf( MainActivity.textviews.get(i).kurs));
-                texte.add(String.valueOf( MainActivity.textviews.get(i).nummer));
-                texte.add(String.valueOf( MainActivity.textviews.get(i).datum));
-                texte.add(String.valueOf( MainActivity.textviews.get(i).platz));
-                texte.add(String.valueOf( MainActivity.textviews.get(i).fach));
-                texte.add(String.valueOf( MainActivity.textviews.get(i).raum));
+                texte.add(String.valueOf( MainActivity.alleStunden.get(i).getText()));
+                texte.add(String.valueOf( MainActivity.alleStunden.get(i).farbe));
+                texte.add(String.valueOf( MainActivity.alleStunden.get(i).kurs));
+                texte.add(String.valueOf( MainActivity.alleStunden.get(i).nummer));
+                texte.add(String.valueOf( MainActivity.alleStunden.get(i).datum));
+                texte.add(String.valueOf( MainActivity.alleStunden.get(i).platz));
+                texte.add(String.valueOf( MainActivity.alleStunden.get(i).fach));
+                texte.add(String.valueOf( MainActivity.alleStunden.get(i).raum));
 
 
 

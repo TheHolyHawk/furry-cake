@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -53,24 +54,30 @@ import static com.example.paulfranken.myapplication.R.id.text65;
 
 public class MainActivity extends AppCompatActivity
         implements OnClickListener,View.OnLongClickListener {
-
+    //Menu muss gespeichert werden
     private Menu mymenu;
-    public static TextView2 test;
-    public static int testi;
-    public static String klasse="Q2";
-
-    public static ArrayList<Integer> farben=new ArrayList<Integer>();
-    public static ArrayList<TextView2> textviews = new ArrayList<TextView2>();
+    //TextView zur aktuellen, an der Bearbeitende Stunde
+    public static TextView2 bearbeiten;
+    //Id für TextView das zu bearbeiten ist
+    public static int bearbeiteni;
+    //ArrayList für verschidene Informationen
+    public static ArrayList<TextView2> alleStunden = new ArrayList<TextView2>();
+    //Alle TextViews (Stunden) werden hier geschpeichert
     public static ArrayList<String> texte = new ArrayList<String>();
     public static ArrayList<StundeVplan> stunden=new ArrayList<StundeVplan>();
+    public static ArrayList<String> raum_vorschlage=new ArrayList<>();
+
     public boolean heute=false,morgen=false,montag=false;
 
-    public static String fach,stunde;
-    public static String test3 = " ";
+
+
     public String kurs, kursid,text,raum2;
-    public static ArrayList<String> raum_vorschlage=new ArrayList<>();
-    public static String Stest="";
+
+    public static String Stest="",fach,stunde,test3 = " ", klasse="Q2";
+
+
     public SwipeRefreshLayout l;
+
     private AdView adView;
 
 
@@ -240,8 +247,8 @@ public class MainActivity extends AppCompatActivity
                     editor.clear();
                     editor.commit();
                     löschen();
-                    for(int i=0;i<MainActivity.textviews.size();i++){
-                        MainActivity.textviews.get(i).löschen();
+                    for(int i=0;i<MainActivity.alleStunden.size();i++){
+                        MainActivity.alleStunden.get(i).löschen();
                     }
                     dialog.dismiss();
                 }
@@ -334,17 +341,17 @@ public class MainActivity extends AppCompatActivity
     }
     public void setzeZeiten(){
 
-        MainActivity.textviews.get(0).setText("7:50"+"\n"+"-"+"\n8:35");
-        MainActivity.textviews.get(6).setText("8:40"+"\n"+"-"+"\n9:25");
-        MainActivity.textviews.get(12).setText("9:45"+"\n"+"-"+"\n10:30");
-        MainActivity.textviews.get(18).setText("10:35"+"\n"+"-"+"\n11:20");
-        MainActivity.textviews.get(24).setText("11:40"+"\n"+"-"+"\n12:25");
-        MainActivity.textviews.get(30).setText("12:30"+"\n"+"-"+"\n13:15");
-        MainActivity.textviews.get(36).setText("13:20"+"\n"+"-"+"\n14:10");
-        MainActivity.textviews.get(42).setText("14:15"+"\n"+"-"+"\n15:00");
-        MainActivity.textviews.get(48).setText("15:05"+"\n"+"-"+"\n15:50");
-        MainActivity.textviews.get(54).setText("15:55"+"\n"+"-"+"\n16:40");
-        MainActivity.textviews.get(60).setText("16:45"+"\n"+"-"+"\n17:30");
+        MainActivity.alleStunden.get(0).setText("7:50"+"\n"+"-"+"\n8:35");
+        MainActivity.alleStunden.get(6).setText("8:40"+"\n"+"-"+"\n9:25");
+        MainActivity.alleStunden.get(12).setText("9:45"+"\n"+"-"+"\n10:30");
+        MainActivity.alleStunden.get(18).setText("10:35"+"\n"+"-"+"\n11:20");
+        MainActivity.alleStunden.get(24).setText("11:40"+"\n"+"-"+"\n12:25");
+        MainActivity.alleStunden.get(30).setText("12:30"+"\n"+"-"+"\n13:15");
+        MainActivity.alleStunden.get(36).setText("13:20"+"\n"+"-"+"\n14:10");
+        MainActivity.alleStunden.get(42).setText("14:15"+"\n"+"-"+"\n15:00");
+        MainActivity.alleStunden.get(48).setText("15:05"+"\n"+"-"+"\n15:50");
+        MainActivity.alleStunden.get(54).setText("15:55"+"\n"+"-"+"\n16:40");
+        MainActivity.alleStunden.get(60).setText("16:45"+"\n"+"-"+"\n17:30");
 
 
     }
@@ -357,13 +364,13 @@ public class MainActivity extends AppCompatActivity
 
         } else {
 
-            for (int i = 0; i < textviews.size(); i++) {
+            for (int i = 0; i < alleStunden.size(); i++) {
 
-                if (e.equals(textviews.get(i))) {
-                    test = textviews.get(i);
-                    testi = i;
+                if (e.equals(alleStunden.get(i))) {
+                    bearbeiten = alleStunden.get(i);
+                    bearbeiteni = i;
                 }
-            }if(!test.fach.equals("")){
+            }if(!bearbeiten.fach.equals("")){
                 Intent intent = new Intent(MainActivity.this, Stunde_info.class);
 
                 startActivity(intent);
@@ -381,12 +388,12 @@ public class MainActivity extends AppCompatActivity
         }
     }
     public void setTage(){
-        for(int i=0;i<textviews.size();i++){
-            textviews.get(i+1).tag="Montag";
-            textviews.get(i+2).tag="Dienstag";
-            textviews.get(i+3).tag="Mittwoch";
-            textviews.get(i+4).tag="Donnerstag";
-            textviews.get(i+5).tag="Freitag";
+        for(int i=0;i<alleStunden.size();i++){
+            alleStunden.get(i+1).tag="Montag";
+            alleStunden.get(i+2).tag="Dienstag";
+            alleStunden.get(i+3).tag="Mittwoch";
+            alleStunden.get(i+4).tag="Donnerstag";
+            alleStunden.get(i+5).tag="Freitag";
             i=i+5;
 
 
@@ -429,15 +436,15 @@ if(test!=null){
 
 
 
-                textviews.get(platz).setText(texte.get(i+6)+"\n"+"\n"+texte.get(i+7));
-                textviews.get(platz).farbe = texte.get(i+1);
-                textviews.get(platz).kurs = texte.get(i + 2);
-                textviews.get(platz).nummer = texte.get(i + 3);
-                textviews.get(platz).datum = texte.get(i + 4);
-                textviews.get(platz).aktualisieren();
-                textviews.get(platz).platz = texte.get(i + 5);
-                textviews.get(platz).fach = texte.get(i + 6);
-                textviews.get(platz).raum=texte.get(i+7);
+                alleStunden.get(platz).setText(texte.get(i+6)+"\n"+"\n"+texte.get(i+7));
+                alleStunden.get(platz).farbe = texte.get(i+1);
+                alleStunden.get(platz).kurs = texte.get(i + 2);
+                alleStunden.get(platz).nummer = texte.get(i + 3);
+                alleStunden.get(platz).datum = texte.get(i + 4);
+                alleStunden.get(platz).aktualisieren();
+                alleStunden.get(platz).platz = texte.get(i + 5);
+                alleStunden.get(platz).fach = texte.get(i + 6);
+                alleStunden.get(platz).raum=texte.get(i+7);
 
 
 
@@ -468,7 +475,7 @@ if(test!=null){
                 if (layout1.getChildAt(i) instanceof TextView2) {
                     TextView2 textview=(TextView2)layout1.getChildAt(i);
                     textview.stunde="1";
-                    textviews.add((TextView2) layout1.getChildAt(i));
+                    alleStunden.add((TextView2) layout1.getChildAt(i));
                     layout1.getChildAt(i).setOnClickListener(this);
                     layout1.getChildAt(i).setOnLongClickListener(this);
 
@@ -478,7 +485,7 @@ if(test!=null){
             if (layout2.getChildAt(i) instanceof TextView2) {
                 TextView2 textview=(TextView2)layout2.getChildAt(i);
                 textview.stunde="2";
-                textviews.add((TextView2) layout2.getChildAt(i));
+                alleStunden.add((TextView2) layout2.getChildAt(i));
                 layout2.getChildAt(i).setOnClickListener(this);
                 layout2.getChildAt(i).setOnLongClickListener(this);
             }}
@@ -486,7 +493,7 @@ if(test!=null){
             if (layout3.getChildAt(i) instanceof TextView2) {
                 TextView2 textview=(TextView2)layout3.getChildAt(i);
                 textview.stunde="3";
-                textviews.add((TextView2) layout3.getChildAt(i));
+                alleStunden.add((TextView2) layout3.getChildAt(i));
                 layout3.getChildAt(i).setOnClickListener(this);
                 layout3.getChildAt(i).setOnLongClickListener(this);
             }}
@@ -494,7 +501,7 @@ if(test!=null){
             if (layout4.getChildAt(i) instanceof TextView2) {
                 TextView2 textview=(TextView2)layout4.getChildAt(i);
                 textview.stunde="4";
-                textviews.add((TextView2) layout4.getChildAt(i));
+                alleStunden.add((TextView2) layout4.getChildAt(i));
                 layout4.getChildAt(i).setOnClickListener(this);
                 layout4.getChildAt(i).setOnLongClickListener(this);
             }}
@@ -502,7 +509,7 @@ if(test!=null){
             TextView2 textview=(TextView2)layout5.getChildAt(i);
             textview.stunde="5";
             if (layout5.getChildAt(i) instanceof TextView2) {
-                textviews.add((TextView2) layout5.getChildAt(i));
+                alleStunden.add((TextView2) layout5.getChildAt(i));
                 layout5.getChildAt(i).setOnClickListener(this);
                 layout5.getChildAt(i).setOnLongClickListener(this);
             }}
@@ -510,7 +517,7 @@ if(test!=null){
             if (layout6.getChildAt(i) instanceof TextView2) {
                 TextView2 textview=(TextView2)layout6.getChildAt(i);
                 textview.stunde="6";
-                textviews.add((TextView2) layout6.getChildAt(i));
+                alleStunden.add((TextView2) layout6.getChildAt(i));
                 layout6.getChildAt(i).setOnClickListener(this);
                 layout6.getChildAt(i).setOnLongClickListener(this);
             }}
@@ -518,7 +525,7 @@ if(test!=null){
             if (layout7.getChildAt(i) instanceof TextView2) {
                 TextView2 textview=(TextView2)layout7.getChildAt(i);
                 textview.stunde="7";
-                textviews.add((TextView2) layout7.getChildAt(i));
+                alleStunden.add((TextView2) layout7.getChildAt(i));
                 layout7.getChildAt(i).setOnClickListener(this);
                 layout7.getChildAt(i).setOnLongClickListener(this);
             }}
@@ -526,7 +533,7 @@ if(test!=null){
             TextView2 textview=(TextView2)layout8.getChildAt(i);
             textview.stunde="8";
             if (layout8.getChildAt(i) instanceof TextView2) {
-                textviews.add((TextView2) layout8.getChildAt(i));
+                alleStunden.add((TextView2) layout8.getChildAt(i));
                 layout8.getChildAt(i).setOnClickListener(this);
                 layout8.getChildAt(i).setOnLongClickListener(this);
             }}
@@ -534,7 +541,7 @@ if(test!=null){
             if (layout9.getChildAt(i) instanceof TextView2) {
                 TextView2 textview=(TextView2)layout9.getChildAt(i);
                 textview.stunde="9";
-                textviews.add((TextView2) layout9.getChildAt(i));
+                alleStunden.add((TextView2) layout9.getChildAt(i));
                 layout9.getChildAt(i).setOnClickListener(this);
                 layout9.getChildAt(i).setOnLongClickListener(this);
             }}
@@ -542,7 +549,7 @@ if(test!=null){
             TextView2 textview=(TextView2)layout10.getChildAt(i);
             textview.stunde="10";
             if (layout10.getChildAt(i) instanceof TextView2) {
-                textviews.add((TextView2) layout10.getChildAt(i));
+                alleStunden.add((TextView2) layout10.getChildAt(i));
                 layout10.getChildAt(i).setOnClickListener(this);
                 layout10.getChildAt(i).setOnLongClickListener(this);
             }}
@@ -550,7 +557,7 @@ if(test!=null){
             TextView2 textview=(TextView2)layout11.getChildAt(i);
             textview.stunde="11";
             if (layout11.getChildAt(i) instanceof TextView2) {
-                textviews.add((TextView2) layout11.getChildAt(i));
+                alleStunden.add((TextView2) layout11.getChildAt(i));
                 layout11.getChildAt(i).setOnClickListener(this);
                 layout11.getChildAt(i).setOnLongClickListener(this);
             }}
@@ -574,11 +581,11 @@ if(test!=null){
     }
     @Override
     public boolean onLongClick(View view) {
-        for (int i = 0; i < textviews.size(); i++) {
+        for (int i = 0; i < alleStunden.size(); i++) {
 
-            if (view.equals(textviews.get(i))) {
-                test = textviews.get(i);
-                testi = i;
+            if (view.equals(alleStunden.get(i))) {
+                bearbeiten = alleStunden.get(i);
+                bearbeiteni = i;
             }
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -590,7 +597,7 @@ if(test!=null){
 
             public void onClick(DialogInterface dialog, int which) {
 
-                test.löschen();
+                bearbeiten.löschen();
                 speichern();
                 dialog.dismiss();
             }
@@ -649,18 +656,18 @@ if(test!=null){
         ArrayList<String> t=new ArrayList<String>();
         texte=t;
 
-        for (int i = 0; i < textviews.size(); i++) {
+        for (int i = 0; i < alleStunden.size(); i++) {
 
-if(!textviews.get(i).farbe.equals("")) {
+if(!alleStunden.get(i).farbe.equals("")) {
 
-    texte.add(String.valueOf(textviews.get(i).getText()));
-    texte.add(String.valueOf(textviews.get(i).farbe));
-    texte.add(String.valueOf(textviews.get(i).kurs));
-    texte.add(String.valueOf(textviews.get(i).nummer));
-    texte.add(String.valueOf(textviews.get(i).datum));
-    texte.add(String.valueOf(textviews.get(i).platz));
-    texte.add(String.valueOf(textviews.get(i).fach));
-    texte.add(String.valueOf(textviews.get(i).raum));
+    texte.add(String.valueOf(alleStunden.get(i).getText()));
+    texte.add(String.valueOf(alleStunden.get(i).farbe));
+    texte.add(String.valueOf(alleStunden.get(i).kurs));
+    texte.add(String.valueOf(alleStunden.get(i).nummer));
+    texte.add(String.valueOf(alleStunden.get(i).datum));
+    texte.add(String.valueOf(alleStunden.get(i).platz));
+    texte.add(String.valueOf(alleStunden.get(i).fach));
+    texte.add(String.valueOf(alleStunden.get(i).raum));
 
 
 
@@ -681,29 +688,29 @@ if(!textviews.get(i).farbe.equals("")) {
 
 
 
-        for (int i = 0; i < MainActivity.textviews.size(); i++) {
+        for (int i = 0; i < MainActivity.alleStunden.size(); i++) {
 
 
             for (int m = 0; m < MainActivity.stunden.size(); m++) {
-                if(MainActivity.stunden.get(m).fach.equals(MainActivity.textviews.get(i).fach)&&MainActivity.stunden.get(m).kursid.equals(MainActivity.textviews.get(i).nummer) &&MainActivity.stunden.get(m).kurs.equals(MainActivity.textviews.get(i).kurs)&&MainActivity.stunden.get(m).tag.equals(MainActivity.textviews.get(i).tag)&&MainActivity.stunden.get(m).stunde.equals(MainActivity.textviews.get(i).stunde)){
+                if(MainActivity.stunden.get(m).fach.equals(MainActivity.alleStunden.get(i).fach)&&MainActivity.stunden.get(m).kursid.equals(MainActivity.alleStunden.get(i).nummer) &&MainActivity.stunden.get(m).kurs.equals(MainActivity.alleStunden.get(i).kurs)&&MainActivity.stunden.get(m).tag.equals(MainActivity.alleStunden.get(i).tag)&&MainActivity.stunden.get(m).stunde.equals(MainActivity.alleStunden.get(i).stunde)){
 
                    if(stunden.get(m).text.equals("Selbstlernen")) {
-                       MainActivity.textviews.get(i).setText("" + textviews.get(i).fach + " " +"Frei");
-                       MainActivity.textviews.get(i).farbe2=String.valueOf(R.color.raum);
-                       MainActivity.textviews.get(i).aktualisieren2();
+                       MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + " " +"Frei");
+                        MainActivity.alleStunden.get(i).setTextColor(Color.RED);
+                       MainActivity.alleStunden.get(i).aktualisieren2();
 
 
                    }else if(stunden.get(m).text.equals("Vertretung")){
-                       MainActivity.textviews.get(i).setText("" + textviews.get(i).fach + " " + stunden.get(m).text);
-                       MainActivity.textviews.get(i).farbe2=String.valueOf(R.color.colorAccent);
-                       MainActivity.textviews.get(i).aktualisieren2();
+                       MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + " " + stunden.get(m).text);
+                       MainActivity.alleStunden.get(i).setTextColor(Color.RED);
+                       MainActivity.alleStunden.get(i).aktualisieren2();
 
 
                    }else
                    {
-                       MainActivity.textviews.get(i).setText("" + textviews.get(i).fach + " " + stunden.get(m).text+" "+stunden.get(m).raum);
-                       MainActivity.textviews.get(i).farbe2=String.valueOf(R.color.colorAccent);
-                       MainActivity.textviews.get(i).aktualisieren2();
+                       MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + " " + stunden.get(m).text+" "+stunden.get(m).raum);
+                       MainActivity.alleStunden.get(i).setTextColor(Color.RED);
+                       MainActivity.alleStunden.get(i).aktualisieren2();
 
                    }
 
@@ -1176,73 +1183,73 @@ if(!textviews.get(i).farbe.equals("")) {
 //alle facher informationen
         fach.clear();
 
-        fach.add(MainActivity.textviews.get(1).fach);
-        fach.add(MainActivity.textviews.get(7).fach);
-        fach.add(MainActivity.textviews.get(13).fach);
-        fach.add(MainActivity.textviews.get(19).fach);
-        fach.add(MainActivity.textviews.get(25).fach);
-        fach.add(MainActivity.textviews.get(31).fach);
-        fach.add(MainActivity.textviews.get(37).fach);
-        fach.add(MainActivity.textviews.get(43).fach);
-        fach.add(MainActivity.textviews.get(49).fach);
-        fach.add(MainActivity.textviews.get(55).fach);
-        fach.add(MainActivity.textviews.get(61).fach);
+        fach.add(MainActivity.alleStunden.get(1).fach);
+        fach.add(MainActivity.alleStunden.get(7).fach);
+        fach.add(MainActivity.alleStunden.get(13).fach);
+        fach.add(MainActivity.alleStunden.get(19).fach);
+        fach.add(MainActivity.alleStunden.get(25).fach);
+        fach.add(MainActivity.alleStunden.get(31).fach);
+        fach.add(MainActivity.alleStunden.get(37).fach);
+        fach.add(MainActivity.alleStunden.get(43).fach);
+        fach.add(MainActivity.alleStunden.get(49).fach);
+        fach.add(MainActivity.alleStunden.get(55).fach);
+        fach.add(MainActivity.alleStunden.get(61).fach);
 
 
 
-        fach.add(MainActivity.textviews.get(2).fach);
-        fach.add(MainActivity.textviews.get(8).fach);
-        fach.add(MainActivity.textviews.get(14).fach);
-        fach.add(MainActivity.textviews.get(20).fach);
-        fach.add(MainActivity.textviews.get(26).fach);
-        fach.add(MainActivity.textviews.get(32).fach);
-        fach.add(MainActivity.textviews.get(38).fach);
-        fach.add(MainActivity.textviews.get(44).fach);
-        fach.add(MainActivity.textviews.get(50).fach);
-        fach.add(MainActivity.textviews.get(56).fach);
-        fach.add(MainActivity.textviews.get(62).fach);
+        fach.add(MainActivity.alleStunden.get(2).fach);
+        fach.add(MainActivity.alleStunden.get(8).fach);
+        fach.add(MainActivity.alleStunden.get(14).fach);
+        fach.add(MainActivity.alleStunden.get(20).fach);
+        fach.add(MainActivity.alleStunden.get(26).fach);
+        fach.add(MainActivity.alleStunden.get(32).fach);
+        fach.add(MainActivity.alleStunden.get(38).fach);
+        fach.add(MainActivity.alleStunden.get(44).fach);
+        fach.add(MainActivity.alleStunden.get(50).fach);
+        fach.add(MainActivity.alleStunden.get(56).fach);
+        fach.add(MainActivity.alleStunden.get(62).fach);
 
 
 
-        fach.add(MainActivity.textviews.get(3).fach);
-        fach.add(MainActivity.textviews.get(9).fach);
-        fach.add(MainActivity.textviews.get(15).fach);
-        fach.add(MainActivity.textviews.get(21).fach);
-        fach.add(MainActivity.textviews.get(27).fach);
-        fach.add(MainActivity.textviews.get(33).fach);
-        fach.add(MainActivity.textviews.get(39).fach);
-        fach.add(MainActivity.textviews.get(45).fach);
-        fach.add(MainActivity.textviews.get(51).fach);
-        fach.add(MainActivity.textviews.get(57).fach);
-        fach.add(MainActivity.textviews.get(63).fach);
+        fach.add(MainActivity.alleStunden.get(3).fach);
+        fach.add(MainActivity.alleStunden.get(9).fach);
+        fach.add(MainActivity.alleStunden.get(15).fach);
+        fach.add(MainActivity.alleStunden.get(21).fach);
+        fach.add(MainActivity.alleStunden.get(27).fach);
+        fach.add(MainActivity.alleStunden.get(33).fach);
+        fach.add(MainActivity.alleStunden.get(39).fach);
+        fach.add(MainActivity.alleStunden.get(45).fach);
+        fach.add(MainActivity.alleStunden.get(51).fach);
+        fach.add(MainActivity.alleStunden.get(57).fach);
+        fach.add(MainActivity.alleStunden.get(63).fach);
 
 
 
-        fach.add(MainActivity.textviews.get(4).fach);
-        fach.add(MainActivity.textviews.get(10).fach);
-        fach.add(MainActivity.textviews.get(16).fach);
-        fach.add(MainActivity.textviews.get(22).fach);
-        fach.add(MainActivity.textviews.get(28).fach);
-        fach.add(MainActivity.textviews.get(34).fach);
-        fach.add(MainActivity.textviews.get(40).fach);
-        fach.add(MainActivity.textviews.get(46).fach);
-        fach.add(MainActivity.textviews.get(52).fach);
-        fach.add(MainActivity.textviews.get(58).fach);
-        fach.add(MainActivity.textviews.get(64).fach);
+        fach.add(MainActivity.alleStunden.get(4).fach);
+        fach.add(MainActivity.alleStunden.get(10).fach);
+        fach.add(MainActivity.alleStunden.get(16).fach);
+        fach.add(MainActivity.alleStunden.get(22).fach);
+        fach.add(MainActivity.alleStunden.get(28).fach);
+        fach.add(MainActivity.alleStunden.get(34).fach);
+        fach.add(MainActivity.alleStunden.get(40).fach);
+        fach.add(MainActivity.alleStunden.get(46).fach);
+        fach.add(MainActivity.alleStunden.get(52).fach);
+        fach.add(MainActivity.alleStunden.get(58).fach);
+        fach.add(MainActivity.alleStunden.get(64).fach);
 
 
 
-        fach.add(MainActivity.textviews.get(5).fach);
-        fach.add(MainActivity.textviews.get(11).fach);
-        fach.add(MainActivity.textviews.get(17).fach);
-        fach.add(MainActivity.textviews.get(23).fach);
-        fach.add(MainActivity.textviews.get(29).fach);
-        fach.add(MainActivity.textviews.get(35).fach);
-        fach.add(MainActivity.textviews.get(41).fach);
-        fach.add(MainActivity.textviews.get(47).fach);
-        fach.add(MainActivity.textviews.get(53).fach);
-        fach.add(MainActivity.textviews.get(59).fach);
-        fach.add(MainActivity.textviews.get(65).fach);
+        fach.add(MainActivity.alleStunden.get(5).fach);
+        fach.add(MainActivity.alleStunden.get(11).fach);
+        fach.add(MainActivity.alleStunden.get(17).fach);
+        fach.add(MainActivity.alleStunden.get(23).fach);
+        fach.add(MainActivity.alleStunden.get(29).fach);
+        fach.add(MainActivity.alleStunden.get(35).fach);
+        fach.add(MainActivity.alleStunden.get(41).fach);
+        fach.add(MainActivity.alleStunden.get(47).fach);
+        fach.add(MainActivity.alleStunden.get(53).fach);
+        fach.add(MainActivity.alleStunden.get(59).fach);
+        fach.add(MainActivity.alleStunden.get(65).fach);
 
         for(int i=0;i<fach.size();i++){
             if(fach.get(i).equals("")){
@@ -1285,73 +1292,73 @@ if(!textviews.get(i).farbe.equals("")) {
 
         raum.clear();
 
-        raum.add(MainActivity.textviews.get(1).raum);
-        raum.add(MainActivity.textviews.get(7).raum);
-        raum.add(MainActivity.textviews.get(13).raum);
-        raum.add(MainActivity.textviews.get(19).raum);
-        raum.add(MainActivity.textviews.get(25).raum);
-        raum.add(MainActivity.textviews.get(31).raum);
-        raum.add(MainActivity.textviews.get(37).raum);
-        raum.add(MainActivity.textviews.get(43).raum);
-        raum.add(MainActivity.textviews.get(49).raum);
-        raum.add(MainActivity.textviews.get(55).raum);
-        raum.add(MainActivity.textviews.get(61).raum);
+        raum.add(MainActivity.alleStunden.get(1).raum);
+        raum.add(MainActivity.alleStunden.get(7).raum);
+        raum.add(MainActivity.alleStunden.get(13).raum);
+        raum.add(MainActivity.alleStunden.get(19).raum);
+        raum.add(MainActivity.alleStunden.get(25).raum);
+        raum.add(MainActivity.alleStunden.get(31).raum);
+        raum.add(MainActivity.alleStunden.get(37).raum);
+        raum.add(MainActivity.alleStunden.get(43).raum);
+        raum.add(MainActivity.alleStunden.get(49).raum);
+        raum.add(MainActivity.alleStunden.get(55).raum);
+        raum.add(MainActivity.alleStunden.get(61).raum);
 
 
 
-        raum.add(MainActivity.textviews.get(2).raum);
-        raum.add(MainActivity.textviews.get(8).raum);
-        raum.add(MainActivity.textviews.get(14).raum);
-        raum.add(MainActivity.textviews.get(20).raum);
-        raum.add(MainActivity.textviews.get(26).raum);
-        raum.add(MainActivity.textviews.get(32).raum);
-        raum.add(MainActivity.textviews.get(38).raum);
-        raum.add(MainActivity.textviews.get(44).raum);
-        raum.add(MainActivity.textviews.get(50).raum);
-        raum.add(MainActivity.textviews.get(56).raum);
-        raum.add(MainActivity.textviews.get(62).raum);
+        raum.add(MainActivity.alleStunden.get(2).raum);
+        raum.add(MainActivity.alleStunden.get(8).raum);
+        raum.add(MainActivity.alleStunden.get(14).raum);
+        raum.add(MainActivity.alleStunden.get(20).raum);
+        raum.add(MainActivity.alleStunden.get(26).raum);
+        raum.add(MainActivity.alleStunden.get(32).raum);
+        raum.add(MainActivity.alleStunden.get(38).raum);
+        raum.add(MainActivity.alleStunden.get(44).raum);
+        raum.add(MainActivity.alleStunden.get(50).raum);
+        raum.add(MainActivity.alleStunden.get(56).raum);
+        raum.add(MainActivity.alleStunden.get(62).raum);
 
 
 
-        raum.add(MainActivity.textviews.get(3).raum);
-        raum.add(MainActivity.textviews.get(9).raum);
-        raum.add(MainActivity.textviews.get(15).raum);
-        raum.add(MainActivity.textviews.get(21).raum);
-        raum.add(MainActivity.textviews.get(27).raum);
-        raum.add(MainActivity.textviews.get(33).raum);
-        raum.add(MainActivity.textviews.get(39).raum);
-        raum.add(MainActivity.textviews.get(45).raum);
-        raum.add(MainActivity.textviews.get(51).raum);
-        raum.add(MainActivity.textviews.get(57).raum);
-        raum.add(MainActivity.textviews.get(63).raum);
+        raum.add(MainActivity.alleStunden.get(3).raum);
+        raum.add(MainActivity.alleStunden.get(9).raum);
+        raum.add(MainActivity.alleStunden.get(15).raum);
+        raum.add(MainActivity.alleStunden.get(21).raum);
+        raum.add(MainActivity.alleStunden.get(27).raum);
+        raum.add(MainActivity.alleStunden.get(33).raum);
+        raum.add(MainActivity.alleStunden.get(39).raum);
+        raum.add(MainActivity.alleStunden.get(45).raum);
+        raum.add(MainActivity.alleStunden.get(51).raum);
+        raum.add(MainActivity.alleStunden.get(57).raum);
+        raum.add(MainActivity.alleStunden.get(63).raum);
 
 
 
-        raum.add(MainActivity.textviews.get(4).raum);
-        raum.add(MainActivity.textviews.get(10).raum);
-        raum.add(MainActivity.textviews.get(16).raum);
-        raum.add(MainActivity.textviews.get(22).raum);
-        raum.add(MainActivity.textviews.get(28).raum);
-        raum.add(MainActivity.textviews.get(34).raum);
-        raum.add(MainActivity.textviews.get(40).raum);
-        raum.add(MainActivity.textviews.get(46).raum);
-        raum.add(MainActivity.textviews.get(52).raum);
-        raum.add(MainActivity.textviews.get(58).raum);
-        raum.add(MainActivity.textviews.get(64).raum);
+        raum.add(MainActivity.alleStunden.get(4).raum);
+        raum.add(MainActivity.alleStunden.get(10).raum);
+        raum.add(MainActivity.alleStunden.get(16).raum);
+        raum.add(MainActivity.alleStunden.get(22).raum);
+        raum.add(MainActivity.alleStunden.get(28).raum);
+        raum.add(MainActivity.alleStunden.get(34).raum);
+        raum.add(MainActivity.alleStunden.get(40).raum);
+        raum.add(MainActivity.alleStunden.get(46).raum);
+        raum.add(MainActivity.alleStunden.get(52).raum);
+        raum.add(MainActivity.alleStunden.get(58).raum);
+        raum.add(MainActivity.alleStunden.get(64).raum);
 
 
 
-        raum.add(MainActivity.textviews.get(5).raum);
-        raum.add(MainActivity.textviews.get(11).raum);
-        raum.add(MainActivity.textviews.get(17).raum);
-        raum.add(MainActivity.textviews.get(23).raum);
-        raum.add(MainActivity.textviews.get(29).raum);
-        raum.add(MainActivity.textviews.get(35).raum);
-        raum.add(MainActivity.textviews.get(41).raum);
-        raum.add(MainActivity.textviews.get(47).raum);
-        raum.add(MainActivity.textviews.get(53).raum);
-        raum.add(MainActivity.textviews.get(59).raum);
-        raum.add(MainActivity.textviews.get(65).raum);
+        raum.add(MainActivity.alleStunden.get(5).raum);
+        raum.add(MainActivity.alleStunden.get(11).raum);
+        raum.add(MainActivity.alleStunden.get(17).raum);
+        raum.add(MainActivity.alleStunden.get(23).raum);
+        raum.add(MainActivity.alleStunden.get(29).raum);
+        raum.add(MainActivity.alleStunden.get(35).raum);
+        raum.add(MainActivity.alleStunden.get(41).raum);
+        raum.add(MainActivity.alleStunden.get(47).raum);
+        raum.add(MainActivity.alleStunden.get(53).raum);
+        raum.add(MainActivity.alleStunden.get(59).raum);
+        raum.add(MainActivity.alleStunden.get(65).raum);
 
         for(int i=0;i<raum.size();i++){
             if(raum.get(i).equals("")){

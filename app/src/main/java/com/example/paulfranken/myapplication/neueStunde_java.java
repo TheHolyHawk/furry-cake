@@ -65,7 +65,7 @@ public class neueStunde_java extends AppCompatActivity implements View.OnClickLi
 
         String raum2="";
         String string;
-        string="    "+MainActivity.textviews.get(MainActivity.testi).stunde+".Stunde "+MainActivity.textviews.get(MainActivity.testi).tag;
+        string="    "+MainActivity.alleStunden.get(MainActivity.bearbeiteni).stunde+".Stunde "+MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag;
         setTitle(string);
 
 
@@ -118,10 +118,10 @@ public class neueStunde_java extends AppCompatActivity implements View.OnClickLi
 
                 testRaum();
 
-                MainActivity.textviews.get(MainActivity.testi).setText(fach.getSelectedItem().toString()+"\n"+"\n"+raum2);
-                MainActivity.textviews.get(MainActivity.testi).farbe=String.valueOf(farbeint);
-                MainActivity.textviews.get(MainActivity.testi).kurs=kurs.getSelectedItem().toString();
-                MainActivity.textviews.get(MainActivity.testi).nummer=nummer.getSelectedItem().toString();
+                MainActivity.alleStunden.get(MainActivity.bearbeiteni).setText(fach.getSelectedItem().toString()+"\n"+"\n"+raum2);
+                MainActivity.alleStunden.get(MainActivity.bearbeiteni).farbe=String.valueOf(farbeint);
+                MainActivity.alleStunden.get(MainActivity.bearbeiteni).kurs=kurs.getSelectedItem().toString();
+                MainActivity.alleStunden.get(MainActivity.bearbeiteni).nummer=nummer.getSelectedItem().toString();
 
 
 
@@ -133,380 +133,380 @@ public class neueStunde_java extends AppCompatActivity implements View.OnClickLi
 
                 if(weekDay.equals("Monday")){
 
-                   if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Montag")){
+                   if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Montag")){
                        datumheute.add(Calendar.DATE,0);
                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                        String formatted = format1.format(datumheute.getTime());
-                       MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                       MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                    }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Dienstag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Dienstag")){
                         datumheute.add(Calendar.DATE,1);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Mittwoch")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Mittwoch")){
                         datumheute.add(Calendar.DATE,2);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Donnerstag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Donnerstag")){
                         datumheute.add(Calendar.DATE,3);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
 
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Freitag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Freitag")){
                         datumheute.add(Calendar.DATE,4);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Samstag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Samstag")){
                         datumheute.add(Calendar.DATE,5);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
-                    } if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Sonntag")){
+                    } if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Sonntag")){
                         datumheute.add(Calendar.DATE,6);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
 
                 }
                 if(weekDay.equals("Tuesday")){
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Montag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Montag")){
                         datumheute.add(Calendar.DATE,-1);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Dienstag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Dienstag")){
                         datumheute.add(Calendar.DATE,0);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Mittwoch")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Mittwoch")){
                         datumheute.add(Calendar.DATE,1);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Donnerstag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Donnerstag")){
                         datumheute.add(Calendar.DATE,2);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
 
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Freitag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Freitag")){
                         datumheute.add(Calendar.DATE,3);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Samstag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Samstag")){
                         datumheute.add(Calendar.DATE,4);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
-                    } if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Sonntag")){
+                    } if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Sonntag")){
                         datumheute.add(Calendar.DATE,5);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
 
                 }
                 if(weekDay.equals("Wednesday")){
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Montag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Montag")){
                         datumheute.add(Calendar.DATE,-2);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Dienstag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Dienstag")){
                         datumheute.add(Calendar.DATE,-1);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Mittwoch")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Mittwoch")){
                         datumheute.add(Calendar.DATE,0);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Donnerstag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Donnerstag")){
                         datumheute.add(Calendar.DATE,1);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
 
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Freitag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Freitag")){
                         datumheute.add(Calendar.DATE,2);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Samstag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Samstag")){
                         datumheute.add(Calendar.DATE,3);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
-                    } if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Sonntag")){
+                    } if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Sonntag")){
                         datumheute.add(Calendar.DATE,4);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
 
                 }
                 if(weekDay.equals("Thursday")){
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Montag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Montag")){
                         datumheute.add(Calendar.DATE,-3);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Dienstag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Dienstag")){
                         datumheute.add(Calendar.DATE,-2);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Mittwoch")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Mittwoch")){
                         datumheute.add(Calendar.DATE,-1);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Donnerstag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Donnerstag")){
                         datumheute.add(Calendar.DATE,0);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
 
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Freitag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Freitag")){
                         datumheute.add(Calendar.DATE,1);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Samstag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Samstag")){
                         datumheute.add(Calendar.DATE,2);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
-                    } if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Sonntag")){
+                    } if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Sonntag")){
                         datumheute.add(Calendar.DATE,3);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
 
                 }
                 if(weekDay.equals("Friday")){
 
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Montag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Montag")){
                         datumheute.add(Calendar.DATE,-4);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Dienstag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Dienstag")){
                         datumheute.add(Calendar.DATE,-3);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Mittwoch")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Mittwoch")){
                         datumheute.add(Calendar.DATE,-2);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Donnerstag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Donnerstag")){
                         datumheute.add(Calendar.DATE,-1);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
 
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Freitag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Freitag")){
                         datumheute.add(Calendar.DATE,0);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Samstag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Samstag")){
                         datumheute.add(Calendar.DATE,1);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
-                    } if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Sonntag")){
+                    } if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Sonntag")){
                         datumheute.add(Calendar.DATE,2);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
                 }
                 if(weekDay.equals("Saturday")){
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Montag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Montag")){
                         datumheute.add(Calendar.DATE,-5);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Dienstag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Dienstag")){
                         datumheute.add(Calendar.DATE,-4);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Mittwoch")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Mittwoch")){
                         datumheute.add(Calendar.DATE,-3);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Donnerstag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Donnerstag")){
                         datumheute.add(Calendar.DATE,-2);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
 
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Freitag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Freitag")){
                         datumheute.add(Calendar.DATE,-1);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Samstag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Samstag")){
                         datumheute.add(Calendar.DATE,0);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
-                    } if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Sonntag")){
+                    } if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Sonntag")){
                         datumheute.add(Calendar.DATE,1);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
 
                 }
                 if(weekDay.equals("Sunday")){
 
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Montag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Montag")){
                         datumheute.add(Calendar.DATE,-6);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Dienstag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Dienstag")){
                         datumheute.add(Calendar.DATE,-5);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Mittwoch")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Mittwoch")){
                         datumheute.add(Calendar.DATE,-4);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Donnerstag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Donnerstag")){
                         datumheute.add(Calendar.DATE,-3);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
 
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Freitag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Freitag")){
                         datumheute.add(Calendar.DATE,-2);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
-                    if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Samstag")){
+                    if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Samstag")){
                         datumheute.add(Calendar.DATE,-1);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
-                    } if( MainActivity.textviews.get(MainActivity.testi).tag.equals("Sonntag")){
+                    } if( MainActivity.alleStunden.get(MainActivity.bearbeiteni).tag.equals("Sonntag")){
                         datumheute.add(Calendar.DATE,0);
                         SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
                         String formatted = format1.format(datumheute.getTime());
-                        MainActivity.textviews.get(MainActivity.testi).datum=formatted;
+                        MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum=formatted;
 
                     }
                 }
 
 
-                MainActivity.textviews.get(MainActivity.testi).fach=fach.getSelectedItem().toString();
+                MainActivity.alleStunden.get(MainActivity.bearbeiteni).fach=fach.getSelectedItem().toString();
 
-                MainActivity.textviews.get(MainActivity.testi).platz=String.valueOf(MainActivity.testi);
+                MainActivity.alleStunden.get(MainActivity.bearbeiteni).platz=String.valueOf(MainActivity.bearbeiteni);
                 if(!String.valueOf(raum2).equals("")){
-                    MainActivity.textviews.get(MainActivity.testi).raum=String.valueOf(raum2);
+                    MainActivity.alleStunden.get(MainActivity.bearbeiteni).raum=String.valueOf(raum2);
                 }else{
-                    MainActivity.textviews.get(MainActivity.testi).raum=" ";
+                    MainActivity.alleStunden.get(MainActivity.bearbeiteni).raum=" ";
                 }
-                MainActivity.textviews.get(MainActivity.testi).aktualisieren();
+                MainActivity.alleStunden.get(MainActivity.bearbeiteni).aktualisieren();
 
 
 
@@ -558,14 +558,14 @@ widget_speichern();
 
 
 
-        MainActivity.texte.add((String) MainActivity.textviews.get(MainActivity.testi).getText());
-        MainActivity.texte.add((String) MainActivity.textviews.get(MainActivity.testi).farbe);
-        MainActivity.texte.add((String) MainActivity.textviews.get(MainActivity.testi).kurs);
-        MainActivity.texte.add((String) MainActivity.textviews.get(MainActivity.testi).nummer);
-        MainActivity.texte.add((String) MainActivity.textviews.get(MainActivity.testi).datum);
-        MainActivity.texte.add((String) MainActivity.textviews.get(MainActivity.testi).platz);
-        MainActivity.texte.add(MainActivity.textviews.get(MainActivity.testi).fach);
-        MainActivity.texte.add(MainActivity.textviews.get(MainActivity.testi).raum);
+        MainActivity.texte.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).getText());
+        MainActivity.texte.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).farbe);
+        MainActivity.texte.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).kurs);
+        MainActivity.texte.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).nummer);
+        MainActivity.texte.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum);
+        MainActivity.texte.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).platz);
+        MainActivity.texte.add(MainActivity.alleStunden.get(MainActivity.bearbeiteni).fach);
+        MainActivity.texte.add(MainActivity.alleStunden.get(MainActivity.bearbeiteni).raum);
 
     }
 
@@ -641,8 +641,8 @@ widget_speichern();
 
         int f=0;
 
-        for(int m=0;m<MainActivity.textviews.size();m++){
-            if(!MainActivity.textviews.get(m).fach.equals(fach.getSelectedItem())){
+        for(int m=0;m<MainActivity.alleStunden.size();m++){
+            if(!MainActivity.alleStunden.get(m).fach.equals(fach.getSelectedItem())){
 
 
             }else{
@@ -657,7 +657,7 @@ widget_speichern();
            farbe.setClickable(false);
             kurs.setClickable(false);
             nummer.setClickable(false);
-            if(MainActivity.textviews.get(f).kurs.equals("LK")){
+            if(MainActivity.alleStunden.get(f).kurs.equals("LK")){
                 kurs.setSelection(1);
             }else{
                 kurs.setSelection(0);
@@ -665,19 +665,19 @@ widget_speichern();
 
 
 
-            if(MainActivity.textviews.get(f).nummer.equals("1")){
+            if(MainActivity.alleStunden.get(f).nummer.equals("1")){
                 nummer.setSelection(0);
             }
-            else if(MainActivity.textviews.get(f).nummer.equals("2")){
+            else if(MainActivity.alleStunden.get(f).nummer.equals("2")){
                 nummer.setSelection(1);
             }
-            else if(MainActivity.textviews.get(f).nummer.equals("3")){
+            else if(MainActivity.alleStunden.get(f).nummer.equals("3")){
                 nummer.setSelection(2);
             }
-            else if(MainActivity.textviews.get(f).nummer.equals("4")){
+            else if(MainActivity.alleStunden.get(f).nummer.equals("4")){
                 nummer.setSelection(3);
             }
-            else if(MainActivity.textviews.get(f).nummer.equals("5")){
+            else if(MainActivity.alleStunden.get(f).nummer.equals("5")){
                 nummer.setSelection(4);
             }
 
@@ -689,7 +689,7 @@ widget_speichern();
 
 
 
-           farbeint=Integer.parseInt(MainActivity.textviews.get(f).farbe);
+           farbeint=Integer.parseInt(MainActivity.alleStunden.get(f).farbe);
             farbe.setBackgroundTintList(ColorStateList.valueOf(farbeint));
         }
         if(Z==false){
@@ -715,73 +715,73 @@ widget_speichern();
 //alle facher informationen
         fach.clear();
 
-        fach.add(MainActivity.textviews.get(1).fach);
-        fach.add(MainActivity.textviews.get(7).fach);
-        fach.add(MainActivity.textviews.get(13).fach);
-        fach.add(MainActivity.textviews.get(19).fach);
-        fach.add(MainActivity.textviews.get(25).fach);
-        fach.add(MainActivity.textviews.get(31).fach);
-        fach.add(MainActivity.textviews.get(37).fach);
-        fach.add(MainActivity.textviews.get(43).fach);
-        fach.add(MainActivity.textviews.get(49).fach);
-        fach.add(MainActivity.textviews.get(55).fach);
-        fach.add(MainActivity.textviews.get(61).fach);
+        fach.add(MainActivity.alleStunden.get(1).fach);
+        fach.add(MainActivity.alleStunden.get(7).fach);
+        fach.add(MainActivity.alleStunden.get(13).fach);
+        fach.add(MainActivity.alleStunden.get(19).fach);
+        fach.add(MainActivity.alleStunden.get(25).fach);
+        fach.add(MainActivity.alleStunden.get(31).fach);
+        fach.add(MainActivity.alleStunden.get(37).fach);
+        fach.add(MainActivity.alleStunden.get(43).fach);
+        fach.add(MainActivity.alleStunden.get(49).fach);
+        fach.add(MainActivity.alleStunden.get(55).fach);
+        fach.add(MainActivity.alleStunden.get(61).fach);
 
 
 
-        fach.add(MainActivity.textviews.get(2).fach);
-        fach.add(MainActivity.textviews.get(8).fach);
-        fach.add(MainActivity.textviews.get(14).fach);
-        fach.add(MainActivity.textviews.get(20).fach);
-        fach.add(MainActivity.textviews.get(26).fach);
-        fach.add(MainActivity.textviews.get(32).fach);
-        fach.add(MainActivity.textviews.get(38).fach);
-        fach.add(MainActivity.textviews.get(44).fach);
-        fach.add(MainActivity.textviews.get(50).fach);
-        fach.add(MainActivity.textviews.get(56).fach);
-        fach.add(MainActivity.textviews.get(62).fach);
+        fach.add(MainActivity.alleStunden.get(2).fach);
+        fach.add(MainActivity.alleStunden.get(8).fach);
+        fach.add(MainActivity.alleStunden.get(14).fach);
+        fach.add(MainActivity.alleStunden.get(20).fach);
+        fach.add(MainActivity.alleStunden.get(26).fach);
+        fach.add(MainActivity.alleStunden.get(32).fach);
+        fach.add(MainActivity.alleStunden.get(38).fach);
+        fach.add(MainActivity.alleStunden.get(44).fach);
+        fach.add(MainActivity.alleStunden.get(50).fach);
+        fach.add(MainActivity.alleStunden.get(56).fach);
+        fach.add(MainActivity.alleStunden.get(62).fach);
 
 
 
-        fach.add(MainActivity.textviews.get(3).fach);
-        fach.add(MainActivity.textviews.get(9).fach);
-        fach.add(MainActivity.textviews.get(15).fach);
-        fach.add(MainActivity.textviews.get(21).fach);
-        fach.add(MainActivity.textviews.get(27).fach);
-        fach.add(MainActivity.textviews.get(33).fach);
-        fach.add(MainActivity.textviews.get(39).fach);
-        fach.add(MainActivity.textviews.get(45).fach);
-        fach.add(MainActivity.textviews.get(51).fach);
-        fach.add(MainActivity.textviews.get(57).fach);
-        fach.add(MainActivity.textviews.get(63).fach);
+        fach.add(MainActivity.alleStunden.get(3).fach);
+        fach.add(MainActivity.alleStunden.get(9).fach);
+        fach.add(MainActivity.alleStunden.get(15).fach);
+        fach.add(MainActivity.alleStunden.get(21).fach);
+        fach.add(MainActivity.alleStunden.get(27).fach);
+        fach.add(MainActivity.alleStunden.get(33).fach);
+        fach.add(MainActivity.alleStunden.get(39).fach);
+        fach.add(MainActivity.alleStunden.get(45).fach);
+        fach.add(MainActivity.alleStunden.get(51).fach);
+        fach.add(MainActivity.alleStunden.get(57).fach);
+        fach.add(MainActivity.alleStunden.get(63).fach);
 
 
 
-        fach.add(MainActivity.textviews.get(4).fach);
-        fach.add(MainActivity.textviews.get(10).fach);
-        fach.add(MainActivity.textviews.get(16).fach);
-        fach.add(MainActivity.textviews.get(22).fach);
-        fach.add(MainActivity.textviews.get(28).fach);
-        fach.add(MainActivity.textviews.get(34).fach);
-        fach.add(MainActivity.textviews.get(40).fach);
-        fach.add(MainActivity.textviews.get(46).fach);
-        fach.add(MainActivity.textviews.get(52).fach);
-        fach.add(MainActivity.textviews.get(58).fach);
-        fach.add(MainActivity.textviews.get(64).fach);
+        fach.add(MainActivity.alleStunden.get(4).fach);
+        fach.add(MainActivity.alleStunden.get(10).fach);
+        fach.add(MainActivity.alleStunden.get(16).fach);
+        fach.add(MainActivity.alleStunden.get(22).fach);
+        fach.add(MainActivity.alleStunden.get(28).fach);
+        fach.add(MainActivity.alleStunden.get(34).fach);
+        fach.add(MainActivity.alleStunden.get(40).fach);
+        fach.add(MainActivity.alleStunden.get(46).fach);
+        fach.add(MainActivity.alleStunden.get(52).fach);
+        fach.add(MainActivity.alleStunden.get(58).fach);
+        fach.add(MainActivity.alleStunden.get(64).fach);
 
 
 
-        fach.add(MainActivity.textviews.get(5).fach);
-        fach.add(MainActivity.textviews.get(11).fach);
-        fach.add(MainActivity.textviews.get(17).fach);
-        fach.add(MainActivity.textviews.get(23).fach);
-        fach.add(MainActivity.textviews.get(29).fach);
-        fach.add(MainActivity.textviews.get(35).fach);
-        fach.add(MainActivity.textviews.get(41).fach);
-        fach.add(MainActivity.textviews.get(47).fach);
-        fach.add(MainActivity.textviews.get(53).fach);
-        fach.add(MainActivity.textviews.get(59).fach);
-        fach.add(MainActivity.textviews.get(65).fach);
+        fach.add(MainActivity.alleStunden.get(5).fach);
+        fach.add(MainActivity.alleStunden.get(11).fach);
+        fach.add(MainActivity.alleStunden.get(17).fach);
+        fach.add(MainActivity.alleStunden.get(23).fach);
+        fach.add(MainActivity.alleStunden.get(29).fach);
+        fach.add(MainActivity.alleStunden.get(35).fach);
+        fach.add(MainActivity.alleStunden.get(41).fach);
+        fach.add(MainActivity.alleStunden.get(47).fach);
+        fach.add(MainActivity.alleStunden.get(53).fach);
+        fach.add(MainActivity.alleStunden.get(59).fach);
+        fach.add(MainActivity.alleStunden.get(65).fach);
 
         for(int i=0;i<fach.size();i++){
             if(fach.get(i).equals("")){
@@ -824,73 +824,73 @@ widget_speichern();
 
         raum.clear();
 
-        raum.add(MainActivity.textviews.get(1).raum);
-        raum.add(MainActivity.textviews.get(7).raum);
-        raum.add(MainActivity.textviews.get(13).raum);
-        raum.add(MainActivity.textviews.get(19).raum);
-        raum.add(MainActivity.textviews.get(25).raum);
-        raum.add(MainActivity.textviews.get(31).raum);
-        raum.add(MainActivity.textviews.get(37).raum);
-        raum.add(MainActivity.textviews.get(43).raum);
-        raum.add(MainActivity.textviews.get(49).raum);
-        raum.add(MainActivity.textviews.get(55).raum);
-        raum.add(MainActivity.textviews.get(61).raum);
+        raum.add(MainActivity.alleStunden.get(1).raum);
+        raum.add(MainActivity.alleStunden.get(7).raum);
+        raum.add(MainActivity.alleStunden.get(13).raum);
+        raum.add(MainActivity.alleStunden.get(19).raum);
+        raum.add(MainActivity.alleStunden.get(25).raum);
+        raum.add(MainActivity.alleStunden.get(31).raum);
+        raum.add(MainActivity.alleStunden.get(37).raum);
+        raum.add(MainActivity.alleStunden.get(43).raum);
+        raum.add(MainActivity.alleStunden.get(49).raum);
+        raum.add(MainActivity.alleStunden.get(55).raum);
+        raum.add(MainActivity.alleStunden.get(61).raum);
 
 
 
-        raum.add(MainActivity.textviews.get(2).raum);
-        raum.add(MainActivity.textviews.get(8).raum);
-        raum.add(MainActivity.textviews.get(14).raum);
-        raum.add(MainActivity.textviews.get(20).raum);
-        raum.add(MainActivity.textviews.get(26).raum);
-        raum.add(MainActivity.textviews.get(32).raum);
-        raum.add(MainActivity.textviews.get(38).raum);
-        raum.add(MainActivity.textviews.get(44).raum);
-        raum.add(MainActivity.textviews.get(50).raum);
-        raum.add(MainActivity.textviews.get(56).raum);
-        raum.add(MainActivity.textviews.get(62).raum);
+        raum.add(MainActivity.alleStunden.get(2).raum);
+        raum.add(MainActivity.alleStunden.get(8).raum);
+        raum.add(MainActivity.alleStunden.get(14).raum);
+        raum.add(MainActivity.alleStunden.get(20).raum);
+        raum.add(MainActivity.alleStunden.get(26).raum);
+        raum.add(MainActivity.alleStunden.get(32).raum);
+        raum.add(MainActivity.alleStunden.get(38).raum);
+        raum.add(MainActivity.alleStunden.get(44).raum);
+        raum.add(MainActivity.alleStunden.get(50).raum);
+        raum.add(MainActivity.alleStunden.get(56).raum);
+        raum.add(MainActivity.alleStunden.get(62).raum);
 
 
 
-        raum.add(MainActivity.textviews.get(3).raum);
-        raum.add(MainActivity.textviews.get(9).raum);
-        raum.add(MainActivity.textviews.get(15).raum);
-        raum.add(MainActivity.textviews.get(21).raum);
-        raum.add(MainActivity.textviews.get(27).raum);
-        raum.add(MainActivity.textviews.get(33).raum);
-        raum.add(MainActivity.textviews.get(39).raum);
-        raum.add(MainActivity.textviews.get(45).raum);
-        raum.add(MainActivity.textviews.get(51).raum);
-        raum.add(MainActivity.textviews.get(57).raum);
-        raum.add(MainActivity.textviews.get(63).raum);
+        raum.add(MainActivity.alleStunden.get(3).raum);
+        raum.add(MainActivity.alleStunden.get(9).raum);
+        raum.add(MainActivity.alleStunden.get(15).raum);
+        raum.add(MainActivity.alleStunden.get(21).raum);
+        raum.add(MainActivity.alleStunden.get(27).raum);
+        raum.add(MainActivity.alleStunden.get(33).raum);
+        raum.add(MainActivity.alleStunden.get(39).raum);
+        raum.add(MainActivity.alleStunden.get(45).raum);
+        raum.add(MainActivity.alleStunden.get(51).raum);
+        raum.add(MainActivity.alleStunden.get(57).raum);
+        raum.add(MainActivity.alleStunden.get(63).raum);
 
 
 
-        raum.add(MainActivity.textviews.get(4).raum);
-        raum.add(MainActivity.textviews.get(10).raum);
-        raum.add(MainActivity.textviews.get(16).raum);
-        raum.add(MainActivity.textviews.get(22).raum);
-        raum.add(MainActivity.textviews.get(28).raum);
-        raum.add(MainActivity.textviews.get(34).raum);
-        raum.add(MainActivity.textviews.get(40).raum);
-        raum.add(MainActivity.textviews.get(46).raum);
-        raum.add(MainActivity.textviews.get(52).raum);
-        raum.add(MainActivity.textviews.get(58).raum);
-        raum.add(MainActivity.textviews.get(64).raum);
+        raum.add(MainActivity.alleStunden.get(4).raum);
+        raum.add(MainActivity.alleStunden.get(10).raum);
+        raum.add(MainActivity.alleStunden.get(16).raum);
+        raum.add(MainActivity.alleStunden.get(22).raum);
+        raum.add(MainActivity.alleStunden.get(28).raum);
+        raum.add(MainActivity.alleStunden.get(34).raum);
+        raum.add(MainActivity.alleStunden.get(40).raum);
+        raum.add(MainActivity.alleStunden.get(46).raum);
+        raum.add(MainActivity.alleStunden.get(52).raum);
+        raum.add(MainActivity.alleStunden.get(58).raum);
+        raum.add(MainActivity.alleStunden.get(64).raum);
 
 
 
-        raum.add(MainActivity.textviews.get(5).raum);
-        raum.add(MainActivity.textviews.get(11).raum);
-        raum.add(MainActivity.textviews.get(17).raum);
-        raum.add(MainActivity.textviews.get(23).raum);
-        raum.add(MainActivity.textviews.get(29).raum);
-        raum.add(MainActivity.textviews.get(35).raum);
-        raum.add(MainActivity.textviews.get(41).raum);
-        raum.add(MainActivity.textviews.get(47).raum);
-        raum.add(MainActivity.textviews.get(53).raum);
-        raum.add(MainActivity.textviews.get(59).raum);
-        raum.add(MainActivity.textviews.get(65).raum);
+        raum.add(MainActivity.alleStunden.get(5).raum);
+        raum.add(MainActivity.alleStunden.get(11).raum);
+        raum.add(MainActivity.alleStunden.get(17).raum);
+        raum.add(MainActivity.alleStunden.get(23).raum);
+        raum.add(MainActivity.alleStunden.get(29).raum);
+        raum.add(MainActivity.alleStunden.get(35).raum);
+        raum.add(MainActivity.alleStunden.get(41).raum);
+        raum.add(MainActivity.alleStunden.get(47).raum);
+        raum.add(MainActivity.alleStunden.get(53).raum);
+        raum.add(MainActivity.alleStunden.get(59).raum);
+        raum.add(MainActivity.alleStunden.get(65).raum);
 
         for(int i=0;i<raum.size();i++){
             if(raum.get(i).equals("")){
