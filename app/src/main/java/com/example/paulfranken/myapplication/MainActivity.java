@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -689,20 +690,20 @@ if(!textviews.get(i).farbe.equals("")) {
 
                    if(stunden.get(m).text.equals("Selbstlernen")) {
                        MainActivity.textviews.get(i).setText("" + textviews.get(i).fach + " " +"Frei");
-                       MainActivity.textviews.get(i).farbe2=String.valueOf(R.color.raum);
+                       MainActivity.textviews.get(i).setTextColor(Color.RED);
                        MainActivity.textviews.get(i).aktualisieren2();
 
 
                    }else if(stunden.get(m).text.equals("Vertretung")){
                        MainActivity.textviews.get(i).setText("" + textviews.get(i).fach + " " + stunden.get(m).text);
-                       MainActivity.textviews.get(i).farbe2=String.valueOf(R.color.colorAccent);
+                       MainActivity.textviews.get(i).setTextColor(Color.RED);
                        MainActivity.textviews.get(i).aktualisieren2();
 
 
                    }else
                    {
                        MainActivity.textviews.get(i).setText("" + textviews.get(i).fach + " " + stunden.get(m).text+" "+stunden.get(m).raum);
-                       MainActivity.textviews.get(i).farbe2=String.valueOf(R.color.colorAccent);
+                       MainActivity.textviews.get(i).setTextColor(Color.RED);
                        MainActivity.textviews.get(i).aktualisieren2();
 
                    }

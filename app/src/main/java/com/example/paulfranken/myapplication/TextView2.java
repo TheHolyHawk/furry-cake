@@ -9,6 +9,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static android.R.attr.id;
 import static com.example.paulfranken.myapplication.R.id.text102;
@@ -72,10 +73,8 @@ public String farbe="";
     public void aktualisieren2(){
         GradientDrawable gd = new GradientDrawable();
 
-        int greenColorValue =Integer.parseInt(farbe2);
 
-        gd.setColor(greenColorValue); // Changes this drawbale to use a single color instead of a gradient
-
+        gd.setColor(Color.DKGRAY);
         gd.setStroke(1, 0xFF000000);
 
 
