@@ -21,20 +21,20 @@
     <string-array name="facher">
         <item>Deutsch</item>
         <item>Englisch</item>
-        <item>Französisch</item>
+        <item>Franz</item>
         <item>Latein</item>
         <item>Spanisch</item>
         <item>Spanisch8</item>
-        <item>Mathematik</item>
+        <item>Mathe</item>
         <item>Physik</item>
         <item>Chemie</item>
         <item>Biologie</item>
-        <item>Informatik</item>
+        <item>Info</item>
         <item>Technik</item>
-        <item>Geschichte</item>
-        <item>Sozialwissenschaften</item>
+        <item>Geschi</item>
+        <item>Sowi</item>
         <item>Erdkunde</item>
-        <item>Philosophie</item>
+        <item>Philo</item>
         <item>Reli(E)</item>
         <item>Reli(K)</item>
         <item>Kunst</item>
