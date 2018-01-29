@@ -1,6 +1,4 @@
 package com.example.paulfranken.myapplication;
-
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -50,58 +48,59 @@ import static com.example.paulfranken.myapplication.R.id.text41;
 import static com.example.paulfranken.myapplication.R.id.text46;
 import static com.example.paulfranken.myapplication.R.id.text56;
 import static com.example.paulfranken.myapplication.R.id.text65;
+public class MainActivity extends AppCompatActivity implements OnClickListener,View.OnLongClickListener {
 
 
-public class MainActivity extends AppCompatActivity
-        implements OnClickListener,View.OnLongClickListener {
-    //Menu muss gespeichert werden
-    private Menu mymenu;
-    //TextView zur aktuellen, an der Bearbeitende Stunde
-    public static TextView2 bearbeiten;
-    //Id für TextView das zu bearbeiten ist
-    public static int bearbeiteni;
-    //ArrayList für verschidene Informationen
+    //---------------------------------------------ArrayList für verschidene Informationen---------------------------------------------
     public static ArrayList<TextView2> alleStunden = new ArrayList<TextView2>();
     //Alle TextViews (Stunden) werden hier geschpeichert
-    public static ArrayList<String> texte = new ArrayList<String>();
-    public static ArrayList<StundeVplan> stunden=new ArrayList<StundeVplan>();
-    public static ArrayList<String> raum_vorschlage=new ArrayList<>();
+    public static ArrayList<String> speichern_laden = new ArrayList<String>();
+    //ArrayList die zum Speichern und zum Laden verwendet werden muss
+    public static ArrayList<StundeVplan> vertreungsplan_daten=new ArrayList<StundeVplan>();
+    //Arraylist, in der alle Daten die vom Vertretungsplan kommen, geschpeichert werden.
+    //---------------------------------------------ArrayList für verschidene Informationen---------------------------------------------
 
+
+
+    //---------------------------------------------Integer, Strings, Menu, Booleans----------------------------------------------------
     public boolean heute=false,morgen=false,montag=false;
-
-
-
+    //Booleans um den Toast zu erstellen, der besagt ob der Vertretungsplan verfügbar ist (MyTask)
+    private Menu mymenu;
+    //Menu muss gespeichert werden um zu ermöglichen, das die Animation beim Aktualisieren im Menu stattfinden kann.
+    public static TextView2 bearbeiten;
+    //TextView zur aktuellen, an der Bearbeitende Stunde
+    public static int bearbeiteni;
+    //Id für TextView das zu bearbeiten ist
     public String kurs, kursid,text,raum2;
+    //Public Strings: kurs=Lk oder Gk, kursid=Kursnummer,text=Selbstlerenen oder Vertretung, raum2=Bei RaumVertretung (MyTask2)
+    public static String fach,stunde,test3 = " ", klasse="Q2";
+    //Static Strings:fach=welches fach,stunde=welche stunde,test3=nicht anrühren,(MyTask2)klasse=welche klasse man ist(Standard=Q2)
+    //---------------------------------------------Integer, Strings, Menu, Booleans----------------------------------------------------
 
-    public static String Stest="",fach,stunde,test3 = " ", klasse="Q2";
 
 
+    //----------------------------------------------Layout, Werbung und Context speichern----------------------------------------------
     public SwipeRefreshLayout l;
-
-    private AdView adView;
-
-
-
+    //Das Main Layout wird unter l geschpeichert
+    public AdView adView;
+    //Die Werbungsanzeige wird geschpeichert
     public static Context context;
-
-    @Override
-    protected void onResume() {
-        speichern();
-        super.onResume();
-    }
+    //Der Context für die gesamte Application wird geschpeichert. Zum Beispiel für Toasts
+    //----------------------------------------------Layout, Werbung und Context speichern----------------------------------------------
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        context=getApplicationContext();
+        //Speichern des Layouts und festlegen der Toolbar, Speichern des ApplicationContexts
 
 
 
 
-        //Swipe Layout
+        //--------------------------------------------------------Swipe Layout---------------------------------------------------------
         l=(SwipeRefreshLayout)findViewById(R.id.swipe);
         l.setColorSchemeResources(R.color.f1,R.color.f4,R.color.f7);//Farben festlegen
         l.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -111,56 +110,59 @@ public class MainActivity extends AppCompatActivity
                 (new Handler()).postDelayed(new Runnable() {
                     @Override
                     public void run() {
-
-
                         aktualisieren();
-
-
+                        //Der Vertretungsplan wird erneut überprüft und abgeglichen
                     }
                 },3000);
 
             }
         });
-//Swipe Layout ende
+        //Das Swipe Layout(Main Layout wird in der Variable l geschpeichert. Die Farben werden festgelegt, es wird ein
+        //OnRefreshListener festgelegt der bei aktivierung die Methode aktualisieren aufruft
+        //--------------------------------------------------------Swipe Layout---------------------------------------------------------
 
 
+        //------------------------------Mehrere Methoden die zum Start benötigt werden, werden aufgerufen------------------------------
         speichernlayouts();
+        //In der ArrayList alleStunden wird jedes TextView geschpeichert und mit Listenern ausgestattet
         Laden();
+        //Beim Start werden alle Daten aus den SharedPrefreferneces geladen und auf den TextViews wieder angzeigt
         setTage();
+        //Alles TextViews(Stunden) bekommen zugewiesen welchen Tag sie haben
         setzeZeiten();
+        //Den TextViews der 1.Zeile wird ein Text zugewiesen, der besagt zu welcher Uhrzeit diese Stunde beginnt
         laden_einstellungen();
-
-        context=getApplicationContext();
-
+        //Es wird aus den SharedPreferences geladen welche Klasse eingestellt wurde
         widget_speichern();
-        WidgetProvider.updateWidget(getApplicationContext());
+        //Alle Facher und deren Räume werden in SharedPreferences geschpeichert um sie dem Widget zur Verfügung zu stellen
+        WidgetProvider.updateWidget(context);
+        //Das Widget wird mit neuen Informationen geupdatet
+        //------------------------------Mehrere Methoden die zum Start benötigt werden, werden aufgerufen------------------------------
 
+        //------------------------------------Der Werbung Block wird geschpeichert und eingestellt-------------------------------------
         adView = findViewById(R.id.testadview);
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
-
-
+        //Das AdView wird geschpeichert und eigestellt
         SharedPreferences settings=getSharedPreferences("ADPREFS",0);
-
-
         String addys= settings.getString("adwords",null);
         if(addys != null){
             if (addys.equals("aus")) {
                 adView.setVisibility(View.GONE);
-            }}
+            }
+        }
+        //Es wir überpüft ob die Werbung mit dem Code ausgeschaltet wurde
+        //------------------------------------Der Werbung Block wird geschpeichert und eingestellt-------------------------------------
 
 
     }
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-        @Override
+    @Override//Muss für das Menü vorhanden sein. In der Variable mymenu wird das Meu geschpeichert
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-
         mymenu=menu;
-
-
         return true;
     }
 
@@ -169,7 +171,7 @@ public class MainActivity extends AppCompatActivity
 
         widget_speichern();
 
-        stunden.clear();
+        vertreungsplan_daten.clear();
         new MyTask(this).execute();
 
         new MyTask2(this).execute();
@@ -177,21 +179,14 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-
-
        switch(item.getItemId()) {
             case R.id.action_refresh:
 
 
                 widget_speichern();
 
-                stunden.clear();
+                vertreungsplan_daten.clear();
 
 
 
@@ -413,7 +408,7 @@ if(test!=null){
         for(int i=0;i<itemwors.length;i++) {
 
             worte.add(itemwors[i]);
-            texte = worte;
+            speichern_laden = worte;
 
 
         }
@@ -430,21 +425,21 @@ if(test!=null){
         int platz;
 
 
-        if(texte.size()!=0) {
-            for (int i = 0; i < texte.size(); i++) {
-            platz=Integer.parseInt(texte.get(i+5));
+        if(speichern_laden.size()!=0) {
+            for (int i = 0; i < speichern_laden.size(); i++) {
+            platz=Integer.parseInt(speichern_laden.get(i+5));
 
 
 
-                alleStunden.get(platz).setText(texte.get(i+6)+"\n"+"\n"+texte.get(i+7));
-                alleStunden.get(platz).farbe = texte.get(i+1);
-                alleStunden.get(platz).kurs = texte.get(i + 2);
-                alleStunden.get(platz).nummer = texte.get(i + 3);
-                alleStunden.get(platz).datum = texte.get(i + 4);
+                alleStunden.get(platz).setText(speichern_laden.get(i+6)+"\n"+"\n"+speichern_laden.get(i+7));
+                alleStunden.get(platz).farbe = speichern_laden.get(i+1);
+                alleStunden.get(platz).kurs = speichern_laden.get(i + 2);
+                alleStunden.get(platz).nummer = speichern_laden.get(i + 3);
+                alleStunden.get(platz).datum = speichern_laden.get(i + 4);
                 alleStunden.get(platz).aktualisieren();
-                alleStunden.get(platz).platz = texte.get(i + 5);
-                alleStunden.get(platz).fach = texte.get(i + 6);
-                alleStunden.get(platz).raum=texte.get(i+7);
+                alleStunden.get(platz).platz = speichern_laden.get(i + 5);
+                alleStunden.get(platz).fach = speichern_laden.get(i + 6);
+                alleStunden.get(platz).raum=speichern_laden.get(i+7);
 
 
 
@@ -620,9 +615,9 @@ if(test!=null){
 
     public  void speichern(){
         umwandelnhin();
-        if(texte.size()>0){
+        if(speichern_laden.size()>0){
         StringBuilder stringBuilder=new StringBuilder();
-        for(String s: MainActivity.texte){
+        for(String s: MainActivity.speichern_laden){
 
             stringBuilder.append(s);
             stringBuilder.append(",");
@@ -638,7 +633,7 @@ if(test!=null){
 
         editor.commit();
 
-    }else if(texte.size()==0){
+    }else if(speichern_laden.size()==0){
             SharedPreferences settings=getSharedPreferences("raume",0);
             SharedPreferences.Editor editor=settings.edit();
             editor.clear();
@@ -654,20 +649,20 @@ if(test!=null){
     }
     public void umwandelnhin() {
         ArrayList<String> t=new ArrayList<String>();
-        texte=t;
+        speichern_laden=t;
 
         for (int i = 0; i < alleStunden.size(); i++) {
 
 if(!alleStunden.get(i).farbe.equals("")) {
 
-    texte.add(String.valueOf(alleStunden.get(i).getText()));
-    texte.add(String.valueOf(alleStunden.get(i).farbe));
-    texte.add(String.valueOf(alleStunden.get(i).kurs));
-    texte.add(String.valueOf(alleStunden.get(i).nummer));
-    texte.add(String.valueOf(alleStunden.get(i).datum));
-    texte.add(String.valueOf(alleStunden.get(i).platz));
-    texte.add(String.valueOf(alleStunden.get(i).fach));
-    texte.add(String.valueOf(alleStunden.get(i).raum));
+    speichern_laden.add(String.valueOf(alleStunden.get(i).getText()));
+    speichern_laden.add(String.valueOf(alleStunden.get(i).farbe));
+    speichern_laden.add(String.valueOf(alleStunden.get(i).kurs));
+    speichern_laden.add(String.valueOf(alleStunden.get(i).nummer));
+    speichern_laden.add(String.valueOf(alleStunden.get(i).datum));
+    speichern_laden.add(String.valueOf(alleStunden.get(i).platz));
+    speichern_laden.add(String.valueOf(alleStunden.get(i).fach));
+    speichern_laden.add(String.valueOf(alleStunden.get(i).raum));
 
 
 
@@ -691,24 +686,24 @@ if(!alleStunden.get(i).farbe.equals("")) {
         for (int i = 0; i < MainActivity.alleStunden.size(); i++) {
 
 
-            for (int m = 0; m < MainActivity.stunden.size(); m++) {
-                if(MainActivity.stunden.get(m).fach.equals(MainActivity.alleStunden.get(i).fach)&&MainActivity.stunden.get(m).kursid.equals(MainActivity.alleStunden.get(i).nummer) &&MainActivity.stunden.get(m).kurs.equals(MainActivity.alleStunden.get(i).kurs)&&MainActivity.stunden.get(m).tag.equals(MainActivity.alleStunden.get(i).tag)&&MainActivity.stunden.get(m).stunde.equals(MainActivity.alleStunden.get(i).stunde)){
+            for (int m = 0; m < MainActivity.vertreungsplan_daten.size(); m++) {
+                if(MainActivity.vertreungsplan_daten.get(m).fach.equals(MainActivity.alleStunden.get(i).fach)&&MainActivity.vertreungsplan_daten.get(m).kursid.equals(MainActivity.alleStunden.get(i).nummer) &&MainActivity.vertreungsplan_daten.get(m).kurs.equals(MainActivity.alleStunden.get(i).kurs)&&MainActivity.vertreungsplan_daten.get(m).tag.equals(MainActivity.alleStunden.get(i).tag)&&MainActivity.vertreungsplan_daten.get(m).stunde.equals(MainActivity.alleStunden.get(i).stunde)){
 
-                   if(stunden.get(m).text.equals("Selbstlernen")) {
+                   if(vertreungsplan_daten.get(m).text.equals("Selbstlernen")) {
                        MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + " " +"Frei");
                         MainActivity.alleStunden.get(i).setTextColor(Color.RED);
                        MainActivity.alleStunden.get(i).aktualisieren2();
 
 
-                   }else if(stunden.get(m).text.equals("Vertretung")){
-                       MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + " " + stunden.get(m).text);
+                   }else if(vertreungsplan_daten.get(m).text.equals("Vertretung")){
+                       MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + " " + vertreungsplan_daten.get(m).text);
                        MainActivity.alleStunden.get(i).setTextColor(Color.RED);
                        MainActivity.alleStunden.get(i).aktualisieren2();
 
 
                    }else
                    {
-                       MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + " " + stunden.get(m).text+" "+stunden.get(m).raum);
+                       MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + " " + vertreungsplan_daten.get(m).text+" "+vertreungsplan_daten.get(m).raum);
                        MainActivity.alleStunden.get(i).setTextColor(Color.RED);
                        MainActivity.alleStunden.get(i).aktualisieren2();
 
@@ -812,15 +807,15 @@ if(!alleStunden.get(i).farbe.equals("")) {
 
                     if(stunde.length()==1){
                         vplan = new StundeVplan(fach, datumheute, c, kursid, text, raum2,stunde);
-                        MainActivity.stunden.add(vplan);
+                        MainActivity.vertreungsplan_daten.add(vplan);
                     }else if (stunde.length()==5){
                         String stunde1=String.valueOf(stunde.charAt(0));
                         String stunde2=String.valueOf(stunde.charAt(4));
                         vplan = new StundeVplan(fach, datumheute, c, kursid, text, raum2,stunde1);
-                        MainActivity.stunden.add(vplan);
+                        MainActivity.vertreungsplan_daten.add(vplan);
 
                         vplan = new StundeVplan(fach, datumheute, c, kursid, text, raum2,stunde2);
-                        MainActivity.stunden.add(vplan);
+                        MainActivity.vertreungsplan_daten.add(vplan);
 
 
                     }
@@ -828,10 +823,10 @@ if(!alleStunden.get(i).farbe.equals("")) {
                         String stunde1=String.valueOf(stunde.charAt(0)+String.valueOf(stunde.charAt(1)));
                         String stunde2=String.valueOf(stunde.charAt(5)+String.valueOf(stunde.charAt(6)));
                         vplan = new StundeVplan(fach, datumheute, c, kursid, text, raum2,stunde1);
-                        MainActivity.stunden.add(vplan);
+                        MainActivity.vertreungsplan_daten.add(vplan);
 
                         vplan = new StundeVplan(fach, datumheute, c, kursid, text, raum2,stunde2);
-                        MainActivity.stunden.add(vplan);
+                        MainActivity.vertreungsplan_daten.add(vplan);
 
 
                     }
@@ -979,7 +974,7 @@ if(!alleStunden.get(i).farbe.equals("")) {
                  formatted = format1.format(c.getTime());
 
                  code = "http://www.ohg-bensberg.de/WSK_extdata/vplan/"+formatted+"/Ver_Kla_"+klasse+".htm";
-                 Stest=code;
+
                  doc = null;
                  try {
                      doc = Jsoup.connect(code).ignoreHttpErrors(true).get();
@@ -1008,7 +1003,7 @@ if(!alleStunden.get(i).farbe.equals("")) {
                  formatted = format1.format(c.getTime());
 
                  code = "http://www.ohg-bensberg.de/WSK_extdata/vplan/"+formatted+"/Ver_Kla_"+klasse+".htm";
-                 Stest=code;
+
                  doc = null;
                  try {
                      doc = Jsoup.connect(code).ignoreHttpErrors(true).get();
@@ -1037,7 +1032,7 @@ if(!alleStunden.get(i).farbe.equals("")) {
                  formatted = format1.format(c.getTime());
 
                  code = "http://www.ohg-bensberg.de/WSK_extdata/vplan/"+formatted+"/Ver_Kla_"+klasse+".htm";
-                 Stest=code;
+
                  doc = null;
                  try {
                      doc = Jsoup.connect(code).ignoreHttpErrors(true).get();

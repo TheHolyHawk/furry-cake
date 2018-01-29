@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class Einstellungen extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 Spinner klasse;
 public Button btn1,btn2;
-public ArrayList<String>texte;
+public ArrayList<String>speichern_laden;
 Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,9 +87,9 @@ Context context;
 
     public  void speichern(){
         umwandelnhin();
-        if(texte.size()>0){
+        if(speichern_laden.size()>0){
             StringBuilder stringBuilder=new StringBuilder();
-            for(String s: MainActivity.texte){
+            for(String s: MainActivity.speichern_laden){
 
                 stringBuilder.append(s);
                 stringBuilder.append(",");
@@ -105,7 +105,7 @@ Context context;
 
             editor.commit();
 
-        }else if(texte.size()==0){
+        }else if(speichern_laden.size()==0){
             SharedPreferences settings=getSharedPreferences("raume",0);
             SharedPreferences.Editor editor=settings.edit();
             editor.clear();
@@ -127,7 +127,7 @@ Context context;
             for(int i=0;i<itemwors.length;i++) {
 
                 worte.add(itemwors[i]);
-                texte = worte;
+                speichern_laden = worte;
 
 
             }
@@ -144,21 +144,21 @@ Context context;
         int platz;
 
 
-        if(texte.size()!=0) {
-            for (int i = 0; i < texte.size(); i++) {
-                platz=Integer.parseInt(texte.get(i+5));
+        if(speichern_laden.size()!=0) {
+            for (int i = 0; i < speichern_laden.size(); i++) {
+                platz=Integer.parseInt(speichern_laden.get(i+5));
 
 
 
-                MainActivity.alleStunden.get(platz).setText(texte.get(i+6)+"\n"+"\n"+texte.get(i+7));
-                MainActivity.alleStunden.get(platz).farbe = texte.get(i+1);
-                MainActivity.alleStunden.get(platz).kurs = texte.get(i + 2);
-                MainActivity.alleStunden.get(platz).nummer = texte.get(i + 3);
-                MainActivity.alleStunden.get(platz).datum = texte.get(i + 4);
+                MainActivity.alleStunden.get(platz).setText(speichern_laden.get(i+6)+"\n"+"\n"+speichern_laden.get(i+7));
+                MainActivity.alleStunden.get(platz).farbe = speichern_laden.get(i+1);
+                MainActivity.alleStunden.get(platz).kurs = speichern_laden.get(i + 2);
+                MainActivity.alleStunden.get(platz).nummer = speichern_laden.get(i + 3);
+                MainActivity.alleStunden.get(platz).datum = speichern_laden.get(i + 4);
                 MainActivity.alleStunden.get(platz).aktualisieren();
-                MainActivity.alleStunden.get(platz).platz = texte.get(i + 5);
-                MainActivity.alleStunden.get(platz).fach = texte.get(i + 6);
-                MainActivity.alleStunden.get(platz).raum=texte.get(i+7);
+                MainActivity.alleStunden.get(platz).platz = speichern_laden.get(i + 5);
+                MainActivity.alleStunden.get(platz).fach = speichern_laden.get(i + 6);
+                MainActivity.alleStunden.get(platz).raum=speichern_laden.get(i+7);
 
 
 
@@ -173,9 +173,9 @@ Context context;
 
     public  void speichern2(){
         umwandelnhin();
-        if(texte.size()>0){
+        if(speichern_laden.size()>0){
             StringBuilder stringBuilder=new StringBuilder();
-            for(String s: MainActivity.texte){
+            for(String s: MainActivity.speichern_laden){
 
                 stringBuilder.append(s);
                 stringBuilder.append(",");
@@ -191,7 +191,7 @@ Context context;
 
             editor.commit();
 
-        }else if(texte.size()==0){
+        }else if(speichern_laden.size()==0){
             SharedPreferences settings=getSharedPreferences("raume",0);
             SharedPreferences.Editor editor=settings.edit();
             editor.clear();
@@ -345,20 +345,20 @@ Context context;
 
     public void umwandelnhin() {
         ArrayList<String> t=new ArrayList<String>();
-        texte=t;
+        speichern_laden=t;
 
         for (int i = 0; i < MainActivity.alleStunden.size(); i++) {
 
             if(! MainActivity.alleStunden.get(i).farbe.equals("")) {
 
-                texte.add(String.valueOf( MainActivity.alleStunden.get(i).getText()));
-                texte.add(String.valueOf( MainActivity.alleStunden.get(i).farbe));
-                texte.add(String.valueOf( MainActivity.alleStunden.get(i).kurs));
-                texte.add(String.valueOf( MainActivity.alleStunden.get(i).nummer));
-                texte.add(String.valueOf( MainActivity.alleStunden.get(i).datum));
-                texte.add(String.valueOf( MainActivity.alleStunden.get(i).platz));
-                texte.add(String.valueOf( MainActivity.alleStunden.get(i).fach));
-                texte.add(String.valueOf( MainActivity.alleStunden.get(i).raum));
+                speichern_laden.add(String.valueOf( MainActivity.alleStunden.get(i).getText()));
+                speichern_laden.add(String.valueOf( MainActivity.alleStunden.get(i).farbe));
+                speichern_laden.add(String.valueOf( MainActivity.alleStunden.get(i).kurs));
+                speichern_laden.add(String.valueOf( MainActivity.alleStunden.get(i).nummer));
+                speichern_laden.add(String.valueOf( MainActivity.alleStunden.get(i).datum));
+                speichern_laden.add(String.valueOf( MainActivity.alleStunden.get(i).platz));
+                speichern_laden.add(String.valueOf( MainActivity.alleStunden.get(i).fach));
+                speichern_laden.add(String.valueOf( MainActivity.alleStunden.get(i).raum));
 
 
 

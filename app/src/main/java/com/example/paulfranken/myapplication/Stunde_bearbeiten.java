@@ -517,7 +517,7 @@ public class Stunde_bearbeiten extends AppCompatActivity implements AdapterView.
     public  void speichern(){
         umwandelnhin();
         StringBuilder stringBuilder=new StringBuilder();
-        for(String s: MainActivity.texte){
+        for(String s: MainActivity.speichern_laden){
             stringBuilder.append(s);
             stringBuilder.append(",");
 
@@ -538,14 +538,14 @@ public class Stunde_bearbeiten extends AppCompatActivity implements AdapterView.
 
 
 
-        MainActivity.texte.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).getText());
-        MainActivity.texte.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).farbe);
-        MainActivity.texte.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).kurs);
-        MainActivity.texte.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).nummer);
-        MainActivity.texte.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum);
-        MainActivity.texte.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).platz);
-        MainActivity.texte.add(MainActivity.alleStunden.get(MainActivity.bearbeiteni).fach);
-        MainActivity.texte.add(MainActivity.alleStunden.get(MainActivity.bearbeiteni).raum);
+        MainActivity.speichern_laden.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).getText());
+        MainActivity.speichern_laden.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).farbe);
+        MainActivity.speichern_laden.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).kurs);
+        MainActivity.speichern_laden.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).nummer);
+        MainActivity.speichern_laden.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum);
+        MainActivity.speichern_laden.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).platz);
+        MainActivity.speichern_laden.add(MainActivity.alleStunden.get(MainActivity.bearbeiteni).fach);
+        MainActivity.speichern_laden.add(MainActivity.alleStunden.get(MainActivity.bearbeiteni).raum);
 
     }
 

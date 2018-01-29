@@ -222,7 +222,7 @@
 
 
 
-            <AutoCompleteTextView
+            <EditText
                 android:id="@+id/editText"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
