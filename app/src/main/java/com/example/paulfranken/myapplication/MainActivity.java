@@ -690,8 +690,11 @@ if(!alleStunden.get(i).farbe.equals("")) {
                 if(MainActivity.vertreungsplan_daten.get(m).fach.equals(MainActivity.alleStunden.get(i).fach)&&MainActivity.vertreungsplan_daten.get(m).kursid.equals(MainActivity.alleStunden.get(i).nummer) &&MainActivity.vertreungsplan_daten.get(m).kurs.equals(MainActivity.alleStunden.get(i).kurs)&&MainActivity.vertreungsplan_daten.get(m).tag.equals(MainActivity.alleStunden.get(i).tag)&&MainActivity.vertreungsplan_daten.get(m).stunde.equals(MainActivity.alleStunden.get(i).stunde)){
 
                    if(vertreungsplan_daten.get(m).text.equals("Selbstlernen")) {
-                       MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + " " +"Frei");
-                        MainActivity.alleStunden.get(i).setTextColor(Color.RED);
+                       if(MainActivity.alleStunden.get(i).fach.length() < 9){
+                           MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + "\nFrei");
+                       }
+                       else{MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + " " +"Frei");}
+                       MainActivity.alleStunden.get(i).setTextColor(Color.RED);
                        MainActivity.alleStunden.get(i).aktualisieren2();
 
 
