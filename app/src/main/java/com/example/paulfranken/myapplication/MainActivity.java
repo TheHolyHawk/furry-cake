@@ -125,14 +125,17 @@ public class MainActivity extends AppCompatActivity implements OnClickListener,V
         //------------------------------Mehrere Methoden die zum Start benötigt werden, werden aufgerufen------------------------------
         speichernlayouts();
         //In der ArrayList alleStunden wird jedes TextView geschpeichert und mit Listenern ausgestattet
-        Laden();
-        //Beim Start werden alle Daten aus den SharedPrefreferneces geladen und auf den TextViews wieder angzeigt
+
         setTage();
         //Alles TextViews(Stunden) bekommen zugewiesen welchen Tag sie haben
         setzeZeiten();
         //Den TextViews der 1.Zeile wird ein Text zugewiesen, der besagt zu welcher Uhrzeit diese Stunde beginnt
+
         laden_einstellungen();
         //Es wird aus den SharedPreferences geladen welche Klasse eingestellt wurde
+
+        Laden();
+        //Beim Start werden alle Daten aus den SharedPrefreferneces geladen und auf den TextViews wieder angzeigt
         widget_speichern();
         //Alle Facher und deren Räume werden in SharedPreferences geschpeichert um sie dem Widget zur Verfügung zu stellen
         WidgetProvider.updateWidget(context);

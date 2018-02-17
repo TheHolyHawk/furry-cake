@@ -44,6 +44,7 @@ public class neueStunde_java extends AppCompatActivity implements View.OnClickLi
     Button hinzufügen;
     Spinner fach;
     Spinner kurs;
+
     public Calendar datumheute = Calendar.getInstance();
     Spinner nummer;
     TextView raum;
