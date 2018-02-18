@@ -8,11 +8,41 @@
     tools:context="com.example.paulfranken.myapplication.StundenSetzen"
     tools:showIn="@layout/activity_stunden_setzen">
 
-    <Button
-        android:id="@+id/buddy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="231dp" />
+    <RelativeLayout
+        android:layout_width= "fill_parent"
+        android:layout_height="fill_parent"
+        tools:layout_editor_absoluteX=""
+        tools:layout_editor_absoluteY="">
+
+        <Button
+            android:id="@+id/buddy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:text="Setzen"
+            tools:layout_editor_absoluteX=""
+            tools:layout_editor_absoluteY="" />
+
+        <Spinner
+            android:id="@+id/LK1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="57dp"
+            android:entries="@array/LK1"/>
+
+        <Spinner
+            android:id="@+id/LK2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/LK1"
+            android:layout_marginTop="29dp"
+            android:entries="@array/LK2"/>
+
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

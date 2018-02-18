@@ -20,6 +20,9 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_stunden_setzen" />
+    <include
+        layout="@layout/content_stunden_setzen"
+        android:layout_height="438dp"
+        tools:layout_editor_absoluteY="129dp" />
 
 </android.support.design.widget.CoordinatorLayout>

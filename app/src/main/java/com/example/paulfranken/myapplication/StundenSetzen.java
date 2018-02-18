@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -24,26 +25,54 @@ import static com.example.paulfranken.myapplication.StundenSetzen.list;
 
 public class StundenSetzen extends AppCompatActivity {
     public static Context c;
-    public static ArrayList<String> list=new ArrayList<>();
+    public static ArrayList<String> list;
+    public static int dummy;
     String url="http://facharbeit.square7.ch/Facharbeit:HochundRunter/get.php";
+    Spinner LK1S, LK2S;
+    String LK1, LK2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_stunden_setzen);
         c=getApplicationContext();
-
-
         final Downloader d=new Downloader(this,url);
-
+        list =new ArrayList<>();
+        new Test().execute();
         Button fab = (Button) findViewById(R.id.buddy);
+        LK1S = (Spinner) findViewById(R.id.LK1);
+        LK2S = (Spinner) findViewById(R.id.LK2);
+
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new Test().execute();
-
+                Toast.makeText(getApplicationContext(), list.get(123).toString() , Toast.LENGTH_SHORT).show();
+                uLKs();
+                test();
+                Toast.makeText(getApplicationContext(), LK1, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), LK2, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    public void uLKs(){
+        LK1 = LK1S.getSelectedItem().toString();
+        LK2 = LK2S.getSelectedItem().toString();
+
+    }
+    public void createLKs(){
+        neueStunde_java SLK1,SLK2;
+        SLK1= new neueStunde_java();
+        SLK2= new neueStunde_java();
+
+    }
+    public void test(){
+        for(int i=0; i<150; i++) {
+            if (list.get(i).toString().equals("NTM")) {
+                Toast.makeText(getApplicationContext(), "test", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
 }
@@ -74,6 +103,7 @@ class Test extends AsyncTask<Void,Void,Void> {
             list.clear();
 
             //LOOP THRU ARRAY
+
             for(int i=0;i<ja.length();i++)
             {
                 jo=ja.getJSONObject(i);
@@ -106,7 +136,7 @@ class Test extends AsyncTask<Void,Void,Void> {
             e.printStackTrace();
         }
 
-        Toast.makeText(c,list.get(0).toString(),Toast.LENGTH_LONG).show();
+        /*Toast.makeText(c,list.get(0).toString(),Toast.LENGTH_LONG).show();
         Toast.makeText(c,list.get(1).toString(),Toast.LENGTH_LONG).show();
         Toast.makeText(c,list.get(2).toString(),Toast.LENGTH_LONG).show();
         Toast.makeText(c,list.get(3).toString(),Toast.LENGTH_LONG).show();
@@ -114,6 +144,7 @@ class Test extends AsyncTask<Void,Void,Void> {
         Toast.makeText(c,list.get(5).toString(),Toast.LENGTH_LONG).show();
         Toast.makeText(c,list.get(6).toString(),Toast.LENGTH_LONG).show();
         Toast.makeText(c,list.get(7).toString(),Toast.LENGTH_LONG).show();
+        */
 
     }
 }
