@@ -48,6 +48,8 @@ import static com.example.paulfranken.myapplication.R.id.text41;
 import static com.example.paulfranken.myapplication.R.id.text46;
 import static com.example.paulfranken.myapplication.R.id.text56;
 import static com.example.paulfranken.myapplication.R.id.text65;
+import static com.example.paulfranken.myapplication.StundenSetzen.c;
+
 public class MainActivity extends AppCompatActivity implements OnClickListener,View.OnLongClickListener {
 
 

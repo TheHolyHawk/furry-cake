@@ -48,11 +48,12 @@ public class StundenSetzen extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), list.get(123).toString() , Toast.LENGTH_SHORT).show();
+             /*   Toast.makeText(getApplicationContext(), list.get(123).toString() , Toast.LENGTH_SHORT).show();
                 uLKs();
                 test();
                 Toast.makeText(getApplicationContext(), LK1, Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), LK2, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), LK2, Toast.LENGTH_SHORT).show();*/
+             test();
             }
         });
     }
@@ -68,11 +69,8 @@ public class StundenSetzen extends AppCompatActivity {
 
     }
     public void test(){
-        for(int i=0; i<150; i++) {
-            if (list.get(i).toString().equals("NTM")) {
-                Toast.makeText(getApplicationContext(), "test", Toast.LENGTH_SHORT).show();
-            }
-        }
+
+        Toast.makeText(getApplicationContext(),""+list.size(),Toast.LENGTH_LONG).show();
     }
 
 }
@@ -145,6 +143,9 @@ class Test extends AsyncTask<Void,Void,Void> {
         Toast.makeText(c,list.get(6).toString(),Toast.LENGTH_LONG).show();
         Toast.makeText(c,list.get(7).toString(),Toast.LENGTH_LONG).show();
         */
+
+
+
 
     }
 }
