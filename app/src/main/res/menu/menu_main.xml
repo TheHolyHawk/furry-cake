@@ -40,6 +40,10 @@
         android:id="@+id/kon"
         android:orderInCategory="100"
         android:title="Kontakt"/>
+    <item
+        android:id="@+id/std"
+        android:orderInCategory="100"
+        android:title="Stunden"/>
 
 
 

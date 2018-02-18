@@ -22,7 +22,7 @@ public class SendMailActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mail);
         final Button send = (Button) this.findViewById(R.id.send);
-fa=this;
+        fa=this;
         send.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {

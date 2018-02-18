@@ -105,8 +105,6 @@
     <string name="title_activity_stunde__bearbeiten">Stunde Info</string>
 
 
-
-
     <string name="contact_form">Kontaktiere uns</string>
     <string name="contact_form_name">Dein Name</string>
     <string name="contact_form_email">Deine Email</string>
@@ -115,4 +113,5 @@
     <string name="contact_form_button">Senden</string>
     <string name="contact_form_post_message">Bitte warten! Die Nachricht wird verschickt...</string>
     <string name="contact_posted">Die Nachricht wurde erfolgreich zugestellt.</string>
+    <string name="title_activity_stunden_setzen">StundenSetzen</string>
 </resources>

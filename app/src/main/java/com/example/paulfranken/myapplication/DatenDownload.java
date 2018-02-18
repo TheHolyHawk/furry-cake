@@ -37,6 +37,11 @@ public class DatenDownload extends AppCompatActivity {
     public static ArrayList<String> list = new ArrayList<>();
     public static String surl = "http://facharbeit.square7.ch/Facharbeit:HochundRunter/get.php";
 
+    public ArrayList<String> getDaten(){
+        Test test = new Test();
+        return list;
+    }
+
 
 }
 
@@ -137,6 +142,7 @@ class Test extends AsyncTask<Void,Void,Void> {
                 list.add(Tag);
                 list.add(Stunde);
 
+                //StundenSetzen.datensatz = list;
             }
 
 

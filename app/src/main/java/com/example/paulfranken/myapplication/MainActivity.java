@@ -334,6 +334,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener,V
             startActivity(intent);
 
         }
+        if (id == R.id.std){
+            Intent intent = new Intent(MainActivity.this, StundenSetzen.class);
+
+            startActivity(intent);
+
+        }
 
         return super.onOptionsItemSelected(item);
     }
