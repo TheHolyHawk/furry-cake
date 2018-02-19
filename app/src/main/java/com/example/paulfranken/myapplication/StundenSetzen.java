@@ -35,27 +35,31 @@ public class StundenSetzen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_stunden_setzen);
+        setContentView(R.layout.activity_stunden_setzen);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         c=getApplicationContext();
         final Downloader d=new Downloader(this,url);
         list =new ArrayList<>();
         new Test().execute();
-        Button fab = (Button) findViewById(R.id.buddy);
+       /* Button fab = (Button) findViewById(R.id.buddy);
         LK1S = (Spinner) findViewById(R.id.LK1);
-        LK2S = (Spinner) findViewById(R.id.LK2);
+        LK2S = (Spinner) findViewById(R.id.LK2);*/
 
 
-        fab.setOnClickListener(new View.OnClickListener() {
+    /*    fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
              /*   Toast.makeText(getApplicationContext(), list.get(123).toString() , Toast.LENGTH_SHORT).show();
                 uLKs();
                 test();
                 Toast.makeText(getApplicationContext(), LK1, Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), LK2, Toast.LENGTH_SHORT).show();*/
+                Toast.makeText(getApplicationContext(), LK2, Toast.LENGTH_SHORT).show();
              test();
             }
         });
+*/
     }
     public void uLKs(){
         LK1 = LK1S.getSelectedItem().toString();
@@ -69,6 +73,12 @@ public class StundenSetzen extends AppCompatActivity {
 
     }
     public void test(){
+        for (int i=0; i<list.size();i++){
+            if(list.get(i).equals("A22")){
+                Toast.makeText(getApplicationContext(),""+i,Toast.LENGTH_LONG).show();
+            }
+
+        }
 
         Toast.makeText(getApplicationContext(),""+list.size(),Toast.LENGTH_LONG).show();
     }
