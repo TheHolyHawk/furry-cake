@@ -592,6 +592,7 @@ if(test!=null){
             if (view.equals(alleStunden.get(i))) {
                 bearbeiten = alleStunden.get(i);
                 bearbeiteni = i;
+                Toast.makeText(context, ""+i, Toast.LENGTH_SHORT).show();
             }
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

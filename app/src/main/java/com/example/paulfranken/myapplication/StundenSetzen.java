@@ -46,49 +46,36 @@ public class StundenSetzen extends AppCompatActivity {
     Spinner LK1S, LK2S;
     String LK1, LK2;
     Model modelItems[];
-   public static ListView listView;
-   public Spinner s1,s2;
-
+    public static ListView listView;
+    public Spinner s1,s2;
+    static StundenSetzen instance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        instance = this;
         setContentView(R.layout.activity_stunden_setzen);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-          listView = (ListView) findViewById(R.id.Listview_1);
-          s1=(Spinner)findViewById(R.id.LK1);
-          s2=(Spinner)findViewById(R.id.LK2);
+        listView = (ListView) findViewById(R.id.Listview_1);
+        s1=(Spinner)findViewById(R.id.LK1);
+        s2=(Spinner)findViewById(R.id.LK2);
 
         c = getApplicationContext();
         final Downloader d = new Downloader(this, url);
         list = new ArrayList<>();
+        if(isNetworkAvailable()==true) {
+            new Test().execute();
+        }
+
         gkliste = new ArrayList<>();
         lk1liste = new ArrayList<>();
 
 
-        if(isNetworkAvailable()==true) {
-            new Test().execute();
-        }
-       /* Button fab = (Button) findViewById(R.id.buddy);
-        LK1S = (Spinner) findViewById(R.id.LK1);
-        LK2S = (Spinner) findViewById(R.id.LK2);*/
-
-
-    /*    fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-             /*   Toast.makeText(getApplicationContext(), list.get(123).toString() , Toast.LENGTH_SHORT).show();
-                uLKs();
-                test();
-                Toast.makeText(getApplicationContext(), LK1, Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), LK2, Toast.LENGTH_SHORT).show();
-             test();
-            }
-        });
-*/
+        listenladen();
 
     }
 
@@ -98,34 +85,54 @@ public class StundenSetzen extends AppCompatActivity {
 
 
         if (id == R.id.action_settings2) {
-            stundenListe();
 
-            final ListView s = (ListView) findViewById(R.id.Listview_1);
-            modelItems = new Model[gkliste.size()];
+            uLKs();
+            stundeSetzen(LK1);
+            stundeSetzen(LK2);
 
-            for (int i = 0; i < gkliste.size(); i++) {
 
-                modelItems[i] = new Model(gkliste.get(i), 0);
 
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    //Wenn mehr als nur die Q1 funktionieren soll muss das hier noch dazu
+    public void stundeSetzen(String stunde){
+        for(int i=0; i<list.size()-7; i++){
+            //-7 ist notwendig um noch alles ohne nullpointer durchsuchen zu können
+            if(list.get(i+4).equals(stunde)){
+                Toast.makeText(this, ""+platzbestimmer(i), Toast.LENGTH_SHORT).show();
+                MainActivity.alleStunden.get(platzbestimmer(i)).löschen();
             }
+        }
+
+    }
+    public int platzbestimmer(int i){
+        int tag,stunde,returner;
+        tag=Integer.parseInt(list.get(i+6));
+        stunde=Integer.parseInt(list.get(i+7));
+        stunde= stunde -1;
+        returner= stunde*6+tag;
+        return returner;
+    }
+    public void listenladen(){
+        stundenListe();
+        final ListView s = (ListView) findViewById(R.id.Listview_1);
+        modelItems = new Model[gkliste.size()];
+        for (int i = 0; i < gkliste.size(); i++) {
+
+            modelItems[i] = new Model(gkliste.get(i), 0);
+
+        }
 
             CustomAdapter adapter = new CustomAdapter(this, modelItems);
             listView.setAdapter(adapter);
 
 
             ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>
-                    (this, android.R.layout.simple_spinner_item, lk1liste); //selected item will look like a spinner set from XML
-            spinnerArrayAdapter.setDropDownViewResource(android.R.layout
-                    .simple_spinner_dropdown_item);
+            (this, android.R.layout.simple_spinner_item, lk1liste); //selected item will look like a spinner set from XML
+            spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             s1.setAdapter(spinnerArrayAdapter);
             s2.setAdapter(spinnerArrayAdapter);
-
-
-
-
-
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private boolean isNetworkAvailable() {
@@ -188,16 +195,16 @@ public class StundenSetzen extends AppCompatActivity {
         return true;
     }
     public void uLKs(){
-        LK1 = LK1S.getSelectedItem().toString();
-        LK2 = LK2S.getSelectedItem().toString();
+        LK1 = s1.getSelectedItem().toString();
+        LK2 = s2.getSelectedItem().toString();
 
     }
-    public void createLKs(){
-        neueStunde_java SLK1,SLK2;
-        SLK1= new neueStunde_java();
-        SLK2= new neueStunde_java();
 
+    public static StundenSetzen getInstance(){
+        return instance;
     }
+
+
 
 
 }
@@ -262,8 +269,8 @@ class Test extends AsyncTask<Void,Void,Void> {
         }
 
 
-
-
+        StundenSetzen instance = StundenSetzen.getInstance();
+        instance.listenladen();
 
 
 
