@@ -57,7 +57,7 @@ public class StundeVplan {
             fach = "Franz";
         }else if (fach.equals("L ")) {
             fach = "Latein";
-        }else if (fach.equals("SP")) {
+        }else if (fach.equals("S ")) {
             fach = "Spanisch";
         }else if (fach.equals("S8")) {
             fach = "Spanisch8";

@@ -49,7 +49,7 @@ import static com.example.paulfranken.myapplication.WidgetProvider.stunde;
 
 public class StundenSetzen extends AppCompatActivity {
     public static Context c;
-    public static ArrayList<String> list, stundenliste, gkliste, lk1liste,lk2liste;
+    public static ArrayList<String> list, stundenliste, gkliste, lk1liste;
     public static int dummy;
     String url = "http://facharbeit.square7.ch/Facharbeit:HochundRunter/get.php";
     Spinner LK1S, LK2S;
@@ -151,7 +151,7 @@ public class StundenSetzen extends AppCompatActivity {
 
         gkliste = new ArrayList<>();
         lk1liste = new ArrayList<>();
-        lk2liste = new ArrayList<>();
+
 
 
 
@@ -855,10 +855,8 @@ this.finish();
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             s1.setAdapter(spinnerArrayAdapter);
 
-        ArrayAdapter<String> spinneradapter2 = new ArrayAdapter<String>
-                (this, android.R.layout.simple_spinner_item, lk2liste); //selected item will look like a spinner set from XML
-        spinneradapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            s2.setAdapter(spinneradapter2);
+
+            s2.setAdapter(spinnerArrayAdapter);
 
 
         items=gkliste.toArray(new CharSequence[gkliste.size()]);
@@ -908,12 +906,9 @@ this.finish();
                      gkliste.add(stundenliste.get(i));
                  }
                 if(stunde1.equals("L")){
-                    String stunde2 = String.valueOf(stundenliste.get(i).charAt(4));
-                    if(stunde2.equals("1")){
+
                         lk1liste.add(stundenliste.get(i));
-                    }else  if(stunde2.equals("2")||stunde2.equals("3")){
-                        lk2liste.add(stundenliste.get(i));
-                    }
+
 
                 }
             }
@@ -925,7 +920,7 @@ this.finish();
 
 
         Collections.sort(lk1liste);
-        Collections.sort(lk2liste);
+
         checkedItems = new boolean[gkliste.size()];
     }
     @Override//Muss für das Menü vorhanden sein. In der Variable mymenu wird das Meu geschpeichert
