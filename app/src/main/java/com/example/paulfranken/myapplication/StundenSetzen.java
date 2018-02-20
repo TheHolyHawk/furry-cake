@@ -1,11 +1,13 @@
 package com.example.paulfranken.myapplication;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -19,6 +21,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -50,17 +53,86 @@ public class StundenSetzen extends AppCompatActivity {
     public Spinner s1,s2;
     static StundenSetzen instance;
 
+    public Button btn;
+
+
+    public  CharSequence[] items = {" Easy "," Medium "," Hard "," Very Hard "," Easy "," Medium "," Hard "," Very Hard "," Easy "," Medium "," Hard "," Very Hard "," Easy "," Medium "," Hard "," Very Hard "," Easy "," Medium "," Hard "," Very Hard "," Easy "," Medium "," Hard "," Very Hard "," Easy "," Medium "," Hard "," Very Hard "," Easy "," Medium "," Hard "," Very Hard "};
+// arraylist to keep the selected items
+    public ArrayList seletedItems=new ArrayList();
+    public  boolean[] checkedItems;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         instance = this;
         setContentView(R.layout.activity_stunden_setzen);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        listView = (ListView) findViewById(R.id.Listview_1);
+        checkedItems = new boolean[0];
+
+        btn = (Button) findViewById(R.id.btn);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+                AlertDialog dialog = new AlertDialog.Builder(StundenSetzen.this)
+                        .setTitle("Select The Difficulty Level")
+                        .setMultiChoiceItems(items, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int indexSelected, boolean isChecked) {
+                                if (isChecked) {
+                                    // If the user checked the item, add it to the selected items
+                                    seletedItems.add(indexSelected);
+                                    Toast.makeText(StundenSetzen.this, ""+seletedItems.get(0), Toast.LENGTH_SHORT).show();
+                                } else if (seletedItems.contains(indexSelected)) {
+                                    // Else, if the item is already in the array, remove it
+                                    seletedItems.remove(Integer.valueOf(indexSelected));
+                                }
+                            }
+
+                        }).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                //  Your code when user clicked on OK
+                                //  You can write the code  to save the selected item here
+
+                            }
+                        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                //  Your code when user clicked on Cancel
+                            }
+                        }).setNeutralButton(R.string.clear_all_label, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                for (int m = 0; m < checkedItems.length; m++) {
+
+                                    checkedItems[m] = false;
+
+                                }
+                            }
+                        })
+
+                        .create();
+                dialog.show();
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
         s1=(Spinner)findViewById(R.id.LK1);
         s2=(Spinner)findViewById(R.id.LK2);
 
@@ -75,7 +147,7 @@ public class StundenSetzen extends AppCompatActivity {
         lk1liste = new ArrayList<>();
 
 
-        listenladen();
+
 
     }
 
@@ -89,8 +161,11 @@ public class StundenSetzen extends AppCompatActivity {
             uLKs();
             stundeSetzen(LK1);
             stundeSetzen(LK2);
+            for(int i=0;i<seletedItems.size();i++){
+                stundeSetzen(gkliste.get(Integer.valueOf(seletedItems.get(i).toString())));
+            }
 
-
+this.finish();
 
         }
         return super.onOptionsItemSelected(item);
@@ -100,8 +175,9 @@ public class StundenSetzen extends AppCompatActivity {
         for(int i=0; i<list.size()-7; i++){
             //-7 ist notwendig um noch alles ohne nullpointer durchsuchen zu können
             if(list.get(i+4).equals(stunde)){
-                Toast.makeText(this, ""+platzbestimmer(i), Toast.LENGTH_SHORT).show();
+
                 MainActivity.alleStunden.get(platzbestimmer(i)).löschen();
+                MainActivity.alleStunden.get(platzbestimmer(i)).setText(stunde);
             }
         }
 
@@ -116,16 +192,7 @@ public class StundenSetzen extends AppCompatActivity {
     }
     public void listenladen(){
         stundenListe();
-        final ListView s = (ListView) findViewById(R.id.Listview_1);
-        modelItems = new Model[gkliste.size()];
-        for (int i = 0; i < gkliste.size(); i++) {
 
-            modelItems[i] = new Model(gkliste.get(i), 0);
-
-        }
-
-            CustomAdapter adapter = new CustomAdapter(this, modelItems);
-            listView.setAdapter(adapter);
 
 
             ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>
@@ -133,6 +200,10 @@ public class StundenSetzen extends AppCompatActivity {
             spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             s1.setAdapter(spinnerArrayAdapter);
             s2.setAdapter(spinnerArrayAdapter);
+
+
+        items=gkliste.toArray(new CharSequence[gkliste.size()]);
+
     }
 
     private boolean isNetworkAvailable() {
@@ -186,6 +257,7 @@ public class StundenSetzen extends AppCompatActivity {
         }
         Collections.sort(gkliste);
         Collections.sort(lk1liste);
+        checkedItems = new boolean[gkliste.size()];
     }
     @Override//Muss für das Menü vorhanden sein. In der Variable mymenu wird das Meu geschpeichert
     public boolean onCreateOptionsMenu(Menu menu) {
