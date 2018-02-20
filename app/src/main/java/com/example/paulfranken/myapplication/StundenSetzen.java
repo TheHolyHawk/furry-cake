@@ -40,10 +40,12 @@ import java.util.Set;
 
 import static com.example.paulfranken.myapplication.StundenSetzen.c;
 import static com.example.paulfranken.myapplication.StundenSetzen.list;
+import static com.example.paulfranken.myapplication.WidgetProvider.raum2;
+import static com.example.paulfranken.myapplication.WidgetProvider.stunde;
 
 public class StundenSetzen extends AppCompatActivity {
     public static Context c;
-    public static ArrayList<String> list, stundenliste, gkliste, lk1liste;
+    public static ArrayList<String> list, stundenliste, gkliste, lk1liste,lk2liste;
     public static int dummy;
     String url = "http://facharbeit.square7.ch/Facharbeit:HochundRunter/get.php";
     Spinner LK1S, LK2S;
@@ -56,8 +58,7 @@ public class StundenSetzen extends AppCompatActivity {
     public Button btn;
 
 
-    public  CharSequence[] items = {" Easy "," Medium "," Hard "," Very Hard "," Easy "," Medium "," Hard "," Very Hard "," Easy "," Medium "," Hard "," Very Hard "," Easy "," Medium "," Hard "," Very Hard "," Easy "," Medium "," Hard "," Very Hard "," Easy "," Medium "," Hard "," Very Hard "," Easy "," Medium "," Hard "," Very Hard "," Easy "," Medium "," Hard "," Very Hard "};
-// arraylist to keep the selected items
+    public  CharSequence[] items = {""};
     public ArrayList seletedItems=new ArrayList();
     public  boolean[] checkedItems;
 
@@ -81,7 +82,7 @@ public class StundenSetzen extends AppCompatActivity {
 
 
                 AlertDialog dialog = new AlertDialog.Builder(StundenSetzen.this)
-                        .setTitle("Select The Difficulty Level")
+                        .setTitle("Wähle deine GK's")
                         .setMultiChoiceItems(items, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int indexSelected, boolean isChecked) {
@@ -145,6 +146,7 @@ public class StundenSetzen extends AppCompatActivity {
 
         gkliste = new ArrayList<>();
         lk1liste = new ArrayList<>();
+        lk2liste = new ArrayList<>();
 
 
 
@@ -177,7 +179,7 @@ this.finish();
             if(list.get(i+4).equals(stunde)){
 
                 MainActivity.alleStunden.get(platzbestimmer(i)).löschen();
-                MainActivity.alleStunden.get(platzbestimmer(i)).setText(stunde);
+                MainActivity.alleStunden.get(platzbestimmer(i)).setText(stunde+"\n"+"\n"+list.get(i+5));
             }
         }
 
@@ -195,11 +197,15 @@ this.finish();
 
 
 
-            ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>
-            (this, android.R.layout.simple_spinner_item, lk1liste); //selected item will look like a spinner set from XML
-            spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>
+                (this, android.R.layout.simple_spinner_item, lk1liste); //selected item will look like a spinner set from XML
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             s1.setAdapter(spinnerArrayAdapter);
-            s2.setAdapter(spinnerArrayAdapter);
+
+        ArrayAdapter<String> spinneradapter2 = new ArrayAdapter<String>
+                (this, android.R.layout.simple_spinner_item, lk2liste); //selected item will look like a spinner set from XML
+        spinneradapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            s2.setAdapter(spinneradapter2);
 
 
         items=gkliste.toArray(new CharSequence[gkliste.size()]);
@@ -249,14 +255,24 @@ this.finish();
                      gkliste.add(stundenliste.get(i));
                  }
                 if(stunde1.equals("L")){
-                    lk1liste.add(stundenliste.get(i));
+                    String stunde2 = String.valueOf(stundenliste.get(i).charAt(4));
+                    if(stunde2.equals("1")){
+                        lk1liste.add(stundenliste.get(i));
+                    }else  if(stunde2.equals("2")||stunde2.equals("3")){
+                        lk2liste.add(stundenliste.get(i));
+                    }
+
                 }
             }
 
 
         }
+
         Collections.sort(gkliste);
+
+
         Collections.sort(lk1liste);
+        Collections.sort(lk2liste);
         checkedItems = new boolean[gkliste.size()];
     }
     @Override//Muss für das Menü vorhanden sein. In der Variable mymenu wird das Meu geschpeichert

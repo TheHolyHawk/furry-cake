@@ -59,7 +59,7 @@
                 android:gravity="center"
                 android:paddingTop="0dp"
 
-                android:text="LK1"
+                android:text="1.LK"
                 android:textColor="#939393"
                 android:textSize="20sp" />
 
@@ -122,7 +122,7 @@
                 android:gravity="center"
                 android:paddingTop="0dp"
 
-                android:text="LK2"
+                android:text="2.LK"
                 android:textColor="#939393"
                 android:textSize="20sp" />
 
