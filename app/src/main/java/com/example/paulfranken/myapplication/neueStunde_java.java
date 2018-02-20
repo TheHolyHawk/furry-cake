@@ -623,6 +623,7 @@ widget_speichern();
             public void onColorSelected(int colour) {
                 farbeint=colour;
 
+
                 farbe.setBackgroundTintList(ColorStateList.valueOf(farbeint));
 
 

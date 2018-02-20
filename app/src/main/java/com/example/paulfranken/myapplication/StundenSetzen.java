@@ -2,6 +2,7 @@ package com.example.paulfranken.myapplication;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -32,9 +33,12 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 
@@ -57,6 +61,7 @@ public class StundenSetzen extends AppCompatActivity {
 
     public Button btn;
 
+    public Calendar datumheute = Calendar.getInstance();
 
     public  CharSequence[] items = {""};
     public ArrayList seletedItems=new ArrayList();
@@ -180,9 +185,657 @@ this.finish();
 
                 MainActivity.alleStunden.get(platzbestimmer(i)).löschen();
                 MainActivity.alleStunden.get(platzbestimmer(i)).setText(stunde+"\n"+"\n"+list.get(i+5));
+                MainActivity.alleStunden.get(platzbestimmer(i)).farbe=String.valueOf(-769482);
+                MainActivity.alleStunden.get(platzbestimmer(i)).fach=""+stunde.charAt(0)+stunde.charAt(1);
+                MainActivity.alleStunden.get(platzbestimmer(i)).kurs=""+stunde.charAt(3);
+                MainActivity.alleStunden.get(platzbestimmer(i)).platz=String.valueOf(platzbestimmer(i));
+                MainActivity.alleStunden.get(platzbestimmer(i)).nummer=""+stunde.charAt(4);
+                MainActivity.alleStunden.get(platzbestimmer(i)).raum=list.get(i+5);
+
+                MainActivity.alleStunden.get(platzbestimmer(i)).umwandeln();
+
+                String weekDay;
+                SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", Locale.US);
+
+                Calendar calendar = Calendar.getInstance();
+                weekDay = dayFormat.format(calendar.getTime());
+
+                if(weekDay.equals("Monday")){
+
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")){
+                        datumheute.add(Calendar.DATE,0);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")){
+                        datumheute.add(Calendar.DATE,1);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")){
+                        datumheute.add(Calendar.DATE,2);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")){
+                        datumheute.add(Calendar.DATE,3);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")){
+                        datumheute.add(Calendar.DATE,4);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")){
+                        datumheute.add(Calendar.DATE,5);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    } if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")){
+                        datumheute.add(Calendar.DATE,6);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+
+                }
+                if(weekDay.equals("Tuesday")){
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")){
+                        datumheute.add(Calendar.DATE,-1);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")){
+                        datumheute.add(Calendar.DATE,0);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")){
+                        datumheute.add(Calendar.DATE,1);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")){
+                        datumheute.add(Calendar.DATE,2);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")){
+                        datumheute.add(Calendar.DATE,3);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")){
+                        datumheute.add(Calendar.DATE,4);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    } if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")){
+                        datumheute.add(Calendar.DATE,5);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+
+                }
+                if(weekDay.equals("Wednesday")){
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")){
+                        datumheute.add(Calendar.DATE,-2);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")){
+                        datumheute.add(Calendar.DATE,-1);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")){
+                        datumheute.add(Calendar.DATE,0);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")){
+                        datumheute.add(Calendar.DATE,1);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")){
+                        datumheute.add(Calendar.DATE,2);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")){
+                        datumheute.add(Calendar.DATE,3);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    } if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")){
+                        datumheute.add(Calendar.DATE,4);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+
+                }
+                if(weekDay.equals("Thursday")){
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")){
+                        datumheute.add(Calendar.DATE,-3);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")){
+                        datumheute.add(Calendar.DATE,-2);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")){
+                        datumheute.add(Calendar.DATE,-1);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")){
+                        datumheute.add(Calendar.DATE,0);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")){
+                        datumheute.add(Calendar.DATE,1);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")){
+                        datumheute.add(Calendar.DATE,2);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    } if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")){
+                        datumheute.add(Calendar.DATE,3);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+
+                }
+                if(weekDay.equals("Friday")){
+
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")){
+                        datumheute.add(Calendar.DATE,-4);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")){
+                        datumheute.add(Calendar.DATE,-3);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")){
+                        datumheute.add(Calendar.DATE,-2);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")){
+                        datumheute.add(Calendar.DATE,-1);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")){
+                        datumheute.add(Calendar.DATE,0);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")){
+                        datumheute.add(Calendar.DATE,1);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    } if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")){
+                        datumheute.add(Calendar.DATE,2);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                }
+                if(weekDay.equals("Saturday")){
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")){
+                        datumheute.add(Calendar.DATE,-5);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")){
+                        datumheute.add(Calendar.DATE,-4);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")){
+                        datumheute.add(Calendar.DATE,-3);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")){
+                        datumheute.add(Calendar.DATE,-2);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")){
+                        datumheute.add(Calendar.DATE,-1);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")){
+                        datumheute.add(Calendar.DATE,0);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    } if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")){
+                        datumheute.add(Calendar.DATE,1);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+
+                }
+                if(weekDay.equals("Sunday")){
+
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")){
+                        datumheute.add(Calendar.DATE,-6);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")){
+                        datumheute.add(Calendar.DATE,-5);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")){
+                        datumheute.add(Calendar.DATE,-4);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")){
+                        datumheute.add(Calendar.DATE,-3);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")){
+                        datumheute.add(Calendar.DATE,-2);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                    if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")){
+                        datumheute.add(Calendar.DATE,-1);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    } if( MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")){
+                        datumheute.add(Calendar.DATE,0);
+                        SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                        String formatted = format1.format(datumheute.getTime());
+                        MainActivity.alleStunden.get(platzbestimmer(i)).datum=formatted;
+
+                    }
+                }
+
+                MainActivity.alleStunden.get(platzbestimmer(i)).aktualisieren();
+                speichern();
+
+                widget_speichern();
+                WidgetProvider.updateWidget(getApplicationContext());
+
             }
         }
 
+    }
+    public   void  widget_speichern(){
+
+        ArrayList<String> fach=new ArrayList<>();
+        ArrayList<String> raum=new ArrayList<>();
+
+//alle facher informationen
+        fach.clear();
+
+        fach.add(MainActivity.alleStunden.get(1).fach);
+        fach.add(MainActivity.alleStunden.get(7).fach);
+        fach.add(MainActivity.alleStunden.get(13).fach);
+        fach.add(MainActivity.alleStunden.get(19).fach);
+        fach.add(MainActivity.alleStunden.get(25).fach);
+        fach.add(MainActivity.alleStunden.get(31).fach);
+        fach.add(MainActivity.alleStunden.get(37).fach);
+        fach.add(MainActivity.alleStunden.get(43).fach);
+        fach.add(MainActivity.alleStunden.get(49).fach);
+        fach.add(MainActivity.alleStunden.get(55).fach);
+        fach.add(MainActivity.alleStunden.get(61).fach);
+
+
+
+        fach.add(MainActivity.alleStunden.get(2).fach);
+        fach.add(MainActivity.alleStunden.get(8).fach);
+        fach.add(MainActivity.alleStunden.get(14).fach);
+        fach.add(MainActivity.alleStunden.get(20).fach);
+        fach.add(MainActivity.alleStunden.get(26).fach);
+        fach.add(MainActivity.alleStunden.get(32).fach);
+        fach.add(MainActivity.alleStunden.get(38).fach);
+        fach.add(MainActivity.alleStunden.get(44).fach);
+        fach.add(MainActivity.alleStunden.get(50).fach);
+        fach.add(MainActivity.alleStunden.get(56).fach);
+        fach.add(MainActivity.alleStunden.get(62).fach);
+
+
+
+        fach.add(MainActivity.alleStunden.get(3).fach);
+        fach.add(MainActivity.alleStunden.get(9).fach);
+        fach.add(MainActivity.alleStunden.get(15).fach);
+        fach.add(MainActivity.alleStunden.get(21).fach);
+        fach.add(MainActivity.alleStunden.get(27).fach);
+        fach.add(MainActivity.alleStunden.get(33).fach);
+        fach.add(MainActivity.alleStunden.get(39).fach);
+        fach.add(MainActivity.alleStunden.get(45).fach);
+        fach.add(MainActivity.alleStunden.get(51).fach);
+        fach.add(MainActivity.alleStunden.get(57).fach);
+        fach.add(MainActivity.alleStunden.get(63).fach);
+
+
+
+        fach.add(MainActivity.alleStunden.get(4).fach);
+        fach.add(MainActivity.alleStunden.get(10).fach);
+        fach.add(MainActivity.alleStunden.get(16).fach);
+        fach.add(MainActivity.alleStunden.get(22).fach);
+        fach.add(MainActivity.alleStunden.get(28).fach);
+        fach.add(MainActivity.alleStunden.get(34).fach);
+        fach.add(MainActivity.alleStunden.get(40).fach);
+        fach.add(MainActivity.alleStunden.get(46).fach);
+        fach.add(MainActivity.alleStunden.get(52).fach);
+        fach.add(MainActivity.alleStunden.get(58).fach);
+        fach.add(MainActivity.alleStunden.get(64).fach);
+
+
+
+        fach.add(MainActivity.alleStunden.get(5).fach);
+        fach.add(MainActivity.alleStunden.get(11).fach);
+        fach.add(MainActivity.alleStunden.get(17).fach);
+        fach.add(MainActivity.alleStunden.get(23).fach);
+        fach.add(MainActivity.alleStunden.get(29).fach);
+        fach.add(MainActivity.alleStunden.get(35).fach);
+        fach.add(MainActivity.alleStunden.get(41).fach);
+        fach.add(MainActivity.alleStunden.get(47).fach);
+        fach.add(MainActivity.alleStunden.get(53).fach);
+        fach.add(MainActivity.alleStunden.get(59).fach);
+        fach.add(MainActivity.alleStunden.get(65).fach);
+
+        for(int i=0;i<fach.size();i++){
+            if(fach.get(i).equals("")){
+                fach.set(i," ");
+            }
+        }
+
+
+        //fach
+        if(fach.size()>0){
+            StringBuilder stringBuilder=new StringBuilder();
+            for(String s: fach){
+
+                stringBuilder.append(s);
+                stringBuilder.append(",");
+
+
+            }
+
+
+
+            SharedPreferences settings=getSharedPreferences("fach",0);
+            SharedPreferences.Editor editor=settings.edit();
+
+            editor.putString("fach",stringBuilder.toString());
+
+            editor.commit();
+
+        }else if(fach.size()==0){
+            SharedPreferences settings=getSharedPreferences("fach",0);
+            SharedPreferences.Editor editor=settings.edit();
+            editor.clear();
+            editor.commit();
+        }
+
+
+
+        //alle raum informationen
+
+
+        raum.clear();
+
+        raum.add(MainActivity.alleStunden.get(1).raum);
+        raum.add(MainActivity.alleStunden.get(7).raum);
+        raum.add(MainActivity.alleStunden.get(13).raum);
+        raum.add(MainActivity.alleStunden.get(19).raum);
+        raum.add(MainActivity.alleStunden.get(25).raum);
+        raum.add(MainActivity.alleStunden.get(31).raum);
+        raum.add(MainActivity.alleStunden.get(37).raum);
+        raum.add(MainActivity.alleStunden.get(43).raum);
+        raum.add(MainActivity.alleStunden.get(49).raum);
+        raum.add(MainActivity.alleStunden.get(55).raum);
+        raum.add(MainActivity.alleStunden.get(61).raum);
+
+
+
+        raum.add(MainActivity.alleStunden.get(2).raum);
+        raum.add(MainActivity.alleStunden.get(8).raum);
+        raum.add(MainActivity.alleStunden.get(14).raum);
+        raum.add(MainActivity.alleStunden.get(20).raum);
+        raum.add(MainActivity.alleStunden.get(26).raum);
+        raum.add(MainActivity.alleStunden.get(32).raum);
+        raum.add(MainActivity.alleStunden.get(38).raum);
+        raum.add(MainActivity.alleStunden.get(44).raum);
+        raum.add(MainActivity.alleStunden.get(50).raum);
+        raum.add(MainActivity.alleStunden.get(56).raum);
+        raum.add(MainActivity.alleStunden.get(62).raum);
+
+
+
+        raum.add(MainActivity.alleStunden.get(3).raum);
+        raum.add(MainActivity.alleStunden.get(9).raum);
+        raum.add(MainActivity.alleStunden.get(15).raum);
+        raum.add(MainActivity.alleStunden.get(21).raum);
+        raum.add(MainActivity.alleStunden.get(27).raum);
+        raum.add(MainActivity.alleStunden.get(33).raum);
+        raum.add(MainActivity.alleStunden.get(39).raum);
+        raum.add(MainActivity.alleStunden.get(45).raum);
+        raum.add(MainActivity.alleStunden.get(51).raum);
+        raum.add(MainActivity.alleStunden.get(57).raum);
+        raum.add(MainActivity.alleStunden.get(63).raum);
+
+
+
+        raum.add(MainActivity.alleStunden.get(4).raum);
+        raum.add(MainActivity.alleStunden.get(10).raum);
+        raum.add(MainActivity.alleStunden.get(16).raum);
+        raum.add(MainActivity.alleStunden.get(22).raum);
+        raum.add(MainActivity.alleStunden.get(28).raum);
+        raum.add(MainActivity.alleStunden.get(34).raum);
+        raum.add(MainActivity.alleStunden.get(40).raum);
+        raum.add(MainActivity.alleStunden.get(46).raum);
+        raum.add(MainActivity.alleStunden.get(52).raum);
+        raum.add(MainActivity.alleStunden.get(58).raum);
+        raum.add(MainActivity.alleStunden.get(64).raum);
+
+
+
+        raum.add(MainActivity.alleStunden.get(5).raum);
+        raum.add(MainActivity.alleStunden.get(11).raum);
+        raum.add(MainActivity.alleStunden.get(17).raum);
+        raum.add(MainActivity.alleStunden.get(23).raum);
+        raum.add(MainActivity.alleStunden.get(29).raum);
+        raum.add(MainActivity.alleStunden.get(35).raum);
+        raum.add(MainActivity.alleStunden.get(41).raum);
+        raum.add(MainActivity.alleStunden.get(47).raum);
+        raum.add(MainActivity.alleStunden.get(53).raum);
+        raum.add(MainActivity.alleStunden.get(59).raum);
+        raum.add(MainActivity.alleStunden.get(65).raum);
+
+        for(int i=0;i<raum.size();i++){
+            if(raum.get(i).equals("")){
+                raum.set(i," ");
+            }
+        }
+
+
+        //raum
+        if(raum.size()>0){
+            StringBuilder stringBuilder=new StringBuilder();
+            for(String s: raum){
+
+                stringBuilder.append(s);
+                stringBuilder.append(",");
+
+
+            }
+
+
+
+            SharedPreferences settings=getSharedPreferences("raum",0);
+            SharedPreferences.Editor editor=settings.edit();
+
+            editor.putString("raum",stringBuilder.toString());
+
+            editor.commit();
+
+        }else if(raum.size()==0){
+            SharedPreferences settings=getSharedPreferences("raum",0);
+            SharedPreferences.Editor editor=settings.edit();
+            editor.clear();
+            editor.commit();
+        }
+
+    }
+    public  void speichern(){
+        umwandelnhin();
+        StringBuilder stringBuilder=new StringBuilder();
+        for(String s: MainActivity.speichern_laden){
+            stringBuilder.append(s);
+            stringBuilder.append(",");
+
+
+        }
+
+
+        SharedPreferences settings=getSharedPreferences("PREFS",0);
+        SharedPreferences.Editor editor=settings.edit();
+
+        editor.putString("words",stringBuilder.toString());
+
+        editor.commit();
+
+    }
+
+    public void umwandelnhin() {
+        ArrayList<String> t = new ArrayList<String>();
+        MainActivity.speichern_laden = t;
+
+        for (int i = 0; i < MainActivity.alleStunden.size(); i++) {
+
+            if (!MainActivity.alleStunden.get(i).farbe.equals("")) {
+
+                MainActivity.speichern_laden.add(String.valueOf(MainActivity.alleStunden.get(i).getText()));
+                MainActivity.speichern_laden.add(String.valueOf(MainActivity.alleStunden.get(i).farbe));
+                MainActivity.speichern_laden.add(String.valueOf(MainActivity.alleStunden.get(i).kurs));
+                MainActivity.speichern_laden.add(String.valueOf(MainActivity.alleStunden.get(i).nummer));
+                MainActivity.speichern_laden.add(String.valueOf(MainActivity.alleStunden.get(i).datum));
+                MainActivity.speichern_laden.add(String.valueOf(MainActivity.alleStunden.get(i).platz));
+                MainActivity.speichern_laden.add(String.valueOf(MainActivity.alleStunden.get(i).fach));
+                MainActivity.speichern_laden.add(String.valueOf(MainActivity.alleStunden.get(i).raum));
+
+
+            }
+        }
     }
     public int platzbestimmer(int i){
         int tag,stunde,returner;

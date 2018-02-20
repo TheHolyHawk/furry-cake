@@ -447,12 +447,12 @@ if(test!=null){
                 alleStunden.get(platz).kurs = speichern_laden.get(i + 2);
                 alleStunden.get(platz).nummer = speichern_laden.get(i + 3);
                 alleStunden.get(platz).datum = speichern_laden.get(i + 4);
-                alleStunden.get(platz).aktualisieren();
+
                 alleStunden.get(platz).platz = speichern_laden.get(i + 5);
                 alleStunden.get(platz).fach = speichern_laden.get(i + 6);
                 alleStunden.get(platz).raum=speichern_laden.get(i+7);
 
-
+                alleStunden.get(platz).aktualisieren();
 
                 i = i + 7;
 

@@ -55,6 +55,65 @@ public String farbe="";
         }
 
     }
+    public void umwandeln(){
+
+        if (fach.equals("D ")) {
+            fach = "Deutsch";
+        }else if (fach.equals("E ")) {
+            fach = "Englisch";
+        }else if (fach.equals("F ")) {
+            fach = "Franz";
+        }else if (fach.equals("L ")) {
+            fach = "Latein";
+        }else if (fach.equals("SP")) {
+            fach = "Spanisch";
+        }else if (fach.equals("S8")) {
+            fach = "Spanisch8";
+        }else if (fach.equals("M ")) {
+            fach = "Mathe";
+        }else if (fach.equals("PH")) {
+            fach = "Physik";
+        }else if (fach.equals("CH")) {
+            fach = "Chemie";
+        }else if (fach.equals("BI")) {
+            fach = "Biologie";
+        }else if (fach.equals("IF")) {
+            fach = "Info";
+        }else if (fach.equals("TC")) {
+            fach = "Technik";
+        }else if (fach.equals("GE")) {
+            fach = "Geschi";
+        }else if (fach.equals("SW")) {
+            fach = "Sowi";
+        }else if (fach.equals("EK")) {
+            fach = "Erdkunde";
+        }else if (fach.equals("PL")) {
+            fach = "Philo";
+        }else if (fach.equals("ER")) {
+            fach = "Reli(E)";
+        }else if (fach.equals("KR")) {
+            fach = "Reli(K)";
+        }else if (fach.equals("KU")) {
+            fach = "Kunst";
+        }else if (fach.equals("MU")) {
+            fach = "Musik";
+        }else if (fach.equals("LI")) {
+            fach = "Literatur";
+        }else if (fach.equals("SP")) {
+            fach = "Sport";
+        }else if (fach.equals("CO")) {
+            fach = "Chor";
+        }else if (fach.equals("OR")) {
+            fach = "Orchester";
+        }
+
+        if (kurs.equals("L")) {
+            kurs = "LK";
+        }
+        if (kurs.equals("G")) {
+            kurs = "GK";
+        }
+    }
     public void aktualisieren(){
         GradientDrawable gd = new GradientDrawable();
 
