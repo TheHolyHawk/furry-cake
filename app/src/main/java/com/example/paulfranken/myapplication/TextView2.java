@@ -69,6 +69,7 @@ public String farbe="";
             fach = "Spanisch";
         }else if (fach.equals("S8")) {
             fach = "Spanisch8";
+
         }else if (fach.equals("M ")) {
             fach = "Mathe";
         }else if (fach.equals("PH")) {
@@ -81,6 +82,7 @@ public String farbe="";
             fach = "Info";
         }else if (fach.equals("TC")) {
             fach = "Technik";
+
         }else if (fach.equals("GE")) {
             fach = "Geschi";
         }else if (fach.equals("SW")) {
@@ -93,6 +95,7 @@ public String farbe="";
             fach = "Reli(E)";
         }else if (fach.equals("KR")) {
             fach = "Reli(K)";
+
         }else if (fach.equals("KU")) {
             fach = "Kunst";
         }else if (fach.equals("MU")) {

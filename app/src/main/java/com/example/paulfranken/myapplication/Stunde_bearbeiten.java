@@ -704,42 +704,46 @@ public class Stunde_bearbeiten extends AppCompatActivity implements AdapterView.
         colorPickerDialog.initialize(R.string.color_picker_default_title,
                 new int[] {
 
-                        getResources().getColor(R.color.f11),
-                        getResources().getColor(R.color.f12),
-                        getResources().getColor(R.color.f15),
-
-                        getResources().getColor(R.color.f17),
+                        getResources().getColor(R.color.f1),
                         getResources().getColor(R.color.f2),
                         getResources().getColor(R.color.f3),
+                        getResources().getColor(R.color.f4),
+                        getResources().getColor(R.color.f5),
 
+                        getResources().getColor(R.color.f10),
+                        getResources().getColor(R.color.f9),
+                        getResources().getColor(R.color.f8),
+                        getResources().getColor(R.color.f7),
+                        getResources().getColor(R.color.f6),
 
+                        getResources().getColor(R.color.f11),
+                        getResources().getColor(R.color.f12),
                         getResources().getColor(R.color.f13),
                         getResources().getColor(R.color.f14),
-                        getResources().getColor(R.color.f5),
-                        getResources().getColor(R.color.f6),
-                        getResources().getColor(R.color.f7),
-                        getResources().getColor(R.color.f4),
-                        getResources().getColor(R.color.f8),
-                        getResources().getColor(R.color.f9),
-                        getResources().getColor(R.color.f10),
-
-
-
-
-
-                        getResources().getColor(R.color.f19),
+                        getResources().getColor(R.color.f15),
 
                         getResources().getColor(R.color.f20),
+                        getResources().getColor(R.color.f19),
+                        getResources().getColor(R.color.f18),
+                        getResources().getColor(R.color.f17),
+                        getResources().getColor(R.color.f16),
+
                         getResources().getColor(R.color.f21),
                         getResources().getColor(R.color.f22),
+                        getResources().getColor(R.color.f23),
+                        getResources().getColor(R.color.f24),
+
+                        getResources().getColor(R.color.f30),
+                        getResources().getColor(R.color.f25),
+                        getResources().getColor(R.color.f26),
+                        getResources().getColor(R.color.f27),
+                        getResources().getColor(R.color.f28),
+                        getResources().getColor(R.color.f29),
 
 
 
 
-
-
-
-                }, 5, 4, 2);
+                }, 25, 5, 2);
 
         colorPickerDialog.setOnColorSelectedListener(new ColorPickerSwatch.OnColorSelectedListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

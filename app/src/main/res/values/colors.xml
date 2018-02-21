@@ -9,30 +9,43 @@
     <color name="yourcolor">#CF4232</color>
     <color name="raum">#50E814</color>
 
-    <color name="f1">#CF4232</color>
-    <color name="f2">#EB7f23</color>
-    <color name="f3">#FAC023</color>
-    <color name="f4">#068675</color>
+    <color name="f1">#ea3838</color>
+    <color name="f2">#EA6B38</color>
+    <color name="f3">#EA8938</color>
+    <color name="f4">#EA9E38</color>
+    <color name="f5">#EAAF38</color>
 
-    <color name="f5">#ff2196f3</color>
-    <color name="f6">#ff03a9f5</color>
-    <color name="f7">#ff00bcd5</color>
-    <color name="f8">#ff4cb050</color>
-    <color name="f9">#ff89c348</color>
-    <color name="f10">#ffc7d161</color>
-    <color name="f11">#fff44236</color>
-    <color name="f12">#ffea1e63</color>
-    <color name="f13">#ff9c28b1</color>
-    <color name="f14">#ff3f51b5</color>
+    <color name="f6">#EABD38</color>
+    <color name="f7">#EACB38</color>
+    <color name="f8">#EADA38</color>
+    <color name="f9">#EAEA38</color>
+    <color name="f10">#C4E236</color>
 
-    <color name="f15">#ffffeb3c</color>
-    <color name="f16">#fffec107</color>
-    <color name="f17">#ffff9700</color>
-    <color name="f18">#fffe5722</color>
-    <color name="f19">#ff795547</color>
-    <color name="f20">#cdcccc</color>
-    <color name="f21">#ff607d8b</color>
-    <color name="f22">#000</color>
+    <color name="f11">#A3DA34</color>
+    <color name="f12">#79D032</color>
+    <color name="f13">#2DBB2D</color>
+    <color name="f14">#27A06C</color>
+    <color name="f15">#228C8C</color>
+
+    <color name="f16">#2C6896</color>
+    <color name="f17">#32529C</color>
+    <color name="f18">#3A3AA3</color>
+    <color name="f19">#4E35A0</color>
+    <color name="f20">#60319E</color>
+
+    <color name="f21">#742C9B</color>
+    <color name="f22">#972597</color>
+    <color name="f23">#BA2E7D</color>
+    <color name="f24">#CF3363</color>
+    <color name="f25">#FBFBFB</color>
+
+    <color name="f26">#CDCDCD</color>
+    <color name="f27">#A6A6A6</color>
+    <color name="f28">#7F7F7F</color>
+    <color name="f29">#555555</color>
+    <color name="f30">#232222</color>
+
+
 
 
 </resources>
