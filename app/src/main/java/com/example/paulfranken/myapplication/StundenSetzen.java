@@ -63,7 +63,7 @@ public class StundenSetzen extends AppCompatActivity {
 
     public Calendar datumheute = Calendar.getInstance();
 
-    public  CharSequence[] items = {""};
+    public  CharSequence[] items = new CharSequence[0];
     public ArrayList seletedItems=new ArrayList();
     public  boolean[] checkedItems;
 
@@ -185,7 +185,7 @@ this.finish();
 
                 MainActivity.alleStunden.get(platzbestimmer(i)).löschen();
                 MainActivity.alleStunden.get(platzbestimmer(i)).setText(stunde+"\n"+"\n"+list.get(i+5));
-                MainActivity.alleStunden.get(platzbestimmer(i)).farbe=String.valueOf(-769482);
+                MainActivity.alleStunden.get(platzbestimmer(i)).farbe=String.valueOf(000);
                 MainActivity.alleStunden.get(platzbestimmer(i)).fach=""+stunde.charAt(0)+stunde.charAt(1);
                 MainActivity.alleStunden.get(platzbestimmer(i)).kurs=""+stunde.charAt(3);
                 MainActivity.alleStunden.get(platzbestimmer(i)).platz=String.valueOf(platzbestimmer(i));

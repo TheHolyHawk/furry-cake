@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener,V
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         context=getApplicationContext();
+
         //Speichern des Layouts und festlegen der Toolbar, Speichern des ApplicationContexts
 
 

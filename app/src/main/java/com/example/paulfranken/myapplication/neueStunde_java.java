@@ -622,6 +622,7 @@ widget_speichern();
             @Override
             public void onColorSelected(int colour) {
                 farbeint=colour;
+                Toast.makeText(neueStunde_java.this, ""+farbeint, Toast.LENGTH_SHORT).show();
 
 
                 farbe.setBackgroundTintList(ColorStateList.valueOf(farbeint));
