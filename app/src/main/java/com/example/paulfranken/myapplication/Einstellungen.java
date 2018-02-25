@@ -32,7 +32,7 @@ Context context;
 
         klasse=(Spinner)findViewById(R.id.spinner);
         klasse.setOnItemSelectedListener(this);
-       setzeKlasse();
+      // setzeKlasse();
          //Button zum Erstellen eines Backups des Stundenplans
         btn1=(Button)findViewById(R.id.backup1);
         btn1.setOnClickListener(new View.OnClickListener() {
