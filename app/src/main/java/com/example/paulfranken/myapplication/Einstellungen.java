@@ -32,7 +32,7 @@ Context context;
 
         klasse=(Spinner)findViewById(R.id.spinner);
         klasse.setOnItemSelectedListener(this);
-      // setzeKlasse();
+        setzeKlasse();
          //Button zum Erstellen eines Backups des Stundenplans
         btn1=(Button)findViewById(R.id.backup1);
         btn1.setOnClickListener(new View.OnClickListener() {
@@ -75,10 +75,15 @@ Context context;
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                SharedPreferences settings=getSharedPreferences("Sicherheit",0);
+                String test= settings.getString("s",null);
+                if(test==null){
+                    Toast.makeText(context, "Pech gehabt. Du hast keine Sicherheitsdatei erstellt.Hahaha", Toast.LENGTH_SHORT).show();
       Laden();
             speichern2();
 
-            }
+            }}
         });
 
     }
