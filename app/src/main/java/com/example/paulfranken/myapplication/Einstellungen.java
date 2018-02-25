@@ -32,7 +32,13 @@ Context context;
 
         klasse=(Spinner)findViewById(R.id.spinner);
         klasse.setOnItemSelectedListener(this);
-        setzeKlasse();
+
+        String str;
+        str = MainActivity.klasse;
+
+        if(str != null && !str.isEmpty()){
+            setzeKlasse();
+        }
          //Button zum Erstellen eines Backups des Stundenplans
         btn1=(Button)findViewById(R.id.backup1);
         btn1.setOnClickListener(new View.OnClickListener() {
@@ -228,6 +234,7 @@ Context context;
         editor.commit();
     }
     public void setzeKlasse(){
+
 
         if (MainActivity.klasse.equals("Q1")) {
 
