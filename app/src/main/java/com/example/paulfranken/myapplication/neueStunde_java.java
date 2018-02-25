@@ -628,14 +628,14 @@ widget_speichern();
 
 
 
-                }, 25, 5, 2);
+                }, 25, 5, 5);
 
         colorPickerDialog.setOnColorSelectedListener(new ColorPickerSwatch.OnColorSelectedListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onColorSelected(int colour) {
                 farbeint=colour;
-                Toast.makeText(neueStunde_java.this, ""+farbeint, Toast.LENGTH_SHORT).show();
+
 
 
                 farbe.setBackgroundTintList(ColorStateList.valueOf(farbeint));

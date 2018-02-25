@@ -158,6 +158,67 @@ public class StundenSetzen extends AppCompatActivity {
 
     }
 
+    public int farbe(String fach){
+        int farbe=000;
+        if(fach.equals("D ")){
+            farbe=-1427400;
+        }else if(fach.equals("E ")){
+            farbe=-1414344;
+        }else if(fach.equals("F ")){
+            farbe=-1406664;
+        }else if(fach.equals("L ")){
+            farbe=-1401288;
+        }else if(fach.equals("S ")||fach.equals("S8")){
+            farbe=-1396936;
+        }
+
+        else if(fach.equals("M ")){
+            farbe=-3874250;
+        }else if(fach.equals("PH")){
+            farbe=-6038988;
+        }else if(fach.equals("CH")){
+            farbe=-8794062;
+        }else if(fach.equals("BI")){
+            farbe=-13780179;
+        }else if(fach.equals("IF")){
+            farbe=-14180244;
+        }else if(fach.equals("TC")){
+            farbe=-14513012;
+        }
+
+        else if(fach.equals("GE")){
+            farbe=-13866858;
+        }else if(fach.equals("SW")){
+            farbe=-13479268;
+        }else if(fach.equals("EK")){
+            farbe=-12961117;
+        }else if(fach.equals("PL")){
+            farbe=-11651680;
+        }else if(fach.equals("ER")){
+            farbe=-10473058;
+        }else if(fach.equals("KR")){
+            farbe=-9163621;
+        }
+
+        else if(fach.equals("KU")){
+            farbe=-6871657;
+        }else if(fach.equals("MU")){
+            farbe=-4575619;
+        }else if(fach.equals("LI")){
+            farbe=-3198109;
+        }else if(fach.equals("SP")){
+            farbe=-11184811;
+        }else if(fach.equals("CO")){
+            farbe=-8421505;
+        }else if(fach.equals("OR")){
+            farbe=-5855578;
+        }
+
+
+
+        return farbe;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -185,7 +246,7 @@ this.finish();
 
                 MainActivity.alleStunden.get(platzbestimmer(i)).löschen();
                 MainActivity.alleStunden.get(platzbestimmer(i)).setText(stunde+"\n"+"\n"+list.get(i+5));
-                MainActivity.alleStunden.get(platzbestimmer(i)).farbe=String.valueOf(000);
+                MainActivity.alleStunden.get(platzbestimmer(i)).farbe=String.valueOf(farbe(""+stunde.charAt(0)+stunde.charAt(1)));
                 MainActivity.alleStunden.get(platzbestimmer(i)).fach=""+stunde.charAt(0)+stunde.charAt(1);
                 MainActivity.alleStunden.get(platzbestimmer(i)).kurs=""+stunde.charAt(3);
                 MainActivity.alleStunden.get(platzbestimmer(i)).platz=String.valueOf(platzbestimmer(i));
