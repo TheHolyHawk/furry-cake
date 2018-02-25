@@ -114,6 +114,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener,V
 
 
 
+        SharedPreferences settings2=getSharedPreferences("Einstellungen",0);
+
+        SharedPreferences.Editor editor=settings2.edit();
+        editor.clear();
+        editor.commit();
 
 
 
