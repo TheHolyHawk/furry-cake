@@ -78,12 +78,16 @@ Context context;
 
                 SharedPreferences settings=getSharedPreferences("Sicherheit",0);
                 String test= settings.getString("s",null);
-                if(test==null){
-                    Toast.makeText(context, "Pech gehabt. Du hast keine Sicherheitsdatei erstellt.Hahaha", Toast.LENGTH_SHORT).show();
+                if(test!=null){
+
       Laden();
             speichern2();
 
-            }}
+            }
+            else{
+                    Toast.makeText(context, "Pech gehabt. Du hast keine Sicherheitsdatei erstellt.Hahaha", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
 
     }
