@@ -269,8 +269,12 @@ public static  SwipeRefreshLayout l;
         if (id == R.id.action_settings2) {
 
             uLKs();
-            stundeSetzen(LK1);
-            stundeSetzen(LK2);
+            if(LK1 !=null){
+                stundeSetzen(LK1);
+            }
+            if(LK2!=null) {
+                stundeSetzen(LK2);
+            }
             for(int i=0;i<seletedItems.size();i++){
                 stundeSetzen(gkliste.get(Integer.valueOf(seletedItems.get(i).toString())));
             }
@@ -999,7 +1003,7 @@ this.finish();
 
 
 
-// add elements to al, including duplicates
+        // add elements to al, including duplicates
         Set<String> hs = new HashSet<>();
         hs.addAll(stundenliste);
         stundenliste.clear();
@@ -1018,8 +1022,14 @@ this.finish();
                      gkliste.add(stundenliste.get(i));
                  }
                 if(stunde1.equals("L")){
+                     stunde1 = String.valueOf(stundenliste.get(i).charAt(0));
+                     if(stunde1.equals("A")){
+                         gkliste.add(stundenliste.get(i));
+                     }else{
+                         lk1liste.add(stundenliste.get(i));
+                     }
 
-                        lk1liste.add(stundenliste.get(i));
+
 
 
                 }
@@ -1043,8 +1053,16 @@ this.finish();
         return true;
     }
     public void uLKs(){
-        LK1 = s1.getSelectedItem().toString();
-        LK2 = s2.getSelectedItem().toString();
+        if(s1.getSelectedItem()!=null) {
+            LK1 = s1.getSelectedItem().toString();
+        } else {
+            LK1="";
+        }
+            if(s2.getSelectedItem()!=null) {
+                LK2 = s2.getSelectedItem().toString();
+            }else{
+                LK2="";
+            }
 
     }
 
