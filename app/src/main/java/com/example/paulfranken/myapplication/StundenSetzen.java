@@ -47,6 +47,7 @@ import java.util.Set;
 import static com.example.paulfranken.myapplication.StundenSetzen.c;
 import static com.example.paulfranken.myapplication.StundenSetzen.l;
 import static com.example.paulfranken.myapplication.StundenSetzen.list;
+import static com.example.paulfranken.myapplication.StundenSetzen.tasklaeuft;
 import static com.example.paulfranken.myapplication.WidgetProvider.raum2;
 import static com.example.paulfranken.myapplication.WidgetProvider.stunde;
 
@@ -63,6 +64,8 @@ public class StundenSetzen extends AppCompatActivity {
     static StundenSetzen instance;
 
     public Button btn;
+
+    public static boolean tasklaeuft=false;
 
     public Calendar datumheute = Calendar.getInstance();
 
@@ -152,8 +155,11 @@ public static  SwipeRefreshLayout l;
                     @Override
 
                     public void run() {
-
-                         aktualisieren();
+if(tasklaeuft==false) {
+    aktualisieren();
+}else {
+    Toast.makeText(StundenSetzen.this, "Die Liste wird bereits aktualisiert.", Toast.LENGTH_SHORT).show();
+}
                         //Die Daten werden erneut aufgerufen
 
 
@@ -181,6 +187,7 @@ public static  SwipeRefreshLayout l;
         list = new ArrayList<>();
         if(isNetworkAvailable()==true) {
             new Test().execute();
+            tasklaeuft=true;
         }
 
         gkliste = new ArrayList<>();
@@ -1503,6 +1510,7 @@ class Test extends AsyncTask<Void,Void,Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         l.setRefreshing(false);
+        tasklaeuft=false;
         try
         {
             //ADD THAT DATA TO JSON ARRAY FIRST
