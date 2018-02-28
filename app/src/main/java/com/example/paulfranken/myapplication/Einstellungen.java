@@ -187,31 +187,20 @@ Context context;
 
 
     public  void speichern2(){
-        umwandelnhin();
-        if(speichern_laden.size()>0){
-            StringBuilder stringBuilder=new StringBuilder();
-            for(String s: MainActivity.speichern_laden){
 
-                stringBuilder.append(s);
-                stringBuilder.append(",");
+        SharedPreferences settings=getSharedPreferences("Sicherheit",0);
 
 
-            }
+        String test= settings.getString("s",null);
 
+            SharedPreferences settings2=getSharedPreferences("PREFS",0);
+            SharedPreferences.Editor editor=settings2.edit();
 
-            SharedPreferences settings=getSharedPreferences("PREFS",0);
-            SharedPreferences.Editor editor=settings.edit();
-
-            editor.putString("words",stringBuilder.toString());
+            editor.putString("words",test.toString());
 
             editor.commit();
 
-        }else if(speichern_laden.size()==0){
-            SharedPreferences settings=getSharedPreferences("raume",0);
-            SharedPreferences.Editor editor=settings.edit();
-            editor.clear();
-            editor.commit();
-        }
+
 
     }
 

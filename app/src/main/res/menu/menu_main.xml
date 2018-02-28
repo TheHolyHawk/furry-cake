@@ -37,6 +37,10 @@
         android:orderInCategory="100"
         android:title="Code"/>
     <item
+        android:id="@+id/pdf"
+        android:orderInCategory="100"
+        android:title="Stundenplan als PDF"/>
+    <item
         android:id="@+id/kon"
         android:orderInCategory="100"
         android:title="Kontakt"/>

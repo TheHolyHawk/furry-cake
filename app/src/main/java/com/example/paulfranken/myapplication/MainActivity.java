@@ -1,12 +1,17 @@
 package com.example.paulfranken.myapplication;
+import android.*;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -28,15 +33,28 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import static com.example.paulfranken.myapplication.R.id.text102;
@@ -78,6 +96,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener,V
     public String kurs, kursid,text,raum2;
     //Public Strings: kurs=Lk oder Gk, kursid=Kursnummer,text=Selbstlerenen oder Vertretung, raum2=Bei RaumVertretung (MyTask2)
     public static String fach,stunde,test3 = " ", klasse="Q2";
+    private File pdfFile;
+    final private int REQUEST_CODE_ASK_PERMISSIONS = 111;
     //Static Strings:fach=welches fach,stunde=welche stunde,test3=nicht anrühren,(MyTask2)klasse=welche klasse man ist(Standard=Q2)
     //---------------------------------------------Integer, Strings, Menu, Booleans----------------------------------------------------
 
@@ -306,6 +326,17 @@ public class MainActivity extends AppCompatActivity implements OnClickListener,V
           Intent intent = new Intent(MainActivity.this, Klausurplan.class);
 
             startActivity(intent);
+        }
+        if(id==R.id.pdf){
+            try {
+                createPdfWrapper();
+            } catch (FileNotFoundException e) {
+
+                e.printStackTrace();
+            } catch (DocumentException e) {
+                e.printStackTrace();
+            }
+
         }
         if (id == R.id.action_settings) {
 
@@ -989,7 +1020,130 @@ if(!alleStunden.get(i).farbe.equals("")) {
     }
 
 
+    private void createPdfWrapper() throws FileNotFoundException,DocumentException {
 
+        int hasWriteStoragePermission = ActivityCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (hasWriteStoragePermission != PackageManager.PERMISSION_GRANTED) {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (!shouldShowRequestPermissionRationale(android.Manifest.permission.WRITE_CONTACTS)) {
+                    showMessageOKCancel("You need to allow access to Storage",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                                                REQUEST_CODE_ASK_PERMISSIONS);
+                                    }
+                                }
+                            });
+                    return;
+                }
+
+
+                requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        REQUEST_CODE_ASK_PERMISSIONS);
+            }
+            return;
+        }else {
+            createPdf();
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_ASK_PERMISSIONS:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Permission Granted
+                    try {
+                        createPdfWrapper();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (DocumentException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    // Permission Denied
+                    Toast.makeText(this, "WRITE_EXTERNAL Permission Denied", Toast.LENGTH_SHORT)
+                            .show();
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
+        new AlertDialog.Builder(this)
+                .setMessage(message)
+                .setPositiveButton("OK", okListener)
+                .setNegativeButton("Cancel", null)
+                .create()
+                .show();
+    }
+
+    private void createPdf() throws FileNotFoundException, DocumentException {
+
+        File docsFolder = new File(Environment.getExternalStorageDirectory() + "/Documents");
+        if (!docsFolder.exists()) {
+            docsFolder.mkdir();
+            //Log.i(TAG, "Created a new directory for PDF");
+        }
+        Toast.makeText(context, "Geschpeichert bei: "+docsFolder, Toast.LENGTH_LONG).show();
+
+        pdfFile = new File(docsFolder.getAbsolutePath(),"Stundenplan.pdf");
+        OutputStream output = new FileOutputStream(pdfFile);
+        Document document = new Document();
+        PdfWriter.getInstance(document, output);
+        document.open();
+        document.add(createTable2());
+
+
+
+
+
+
+        document.close();
+
+
+    }
+
+
+
+
+    public static PdfPTable createTable2() throws DocumentException {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        String tag = sdf.format(new Date());
+        PdfPTable table = new PdfPTable(6);
+
+        table.setWidths(new int[]{1, 1, 1,1,1,1});
+        PdfPCell cell;
+        cell = new PdfPCell(new Phrase("Stundenplan vom "+tag+", Klasse: "+MainActivity.klasse));
+        cell.setColspan(6);
+        table.addCell(cell);
+
+
+
+
+        table.addCell("Stunden");
+        table.addCell("Montag");
+        table.addCell("Dienstag");
+
+        table.addCell("Mittowch");
+        table.addCell("Donnerstag");
+        table.addCell("Freitag");
+        PdfPCell[] cells = table.getRow(1).getCells();
+        for (int j=0;j<cells.length;j++){
+            cells[j].setBackgroundColor(BaseColor.GRAY);
+
+        }
+
+        for(int i=0;i<alleStunden.size();i++){
+            table.addCell(""+alleStunden.get(i).getText());
+        }
+
+        return table;
+    }
 
 
 
