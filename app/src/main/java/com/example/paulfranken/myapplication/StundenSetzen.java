@@ -215,7 +215,7 @@ if(tasklaeuft==false) {
         }else if(fach.equals("E ")){
             farbe=-1414344;
         }else if(fach.equals("F ")){
-            farbe=-1406664;
+            farbe=-1401288;
         }else if(fach.equals("L ")){
             farbe=-1401288;
         }else if(fach.equals("S ")||fach.equals("S8")){
@@ -259,8 +259,10 @@ if(tasklaeuft==false) {
         }else if(fach.equals("SP")){
             farbe=-11184811;
         }else if(fach.equals("CO")){
-            farbe=-8421505;
+            farbe=-5855578;
         }else if(fach.equals("OR")){
+            farbe=-5855578;
+        }else if(fach.equals("BigB")){
             farbe=-5855578;
         }
 
@@ -268,11 +270,16 @@ if(tasklaeuft==false) {
 
         return farbe;
     }
-
+    public void löschen(){
+        SharedPreferences settings=getSharedPreferences("PREFS",0);
+        SharedPreferences.Editor editor=settings.edit();
+        editor.clear();
+        editor.commit();
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
+        löschen();
 
         if (id == R.id.action_settings2) {
 
@@ -302,13 +309,24 @@ this.finish();
 
                         MainActivity.alleStunden.get(platzbestimmer(i)).löschen();
                         MainActivity.alleStunden.get(platzbestimmer(i)).setText(stunde + "\n" + "\n" + list.get(i + 5));
-                        MainActivity.alleStunden.get(platzbestimmer(i)).farbe = String.valueOf(farbe("" + stunde.charAt(0) + stunde.charAt(1)));
-                        MainActivity.alleStunden.get(platzbestimmer(i)).fach = "" + stunde.charAt(0) + stunde.charAt(1);
-                        MainActivity.alleStunden.get(platzbestimmer(i)).kurs = "" + stunde.charAt(3);
-                        MainActivity.alleStunden.get(platzbestimmer(i)).platz = String.valueOf(platzbestimmer(i));
+                        if(stunde.equals("BigB")) {
+                            MainActivity.alleStunden.get(platzbestimmer(i)).fach = "BigB";
+                            MainActivity.alleStunden.get(platzbestimmer(i)).farbe = String.valueOf(-5855578);
+                        }else{
+                            MainActivity.alleStunden.get(platzbestimmer(i)).farbe = String.valueOf(farbe("" + stunde.charAt(0) + stunde.charAt(1)));
+                            MainActivity.alleStunden.get(platzbestimmer(i)).fach = "" + stunde.charAt(0) + stunde.charAt(1);
+                        }
 
-                        MainActivity.alleStunden.get(platzbestimmer(i)).nummer = "" + stunde.charAt(4);
+
+                        if(stunde.length()>2) {
+                            MainActivity.alleStunden.get(platzbestimmer(i)).kurs = "" + stunde.charAt(3);
+                        }
+                        MainActivity.alleStunden.get(platzbestimmer(i)).platz = String.valueOf(platzbestimmer(i));
+                        if(stunde.length()>4) {
+                            MainActivity.alleStunden.get(platzbestimmer(i)).nummer = "" + stunde.charAt(4);
+                        }
                         MainActivity.alleStunden.get(platzbestimmer(i)).raum = list.get(i + 5);
+                        MainActivity.alleStunden.get(platzbestimmer(i)).lehrer = list.get(i + 3);
 
                         MainActivity.alleStunden.get(platzbestimmer(i)).umwandeln();
 
@@ -1357,6 +1375,7 @@ this.finish();
                 MainActivity.speichern_laden.add(String.valueOf(MainActivity.alleStunden.get(i).platz));
                 MainActivity.speichern_laden.add(String.valueOf(MainActivity.alleStunden.get(i).fach));
                 MainActivity.speichern_laden.add(String.valueOf(MainActivity.alleStunden.get(i).raum));
+                MainActivity.speichern_laden.add(String.valueOf(MainActivity.alleStunden.get(i).lehrer));
 
 
             }
@@ -1432,7 +1451,7 @@ this.finish();
 
         for(int i=0; i<stundenliste.size(); i++){
 
-            if(stundenliste.get(i).length()==2) {
+            if(stundenliste.get(i).length()==2||stundenliste.get(i).equals("BigB")) {
 
                     gkliste.add(stundenliste.get(i));
 
@@ -1462,6 +1481,7 @@ this.finish();
 
 
         Collections.sort(lk1liste);
+        lk1liste.add(0,"Wähle deine LK's.");
 
         checkedItems = new boolean[gkliste.size()];
     }

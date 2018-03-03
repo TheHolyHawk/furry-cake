@@ -44,6 +44,8 @@ public class neueStunde_java extends AppCompatActivity implements View.OnClickLi
     Button hinzufügen;
     Spinner fach;
     Spinner kurs;
+    public TextView n,k;
+    public View t1,t2;
 
     public Calendar datumheute = Calendar.getInstance();
     Spinner nummer;
@@ -81,10 +83,25 @@ public class neueStunde_java extends AppCompatActivity implements View.OnClickLi
         fach=(Spinner)findViewById(R.id.spinner);
         fach.setOnItemSelectedListener(this);
 
+        n=(TextView) findViewById(R.id.text3);
+        k=(TextView) findViewById(R.id.text2);
+        t1=(View) findViewById(R.id.t1);
+        t2=(View) findViewById(R.id.t2);
 
         kurs=(Spinner)findViewById(R.id.spinner2);
         raum=(EditText) findViewById(R.id.editText);
         nummer=(Spinner) findViewById(R.id.spinner3);
+
+        if(MainActivity.klasse.equals("EF")||MainActivity.klasse.equals("Q1")||MainActivity.klasse.equals("Q2")){
+
+        }else{
+            nummer.setVisibility(View.GONE);
+            kurs.setVisibility(View.GONE);
+            n.setVisibility(View.GONE);
+            k.setVisibility(View.GONE);
+            t1.setVisibility(View.GONE);
+            t2.setVisibility(View.GONE);
+        }
 
        
 
@@ -128,6 +145,7 @@ public class neueStunde_java extends AppCompatActivity implements View.OnClickLi
                 MainActivity.alleStunden.get(MainActivity.bearbeiteni).farbe=String.valueOf(farbeint);
                 MainActivity.alleStunden.get(MainActivity.bearbeiteni).kurs=kurs.getSelectedItem().toString();
                 MainActivity.alleStunden.get(MainActivity.bearbeiteni).nummer=nummer.getSelectedItem().toString();
+                MainActivity.alleStunden.get(MainActivity.bearbeiteni).lehrer=" ";
 
 
 
@@ -572,6 +590,7 @@ widget_speichern();
         MainActivity.speichern_laden.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).platz);
         MainActivity.speichern_laden.add(MainActivity.alleStunden.get(MainActivity.bearbeiteni).fach);
         MainActivity.speichern_laden.add(MainActivity.alleStunden.get(MainActivity.bearbeiteni).raum);
+        MainActivity.speichern_laden.add(MainActivity.alleStunden.get(MainActivity.bearbeiteni).lehrer);
 
     }
 

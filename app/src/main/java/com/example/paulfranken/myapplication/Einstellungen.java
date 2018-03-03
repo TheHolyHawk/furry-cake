@@ -84,8 +84,12 @@ Context context;
 
                 SharedPreferences settings=getSharedPreferences("Sicherheit",0);
                 String test= settings.getString("s",null);
-                if(test!=null){
 
+                if(test!=null){
+löschen();
+for(int i=0;i<MainActivity.alleStunden.size();i++){
+    MainActivity.alleStunden.get(i).löschen();
+}
       Laden();
             speichern2();
 
@@ -98,7 +102,12 @@ Context context;
 
     }
 
-
+    public void löschen(){
+        SharedPreferences settings=getSharedPreferences("PREFS",0);
+        SharedPreferences.Editor editor=settings.edit();
+        editor.clear();
+        editor.commit();
+    }
 
     public  void speichern(){
         umwandelnhin();
@@ -174,10 +183,11 @@ Context context;
                 MainActivity.alleStunden.get(platz).platz = speichern_laden.get(i + 5);
                 MainActivity.alleStunden.get(platz).fach = speichern_laden.get(i + 6);
                 MainActivity.alleStunden.get(platz).raum=speichern_laden.get(i+7);
+                MainActivity.alleStunden.get(platz).lehrer=speichern_laden.get(i+8);
 
 
 
-                i = i + 7;
+                i = i + 8;
 
 
 
@@ -364,6 +374,7 @@ Context context;
                 speichern_laden.add(String.valueOf( MainActivity.alleStunden.get(i).platz));
                 speichern_laden.add(String.valueOf( MainActivity.alleStunden.get(i).fach));
                 speichern_laden.add(String.valueOf( MainActivity.alleStunden.get(i).raum));
+                speichern_laden.add(String.valueOf( MainActivity.alleStunden.get(i).lehrer));
 
 
 

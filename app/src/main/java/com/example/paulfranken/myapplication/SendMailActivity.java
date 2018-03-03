@@ -30,6 +30,7 @@ public class SendMailActivity extends Activity {
 
                 String fromEmail = "kontaktfromapp@gmail.com";
                 String fromPassword = "facharbeit";
+
                 String toEmail = "kontaktfromapp@gmail.com";
 
 

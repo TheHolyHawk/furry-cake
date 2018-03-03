@@ -17,7 +17,60 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="80dp"
+
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text23"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+
+
+                android:layout_marginLeft="5dp"
+
+                android:layout_weight="0.5"
+                android:gravity="center"
+
+                android:paddingTop="0dp"
+                android:text="Farbe"
+                android:textColor="#939393"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/button"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="60dp"
+                android:layout_weight="0.7"
+                android:background="@drawable/roundbutton"
+                android:textAppearance="@style/TextAppearance.AppCompat" />
+
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="300dp"
+                android:layout_height="0.5dip"
+                android:layout_centerHorizontal="true"
+
+                android:layout_marginTop="20dp"
+
+
+                android:background="#c5c5c5c5" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
 
             android:orientation="horizontal">
 
@@ -76,6 +129,72 @@
 
         </RelativeLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text30"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+
+
+                android:layout_weight="0.5"
+
+                android:gravity="center"
+                android:paddingTop="0dp"
+
+                android:text="Raum"
+                android:textColor="#939393"
+                android:textSize="20sp" />
+
+
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:background="#FAFAFA"
+
+                android:paddingTop="0dp"
+
+
+
+                android:tag="@string/app_name"
+
+                android:textColorLink="@color/f20"
+                android:textCursorDrawable="@drawable/color_crusor"
+                android:textSize="17dp"
+                />
+
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="300dp"
+                android:layout_height="0.5dip"
+                android:layout_centerHorizontal="true"
+
+                android:layout_marginTop="20dp"
+
+
+                android:background="#c5c5c5c5" />
+
+        </RelativeLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -131,7 +250,7 @@
                 android:layout_centerHorizontal="true"
 
                 android:layout_marginTop="20dp"
-
+android:id="@+id/t2"
 
                 android:background="#c5c5c5c5" />
 
@@ -189,6 +308,7 @@
                 android:layout_width="300dp"
                 android:layout_height="0.5dip"
                 android:layout_centerHorizontal="true"
+                android:id="@+id/t1"
 
                 android:layout_marginTop="20dp"
 
@@ -197,108 +317,9 @@
 
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/text30"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="5dp"
-
-
-                android:layout_weight="0.5"
-
-                android:gravity="center"
-                android:paddingTop="0dp"
-
-                android:text="Raum"
-                android:textColor="#939393"
-                android:textSize="20sp" />
 
 
 
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:background="#FAFAFA"
-
-                android:paddingTop="0dp"
-
-
-
-                android:tag="@string/app_name"
-
-                android:textColorLink="@color/f20"
-                android:textCursorDrawable="@drawable/color_crusor"
-                android:textSize="17dp"
-                />
-
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <View
-                android:layout_width="300dp"
-                android:layout_height="0.5dip"
-                android:layout_centerHorizontal="true"
-
-                android:layout_marginTop="20dp"
-
-
-                android:background="#c5c5c5c5" />
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/text23"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-
-
-                android:layout_marginLeft="5dp"
-
-                android:layout_weight="0.5"
-                android:gravity="center"
-
-                android:paddingTop="0dp"
-                android:text="Farbe"
-                android:textColor="#939393"
-                android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/button"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:layout_marginEnd="60dp"
-                android:layout_weight="0.7"
-                android:background="@drawable/roundbutton"
-                android:textAppearance="@style/TextAppearance.AppCompat" />
-
-
-        </LinearLayout>
 
     </LinearLayout>
 

@@ -33,7 +33,9 @@ public String farbe="";
     public String raum="";
     public String tag="";
     public String stunde="";
+
     public String farbe2="";
+    public String lehrer="";
 
     public void löschen(){
         if(this.getId()==text65||this.getId()==text4||this.getId()==text16||this.getId()==text102||this.getId()==text26||this.getId()==text31||this.getId()==text37||this.getId()==text41||this.getId()==text46||this.getId()==text108||this.getId()==text56) {
@@ -42,7 +44,7 @@ public String farbe="";
             this.setText("");
             farbe = "";
             farbe2 = "";
-
+             lehrer="";
             datum = "";
             kurs = "";
             nummer = "";
@@ -108,6 +110,9 @@ public String farbe="";
             fach = "Chor";
         }else if (fach.equals("OR")) {
             fach = "Orchester";
+        }
+        else if (fach.equals("BigB")) {
+            fach = "Big Band";
         }
 
         if (kurs.equals("L")) {

@@ -81,7 +81,6 @@
 
 
                 android:background="#FAFAFA"
-                android:entries="@array/LK1"
                 android:gravity="center"
                 android:paddingTop="0dp"
                 android:prompt="@string/fach"
@@ -143,7 +142,7 @@
 
 
                 android:background="#FAFAFA"
-                android:entries="@array/LK2"
+
                 android:gravity="center"
                 android:paddingTop="0dp"
                 android:prompt="@string/kurs"

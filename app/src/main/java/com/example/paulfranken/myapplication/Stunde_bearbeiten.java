@@ -99,6 +99,8 @@ public class Stunde_bearbeiten extends AppCompatActivity implements AdapterView.
             MainActivity.alleStunden.get(MainActivity.bearbeiteni).kurs=kurs.getSelectedItem().toString();
             MainActivity.alleStunden.get(MainActivity.bearbeiteni).nummer=nummer.getSelectedItem().toString();
 
+            MainActivity.alleStunden.get(MainActivity.bearbeiteni).lehrer="";
+
 
 
             String weekDay;
@@ -550,6 +552,7 @@ public class Stunde_bearbeiten extends AppCompatActivity implements AdapterView.
                 MainActivity.speichern_laden.add(String.valueOf(MainActivity.alleStunden.get(i).platz));
                 MainActivity.speichern_laden.add(String.valueOf(MainActivity.alleStunden.get(i).fach));
                 MainActivity.speichern_laden.add(String.valueOf(MainActivity.alleStunden.get(i).raum));
+                MainActivity.speichern_laden.add(String.valueOf(MainActivity.alleStunden.get(i).lehrer));
 
 
 

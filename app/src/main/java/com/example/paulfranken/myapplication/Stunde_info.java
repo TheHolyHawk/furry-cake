@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class Stunde_info extends AppCompatActivity {
 private RelativeLayout layout;
-    private TextView fach,raum,kurs,nummer;
+    private TextView fach,raum,kurs,nummer, lehrer;
     private Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +30,16 @@ private RelativeLayout layout;
         layout=(RelativeLayout)findViewById(R.id.relativeLayout);
         layout.setBackgroundColor(Integer.parseInt(MainActivity.bearbeiten.farbe));
         fach=(TextView)findViewById(R.id.fach);
-        fach.setText(MainActivity.bearbeiten.fach);
+        fach.setText("Fach: "+MainActivity.bearbeiten.fach);
         raum=(TextView)findViewById(R.id.raum);
-        raum.setText(MainActivity.bearbeiten.raum);
+        raum.setText("Raum: "+MainActivity.bearbeiten.raum);
         kurs=(TextView)findViewById(R.id.Kurs);
-        kurs.setText(MainActivity.bearbeiten.kurs);
+        kurs.setText("Kurs: "+MainActivity.bearbeiten.kurs);
         nummer=(TextView)findViewById(R.id.nummer);
-        nummer.setText(MainActivity.bearbeiten.nummer);
+        nummer.setText("Nummer: "+MainActivity.bearbeiten.nummer);
+        lehrer= (TextView)findViewById(R.id.lehrer);
+        lehrer.setText("Lehrer: "+MainActivity.bearbeiten.lehrer);
+
 
         btn=(Button) findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -60,5 +63,6 @@ private RelativeLayout layout;
 public void finish2(){
     this.finish();
 }
+
 
 }

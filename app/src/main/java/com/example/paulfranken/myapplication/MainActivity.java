@@ -127,7 +127,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener,V
         context=getApplicationContext();
 
 
-
         //Speichern des Layouts und festlegen der Toolbar, Speichern des ApplicationContexts
 
 
@@ -190,7 +189,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener,V
         //In der ArrayList alleStunden wird jedes TextView geschpeichert und mit Listenern ausgestattet
 
 
-
         setTage();
 
         //Alles TextViews(Stunden) bekommen zugewiesen welchen Tag sie haben
@@ -204,7 +202,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener,V
         laden_einstellungen();
 
         //Es wird aus den SharedPreferences geladen welche Klasse eingestellt wurde
-
 
 
         Laden();
@@ -559,10 +556,11 @@ if(test!=null){
                 alleStunden.get(platz).platz = speichern_laden.get(i + 5);
                 alleStunden.get(platz).fach = speichern_laden.get(i + 6);
                 alleStunden.get(platz).raum=speichern_laden.get(i+7);
+                alleStunden.get(platz).lehrer=speichern_laden.get(i+8);
 
                 alleStunden.get(platz).aktualisieren();
 
-                i = i + 7;
+                i = i + 8;
 
 
 
@@ -783,6 +781,7 @@ if(!alleStunden.get(i).farbe.equals("")) {
     speichern_laden.add(String.valueOf(alleStunden.get(i).platz));
     speichern_laden.add(String.valueOf(alleStunden.get(i).fach));
     speichern_laden.add(String.valueOf(alleStunden.get(i).raum));
+    speichern_laden.add(String.valueOf(alleStunden.get(i).lehrer));
 
 
 

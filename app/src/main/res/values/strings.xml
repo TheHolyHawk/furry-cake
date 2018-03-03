@@ -77,27 +77,7 @@
         <item>Q2</item>
 
     </string-array>
-    <string-array name="LK2">
-        <item>BI L2</item>
-        <item>CH L1</item>
-        <item>D L2</item>
-        <item>E L2</item>
-        <item>GE L1</item>
-        <item>KU L1</item>
-        <item>M L2</item>
-        <item>MU L1</item>
-        <item>PH L1</item>
-        <item>EK L2</item>
-    </string-array>
-    <string-array name="LK1">
-        <item>BI L1</item>
-        <item>D L1</item>
-        <item>E L1</item>
-        <item>EK L1</item>
-        <item>M L1</item>
-        <item>SW L1</item>
-        <item>M L3</item>
-    </string-array>
+
 
     <string-array name="klausur">
         <item>Wähle ein Datum</item>
@@ -145,56 +125,5 @@
     <string name="dismiss_label">Dismiss</string>
     <string name="clear_all_label">Clear all</string>
 
-    <string-array name="shopping_item">
-        <item>Onion</item>
-        <item>Sausage</item>
-        <item>Milk</item>
-        <item>Garlic</item>
-        <item>Beef</item>
-        <item>Veggies</item>
-        <item>Olive</item>
-        <item>Cheese</item>
-        <item>Tuna</item>
-        <item>Mushrooms</item>
-        <item>Onion</item>
-        <item>Sausage</item>
-        <item>Milk</item>
-        <item>Garlic</item>
-        <item>Beef</item>
-        <item>Veggies</item>
-        <item>Olive</item>
-        <item>Cheese</item>
-        <item>Tuna</item>
-        <item>Mushrooms</item>
-        <item>Onion</item>
-        <item>Sausage</item>
-        <item>Milk</item>
-        <item>Garlic</item>
-        <item>Beef</item>
-        <item>Veggies</item>
-        <item>Olive</item>
-        <item>Cheese</item>
-        <item>Tuna</item>
-        <item>Mushrooms</item>
-        <item>Onion</item>
-        <item>Sausage</item>
-        <item>Milk</item>
-        <item>Garlic</item>
-        <item>Beef</item>
-        <item>Veggies</item>
-        <item>Olive</item>
-        <item>Cheese</item>
-        <item>Tuna</item>
-        <item>Mushrooms</item>
-        <item>Onion</item>
-        <item>Sausage</item>
-        <item>Milk</item>
-        <item>Garlic</item>
-        <item>Beef</item>
-        <item>Veggies</item>
-        <item>Olive</item>
-        <item>Cheese</item>
-        <item>Tuna</item>
-        <item>Mushrooms</item>
-    </string-array>
+
 </resources>
