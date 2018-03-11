@@ -1,35 +1,27 @@
 {
   "project_info": {
-    "project_number": "762103443974",
-    "firebase_url": "https://stundenplan-2.firebaseio.com",
-    "project_id": "stundenplan-2",
-    "storage_bucket": "stundenplan-2.appspot.com"
+    "project_number": "678670493288",
+    "firebase_url": "https://stundenplan2-0.firebaseio.com",
+    "project_id": "stundenplan2-0",
+    "storage_bucket": "stundenplan2-0.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:762103443974:android:975ec91eb3edf32f",
+        "mobilesdk_app_id": "1:678670493288:android:ba22244a981239f2",
         "android_client_info": {
-          "package_name": "com.example.paulfranken.myapplication"
+          "package_name": "com.frankensterzenbach.paulfranken.myapplication"
         }
       },
       "oauth_client": [
         {
-          "client_id": "762103443974-f8o1iktmba0447n5mr9nhescjmedii6f.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.paulfranken.myapplication",
-            "certificate_hash": "292b461bd8374745ffeacee379a00580c31fc68d"
-          }
-        },
-        {
-          "client_id": "762103443974-j6sqgn8f83vkb304tnsm2lkr9vq043eg.apps.googleusercontent.com",
+          "client_id": "678670493288-rrl5gquipq6j2fvk3v144kacsplvllc7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDli29X6DvGiQ6y5X3KjGbiZI4SoZhxWEQ"
+          "current_key": "AIzaSyC3F0yzUY1lj0u8YZF1ZEL02kR1GkTE0vE"
         }
       ],
       "services": {
@@ -37,13 +29,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "762103443974-j6sqgn8f83vkb304tnsm2lkr9vq043eg.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2

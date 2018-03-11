@@ -1,8 +1,7 @@
-package com.example.paulfranken.myapplication;
+package com.frankensterzenbach.paulfranken.myapplication;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import java.io.BufferedInputStream;

@@ -1,30 +1,20 @@
-package com.example.paulfranken.myapplication;
+package com.frankensterzenbach.paulfranken.myapplication;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.InputType;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.colorpicker.ColorPickerDialog;
 import com.android.colorpicker.ColorPickerSwatch;
@@ -34,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
-import static com.example.paulfranken.myapplication.WidgetProvider.raum2;
+import static com.frankensterzenbach.paulfranken.myapplication.WidgetProvider.raum2;
 
 public class neueStunde_java extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
@@ -91,19 +81,20 @@ public class neueStunde_java extends AppCompatActivity implements View.OnClickLi
         kurs=(Spinner)findViewById(R.id.spinner2);
         raum=(EditText) findViewById(R.id.editText);
         nummer=(Spinner) findViewById(R.id.spinner3);
+        String klasse=MainActivity.klasse;
+if(klasse!=null) {
+    if (klasse.equals("EF") || klasse.equals("Q1") || klasse.equals("Q2")) {
 
-        if(MainActivity.klasse.equals("EF")||MainActivity.klasse.equals("Q1")||MainActivity.klasse.equals("Q2")){
+    } else {
+        nummer.setVisibility(View.GONE);
+        kurs.setVisibility(View.GONE);
+        n.setVisibility(View.GONE);
+        k.setVisibility(View.GONE);
+        t1.setVisibility(View.GONE);
+        t2.setVisibility(View.GONE);
+    }
 
-        }else{
-            nummer.setVisibility(View.GONE);
-            kurs.setVisibility(View.GONE);
-            n.setVisibility(View.GONE);
-            k.setVisibility(View.GONE);
-            t1.setVisibility(View.GONE);
-            t2.setVisibility(View.GONE);
-        }
-
-       
+}
 
 
         String[] faecher;
@@ -525,8 +516,8 @@ public class neueStunde_java extends AppCompatActivity implements View.OnClickLi
                 MainActivity.alleStunden.get(MainActivity.bearbeiteni).fach=fach.getSelectedItem().toString();
 
                 MainActivity.alleStunden.get(MainActivity.bearbeiteni).platz=String.valueOf(MainActivity.bearbeiteni);
-                if(!String.valueOf(raum2).equals("")){
-                    MainActivity.alleStunden.get(MainActivity.bearbeiteni).raum=String.valueOf(raum2);
+                if(!String.valueOf(""+raum2).equals("")){
+                    MainActivity.alleStunden.get(MainActivity.bearbeiteni).raum=String.valueOf(""+raum2);
                 }else{
                     MainActivity.alleStunden.get(MainActivity.bearbeiteni).raum=" ";
                 }
@@ -582,15 +573,15 @@ widget_speichern();
 
 
 
-        MainActivity.speichern_laden.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).getText());
-        MainActivity.speichern_laden.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).farbe);
-        MainActivity.speichern_laden.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).kurs);
-        MainActivity.speichern_laden.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).nummer);
-        MainActivity.speichern_laden.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum);
-        MainActivity.speichern_laden.add((String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).platz);
-        MainActivity.speichern_laden.add(MainActivity.alleStunden.get(MainActivity.bearbeiteni).fach);
-        MainActivity.speichern_laden.add(MainActivity.alleStunden.get(MainActivity.bearbeiteni).raum);
-        MainActivity.speichern_laden.add(MainActivity.alleStunden.get(MainActivity.bearbeiteni).lehrer);
+        MainActivity.speichern_laden.add(""+(String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).getText());
+        MainActivity.speichern_laden.add(""+(String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).farbe);
+        MainActivity.speichern_laden.add(""+(String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).kurs);
+        MainActivity.speichern_laden.add(""+(String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).nummer);
+        MainActivity.speichern_laden.add(""+(String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).datum);
+        MainActivity.speichern_laden.add(""+(String) MainActivity.alleStunden.get(MainActivity.bearbeiteni).platz);
+        MainActivity.speichern_laden.add(""+MainActivity.alleStunden.get(MainActivity.bearbeiteni).fach);
+        MainActivity.speichern_laden.add(""+MainActivity.alleStunden.get(MainActivity.bearbeiteni).raum);
+        MainActivity.speichern_laden.add(""+MainActivity.alleStunden.get(MainActivity.bearbeiteni).lehrer);
 
     }
 

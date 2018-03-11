@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.paulfranken.myapplication">
+    package="com.frankensterzenbach.paulfranken.myapplication">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.frankensterzenbach.paulfranken.myapplication.MainActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
@@ -24,31 +24,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".neueStunde_java"
+            android:name="com.frankensterzenbach.paulfranken.myapplication.neueStunde_java"
             android:label="@string/title_activity_neue_stunde_java"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Klausurplan"
+            android:name="com.frankensterzenbach.paulfranken.myapplication.Klausurplan"
             android:label="@string/title_activity_klausurplan"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Einstellungen"
+            android:name="com.frankensterzenbach.paulfranken.myapplication.Einstellungen"
             android:label="@string/title_activity_einstellungen"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Stunde_info"
+            android:name="com.frankensterzenbach.paulfranken.myapplication.Stunde_info"
             android:label="@string/title_activity_stunde__bearbeiten"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Stunde_bearbeiten"
+            android:name="com.frankensterzenbach.paulfranken.myapplication.Stunde_bearbeiten"
             android:label="@string/title_activity_stunde__bearbeiten"
             android:screenOrientation="portrait" />
-        <activity android:name=".SendMailActivity" />
+        <activity android:name="com.frankensterzenbach.paulfranken.myapplication.SendMailActivity" />
 
         <receiver
-            android:name=".WidgetProvider"
+            android:name="com.frankensterzenbach.paulfranken.myapplication.WidgetProvider"
             android:exported="false"
             android:icon="@color/colorPrimaryDark"
             android:label="@string/app_name">
@@ -63,15 +63,15 @@
         </receiver>
 
         <service
-            android:name=".WidgetService"
+            android:name="com.frankensterzenbach.paulfranken.myapplication.WidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <activity
-            android:name=".StundenSetzen"
+            android:name="com.frankensterzenbach.paulfranken.myapplication.StundenSetzen"
             android:label="@string/title_activity_stunden_setzen"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Test"
+            android:name="com.frankensterzenbach.paulfranken.myapplication.Test"
             android:label="@string/title_activity_test"
             android:theme="@style/AppTheme.NoActionBar" />
 

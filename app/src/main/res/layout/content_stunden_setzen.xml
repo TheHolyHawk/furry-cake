@@ -6,7 +6,7 @@
     xmlns:ads="http://schemas.android.com/apk/res-auto"
 
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.paulfranken.myapplication.MainActivity"
+    tools:context="com.frankensterzenbach.paulfranken.myapplication.MainActivity"
     android:id="@+id/swipe2"
   >
 

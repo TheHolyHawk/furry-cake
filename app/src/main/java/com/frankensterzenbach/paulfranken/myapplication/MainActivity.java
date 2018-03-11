@@ -1,5 +1,4 @@
-package com.example.paulfranken.myapplication;
-import android.*;
+package com.frankensterzenbach.paulfranken.myapplication;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -36,7 +35,6 @@ import com.google.android.gms.ads.AdView;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -57,18 +55,17 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import static com.example.paulfranken.myapplication.R.id.text102;
-import static com.example.paulfranken.myapplication.R.id.text108;
-import static com.example.paulfranken.myapplication.R.id.text16;
-import static com.example.paulfranken.myapplication.R.id.text26;
-import static com.example.paulfranken.myapplication.R.id.text31;
-import static com.example.paulfranken.myapplication.R.id.text37;
-import static com.example.paulfranken.myapplication.R.id.text4;
-import static com.example.paulfranken.myapplication.R.id.text41;
-import static com.example.paulfranken.myapplication.R.id.text46;
-import static com.example.paulfranken.myapplication.R.id.text56;
-import static com.example.paulfranken.myapplication.R.id.text65;
-import static com.example.paulfranken.myapplication.StundenSetzen.c;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text102;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text108;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text16;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text26;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text31;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text37;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text4;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text41;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text46;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text56;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text65;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener,View.OnLongClickListener {
 
@@ -177,7 +174,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener,V
         //OnRefreshListener festgelegt der bei aktivierung die Methode aktualisieren aufruft
 
         //--------------------------------------------------------Swipe Layout---------------------------------------------------------
-
 
 
 
@@ -384,7 +380,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener,V
 
             // Set up the input
             final EditText input = new EditText(this);
-            // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+            // Specify the type of input expected; this, for frankensterzenbach, sets the input as a password, and will mask the text
             input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
             builder.setView(input);
 
@@ -539,16 +535,17 @@ if(test!=null){
     }
     public void umwandelnzuruck() {
         int platz;
+        Toast.makeText(context, ""+speichern_laden.size(), Toast.LENGTH_SHORT).show();
 
 
         if(speichern_laden.size()!=0) {
             for (int i = 0; i < speichern_laden.size(); i++) {
-            platz=Integer.parseInt(speichern_laden.get(i+5));
+                platz=Integer.parseInt(speichern_laden.get(i+5));
 
 
 
                 alleStunden.get(platz).setText(speichern_laden.get(i+6)+"\n"+"\n"+speichern_laden.get(i+7));
-                alleStunden.get(platz).farbe = speichern_laden.get(i+1);
+                alleStunden.get(platz).farbe =""+ speichern_laden.get(i+1);
                 alleStunden.get(platz).kurs = speichern_laden.get(i + 2);
                 alleStunden.get(platz).nummer = speichern_laden.get(i + 3);
                 alleStunden.get(platz).datum = speichern_laden.get(i + 4);
@@ -566,6 +563,8 @@ if(test!=null){
 
             }
         }
+
+
     }
     public void speichernlayouts(){
         LinearLayout  layout1 = (LinearLayout) findViewById( R.id.layout1 );
@@ -804,35 +803,67 @@ if(!alleStunden.get(i).farbe.equals("")) {
 
         for (int i = 0; i < MainActivity.alleStunden.size(); i++) {
 
+if(MainActivity.klasse.equals("Q1")||MainActivity.klasse.equals("EF")||MainActivity.klasse.equals("Q2")) {
+    for (int m = 0; m < MainActivity.vertreungsplan_daten.size(); m++) {
+        if (MainActivity.vertreungsplan_daten.get(m).fach.equals(MainActivity.alleStunden.get(i).fach) && MainActivity.vertreungsplan_daten.get(m).kursid.equals(MainActivity.alleStunden.get(i).nummer) && MainActivity.vertreungsplan_daten.get(m).kurs.equals(MainActivity.alleStunden.get(i).kurs) && MainActivity.vertreungsplan_daten.get(m).tag.equals(MainActivity.alleStunden.get(i).tag) && MainActivity.vertreungsplan_daten.get(m).stunde.equals(MainActivity.alleStunden.get(i).stunde)) {
 
-            for (int m = 0; m < MainActivity.vertreungsplan_daten.size(); m++) {
-                if(MainActivity.vertreungsplan_daten.get(m).fach.equals(MainActivity.alleStunden.get(i).fach)&&MainActivity.vertreungsplan_daten.get(m).kursid.equals(MainActivity.alleStunden.get(i).nummer) &&MainActivity.vertreungsplan_daten.get(m).kurs.equals(MainActivity.alleStunden.get(i).kurs)&&MainActivity.vertreungsplan_daten.get(m).tag.equals(MainActivity.alleStunden.get(i).tag)&&MainActivity.vertreungsplan_daten.get(m).stunde.equals(MainActivity.alleStunden.get(i).stunde)){
-
-                   if(vertreungsplan_daten.get(m).text.equals("Selbstlernen")) {
-                       if(MainActivity.alleStunden.get(i).fach.length() < 9){
-                           MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + "\nFrei");
-                       }
-                       else{MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + " " +"Frei");}
-                       MainActivity.alleStunden.get(i).setTextColor(Color.RED);
-                       MainActivity.alleStunden.get(i).aktualisieren2();
-
-
-                   }else if(vertreungsplan_daten.get(m).text.equals("Vertretung")){
-                       MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + " " + vertreungsplan_daten.get(m).text);
-                       MainActivity.alleStunden.get(i).setTextColor(Color.RED);
-                       MainActivity.alleStunden.get(i).aktualisieren2();
-
-
-                   }else
-                   {
-                       MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + " " + vertreungsplan_daten.get(m).text+" "+vertreungsplan_daten.get(m).raum);
-                       MainActivity.alleStunden.get(i).setTextColor(Color.RED);
-                       MainActivity.alleStunden.get(i).aktualisieren2();
-
-                   }
-
+            if (vertreungsplan_daten.get(m).text.equals("Selbstlernen")) {
+                if (MainActivity.alleStunden.get(i).fach.length() < 9) {
+                    MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + "\nFrei");
+                } else {
+                    MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + " " + "Frei");
                 }
+                MainActivity.alleStunden.get(i).setTextColor(Color.RED);
+                MainActivity.alleStunden.get(i).aktualisieren2();
+
+
+            } else if (vertreungsplan_daten.get(m).text.equals("Vertretung")) {
+                MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + " " + vertreungsplan_daten.get(m).text);
+                MainActivity.alleStunden.get(i).setTextColor(Color.RED);
+                MainActivity.alleStunden.get(i).aktualisieren2();
+
+
+            } else {
+                MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + " " + vertreungsplan_daten.get(m).text + " " + vertreungsplan_daten.get(m).raum);
+                MainActivity.alleStunden.get(i).setTextColor(Color.RED);
+                MainActivity.alleStunden.get(i).aktualisieren2();
+
             }
+
+        }
+    }
+}else{
+    for (int m = 0; m < MainActivity.vertreungsplan_daten.size(); m++) {
+        if (MainActivity.vertreungsplan_daten.get(m).fach.equals(MainActivity.alleStunden.get(i).fach) &&MainActivity.vertreungsplan_daten.get(m).tag.equals(MainActivity.alleStunden.get(i).tag) && MainActivity.vertreungsplan_daten.get(m).stunde.equals(MainActivity.alleStunden.get(i).stunde)) {
+
+            if (vertreungsplan_daten.get(m).text.equals("Frei")) {
+                if (MainActivity.alleStunden.get(i).fach.length() < 9) {
+                    MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + "\nFrei");
+                } else {
+                    MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + " " + "Frei");
+                }
+                MainActivity.alleStunden.get(i).setTextColor(Color.RED);
+                MainActivity.alleStunden.get(i).aktualisieren2();
+
+
+            } else if (vertreungsplan_daten.get(m).text.equals("Statt-Vertretung")) {
+                MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + " \n" + "VTR.\n"+vertreungsplan_daten.get(m).raum);
+
+                MainActivity.alleStunden.get(i).setTextColor(Color.RED);
+                MainActivity.alleStunden.get(i).aktualisieren2();
+
+
+            } else {
+                MainActivity.alleStunden.get(i).setText("" + alleStunden.get(i).fach + " " + vertreungsplan_daten.get(m).text + " " + vertreungsplan_daten.get(m).raum);
+                MainActivity.alleStunden.get(i).setTextColor(Color.RED);
+                MainActivity.alleStunden.get(i).aktualisieren2();
+
+            }
+
+        }
+    }
+
+}
 
         }
 
@@ -1009,7 +1040,9 @@ if(!alleStunden.get(i).farbe.equals("")) {
 
         @Override
         protected void onPostExecute(Void aVoid) {
+
            check();
+
             ((MainActivity) mCon).resetUpdating();
 
 

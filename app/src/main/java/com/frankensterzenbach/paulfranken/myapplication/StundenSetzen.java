@@ -1,7 +1,6 @@
-package com.example.paulfranken.myapplication;
+package com.frankensterzenbach.paulfranken.myapplication;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -13,28 +12,19 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -44,12 +34,9 @@ import java.util.Locale;
 import java.util.Set;
 
 
-import static com.example.paulfranken.myapplication.StundenSetzen.c;
-import static com.example.paulfranken.myapplication.StundenSetzen.l;
-import static com.example.paulfranken.myapplication.StundenSetzen.list;
-import static com.example.paulfranken.myapplication.StundenSetzen.tasklaeuft;
-import static com.example.paulfranken.myapplication.WidgetProvider.raum2;
-import static com.example.paulfranken.myapplication.WidgetProvider.stunde;
+import static com.frankensterzenbach.paulfranken.myapplication.StundenSetzen.l;
+import static com.frankensterzenbach.paulfranken.myapplication.StundenSetzen.list;
+import static com.frankensterzenbach.paulfranken.myapplication.StundenSetzen.tasklaeuft;
 
 public class StundenSetzen extends AppCompatActivity {
     public static Context c;
@@ -210,25 +197,25 @@ if(tasklaeuft==false) {
 
     public int farbe(String fach){
         int farbe=000;
-        if(fach.equals("D ")){
+        if(fach.equals("D ")||fach.equals("D")){
             farbe=-1427400;
-        }else if(fach.equals("E ")){
+        }else if(fach.equals("E ")||fach.equals("E5")){
             farbe=-1414344;
-        }else if(fach.equals("F ")){
+        }else if(fach.equals("F ")||fach.equals("F6")){
             farbe=-1401288;
-        }else if(fach.equals("L ")){
+        }else if(fach.equals("L ")||fach.equals("L6")){
             farbe=-1401288;
         }else if(fach.equals("S ")||fach.equals("S8")){
             farbe=-1396936;
         }
 
-        else if(fach.equals("M ")){
+        else if(fach.equals("M ")||fach.equals("M")){
             farbe=-3874250;
-        }else if(fach.equals("PH")){
+        }else if(fach.equals("PH")||fach.equals("PH EXP")){
             farbe=-6038988;
-        }else if(fach.equals("CH")){
+        }else if(fach.equals("CH")||fach.equals("CH EXP")){
             farbe=-8794062;
-        }else if(fach.equals("BI")){
+        }else if(fach.equals("BI")||fach.equals("BI EXP")){
             farbe=-13780179;
         }else if(fach.equals("IF")){
             farbe=-14180244;
@@ -238,15 +225,18 @@ if(tasklaeuft==false) {
 
         else if(fach.equals("GE")){
             farbe=-13866858;
-        }else if(fach.equals("SW")){
+        }else if(fach.equals("SW")||fach.equals("PK")){
             farbe=-13479268;
         }else if(fach.equals("EK")){
             farbe=-12961117;
-        }else if(fach.equals("PL")){
+        }else if(fach.equals("PL")||fach.equals("PP")){
             farbe=-11651680;
         }else if(fach.equals("ER")){
             farbe=-10473058;
         }else if(fach.equals("KR")){
+            farbe=-9163621;
+        }
+        else if(fach.equals("REL")){
             farbe=-9163621;
         }
 
@@ -258,6 +248,11 @@ if(tasklaeuft==false) {
             farbe=-3198109;
         }else if(fach.equals("SP")){
             farbe=-11184811;
+        }else if(fach.equals("SN")){
+            farbe=-11184811;
+        }
+        else if(fach.equals("EIS")){
+            farbe=-11184811;
         }else if(fach.equals("CO")){
             farbe=-5855578;
         }else if(fach.equals("OR")){
@@ -266,8 +261,27 @@ if(tasklaeuft==false) {
             farbe=-5855578;
         }
 
+        else if(fach.equals("AG-Blaeser")){
+            farbe=-5855578;
+        }else if(fach.equals("AG-LEGO")){
+            farbe=-5855578;
+        }else if(fach.equals("AG-SP")){
+            farbe=-5855578;
+        }
+        else if(fach.equals("LRS")){
+            farbe=-6676889;
+        }
+
+        else if(fach.equals("FOE"+MainActivity.klasse.charAt(0))){
+            farbe=-5855578;
+        }
+
+        else if(fach.equals("Diff-BI")||fach.equals("Diff-CH")||fach.equals("Diff-EK")||fach.equals("Diff-MU")||fach.equals("Diff-PH")||fach.equals("Diff-CO")){
+            farbe=-6777668;
+        }
 
 
+        Toast.makeText(c, ""+farbe, Toast.LENGTH_SHORT).show();
         return farbe;
     }
     public void löschen(){
@@ -301,6 +315,8 @@ this.finish();
     }
     //Wenn mehr als nur die Q1 funktionieren soll muss das hier noch dazu
     public void stundeSetzen(String stunde) {
+
+
         for (int i = 0; i < list.size() - 7; i++) {
             //-7 ist notwendig um noch alles ohne nullpointer durchsuchen zu können
             if (list.get(i + 4).equals(stunde)) {
@@ -308,7 +324,8 @@ this.finish();
                     if (list.get(i + 2).equals("Q1") ||list.get(i + 2).equals("Q2") || list.get(i + 2).equals("EF")) {
 
                         MainActivity.alleStunden.get(platzbestimmer(i)).löschen();
-                        MainActivity.alleStunden.get(platzbestimmer(i)).setText(stunde + "\n" + "\n" + list.get(i + 5));
+
+                        MainActivity.alleStunden.get(platzbestimmer(i)).umwandeln();
                         if(stunde.equals("BigB")) {
                             MainActivity.alleStunden.get(platzbestimmer(i)).fach = "BigB";
                             MainActivity.alleStunden.get(platzbestimmer(i)).farbe = String.valueOf(-5855578);
@@ -316,6 +333,8 @@ this.finish();
                             MainActivity.alleStunden.get(platzbestimmer(i)).farbe = String.valueOf(farbe("" + stunde.charAt(0) + stunde.charAt(1)));
                             MainActivity.alleStunden.get(platzbestimmer(i)).fach = "" + stunde.charAt(0) + stunde.charAt(1);
                         }
+                        MainActivity.alleStunden.get(platzbestimmer(i)).setText(MainActivity.alleStunden.get(platzbestimmer(i)).fach + "\n" + "\n" + list.get(i + 5));
+
 
 
                         if(stunde.length()>2) {
@@ -718,16 +737,19 @@ this.finish();
                     }
                     else{
                         MainActivity.alleStunden.get(platzbestimmer(i)).löschen();
-                        MainActivity.alleStunden.get(platzbestimmer(i)).setText(stunde + "\n" + "\n" + list.get(i + 5));
-                        MainActivity.alleStunden.get(platzbestimmer(i)).farbe = String.valueOf(000);
                         MainActivity.alleStunden.get(platzbestimmer(i)).fach = "" +stunde;
+                        MainActivity.alleStunden.get(platzbestimmer(i)).umwandeln();
+                        MainActivity.alleStunden.get(platzbestimmer(i)).setText(MainActivity.alleStunden.get(platzbestimmer(i)).fach + "\n" + "\n" + list.get(i + 5));
+                        MainActivity.alleStunden.get(platzbestimmer(i)).farbe = String.valueOf(farbe(""+stunde));
+
                         MainActivity.alleStunden.get(platzbestimmer(i)).kurs = "";
                         MainActivity.alleStunden.get(platzbestimmer(i)).platz = String.valueOf(platzbestimmer(i));
+                        MainActivity.alleStunden.get(platzbestimmer(i)).lehrer = list.get(i + 3);
 
                         MainActivity.alleStunden.get(platzbestimmer(i)).nummer = "" ;
                         MainActivity.alleStunden.get(platzbestimmer(i)).raum = list.get(i + 5);
 
-                       MainActivity.alleStunden.get(platzbestimmer(i)).umwandeln();
+
 
                         String weekDay;
                         SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", Locale.US);

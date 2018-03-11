@@ -1,27 +1,23 @@
-package com.example.paulfranken.myapplication;
+package com.frankensterzenbach.paulfranken.myapplication;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
-import android.view.Gravity;
-import android.widget.TextView;
 
-import static android.R.attr.id;
-import static com.example.paulfranken.myapplication.R.id.text102;
-import static com.example.paulfranken.myapplication.R.id.text108;
-import static com.example.paulfranken.myapplication.R.id.text16;
-import static com.example.paulfranken.myapplication.R.id.text26;
-import static com.example.paulfranken.myapplication.R.id.text31;
-import static com.example.paulfranken.myapplication.R.id.text37;
-import static com.example.paulfranken.myapplication.R.id.text4;
-import static com.example.paulfranken.myapplication.R.id.text41;
-import static com.example.paulfranken.myapplication.R.id.text46;
-import static com.example.paulfranken.myapplication.R.id.text56;
-import static com.example.paulfranken.myapplication.R.id.text65;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text102;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text108;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text16;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text26;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text31;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text37;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text4;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text41;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text46;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text56;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text65;
 
 public class TextView2 extends android.support.v7.widget.AppCompatTextView {
 public String farbe="";
@@ -59,20 +55,20 @@ public String farbe="";
     }
     public void umwandeln(){
 
-        if (fach.equals("D ")) {
+        if (fach.equals("D ")||fach.equals("D")) {
             fach = "Deutsch";
-        }else if (fach.equals("E ")) {
+        }else if (fach.equals("E ")||fach.equals("E5")) {
             fach = "Englisch";
-        }else if (fach.equals("F ")) {
+        }else if (fach.equals("F ")||fach.equals("F6")) {
             fach = "Franz";
-        }else if (fach.equals("L ")) {
+        }else if (fach.equals("L ")||fach.equals("L6")) {
             fach = "Latein";
         }else if (fach.equals("S ")) {
             fach = "Spanisch";
         }else if (fach.equals("S8")) {
             fach = "Spanisch8";
 
-        }else if (fach.equals("M ")) {
+        }else if (fach.equals("M ")||fach.equals("M")) {
             fach = "Mathe";
         }else if (fach.equals("PH")) {
             fach = "Physik";
@@ -85,8 +81,26 @@ public String farbe="";
         }else if (fach.equals("TC")) {
             fach = "Technik";
 
-        }else if (fach.equals("GE")) {
+        }
+        else if (fach.equals("PH EXP")) {
+            fach = "PH.Exp.";
+        }else if (fach.equals("BI EXP")) {
+            fach = "Bi.Exp.";
+        }else if (fach.equals("CH EXP")) {
+            fach = "CH.Exp.";
+        }
+
+        else if (fach.equals("AG-Blaeser")) {
+            fach = "Bläser";
+        }else if (fach.equals("AG-LEGO")) {
+            fach = "LEGO";
+        }
+
+
+        else if (fach.equals("GE")) {
             fach = "Geschi";
+        }else if (fach.equals("PK")) {
+            fach = "Politik";
         }else if (fach.equals("SW")) {
             fach = "Sowi";
         }else if (fach.equals("EK")) {
@@ -95,6 +109,10 @@ public String farbe="";
             fach = "Philo";
         }else if (fach.equals("ER")) {
             fach = "Reli(E)";
+        }else if (fach.equals("PP")) {
+            fach = "P.Philo";
+        }else if (fach.equals("REL")) {
+            fach = "Religion";
         }else if (fach.equals("KR")) {
             fach = "Reli(K)";
 
@@ -106,8 +124,16 @@ public String farbe="";
             fach = "Literatur";
         }else if (fach.equals("SP")) {
             fach = "Sport";
+        }else if (fach.equals("SN")) {
+            fach = "Schwimmen";
+        }else if (fach.equals("EIS")) {
+            fach = "Eislaufen";
         }else if (fach.equals("CO")) {
             fach = "Chor";
+        }else if (fach.equals("FOE"+MainActivity.klasse.charAt(0))) {
+            fach = "Förder";
+        }else if (fach.equals("Diff"+MainActivity.klasse.charAt(0))) {
+            fach = "Diff";
         }else if (fach.equals("OR")) {
             fach = "Orchester";
         }

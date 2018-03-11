@@ -1,4 +1,4 @@
-package com.example.paulfranken.myapplication;
+package com.frankensterzenbach.paulfranken.myapplication;
 
 /**
  * Created by timst on 28.01.2018.
@@ -8,8 +8,6 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
-
-import java.util.List;
 
 public class SendMailTask extends AsyncTask {
 
@@ -34,15 +32,17 @@ public class SendMailTask extends AsyncTask {
         try {
             Log.i("SendMailTask", "About to instantiate GMail...");
             publishProgress("Processing input....");
-            GMail androidEmail = new GMail(args[0].toString(),
-                    args[1].toString(), args[2].toString(), args[3].toString(),
-                    args[4].toString());
-            publishProgress("Preparing mail message....");
-            androidEmail.createEmailMessage();
-            publishProgress("Sending email....");
-            androidEmail.sendEmail();
-            publishProgress("Email Sent.");
-            Log.i("SendMailTask", "Mail Sent.");
+            if(args!=null) {
+                GMail androidEmail = new GMail(args[0].toString(),
+                        args[1].toString(), args[2].toString(), args[3].toString(),
+                        args[4].toString());
+                publishProgress("Preparing mail message....");
+                androidEmail.createEmailMessage();
+                publishProgress("Sending email....");
+                androidEmail.sendEmail();
+                publishProgress("Email Sent.");
+                Log.i("SendMailTask", "Mail Sent.");
+            }
         } catch (Exception e) {
             publishProgress(e.getMessage());
             Log.e("SendMailTask", e.getMessage(), e);
@@ -52,7 +52,9 @@ public class SendMailTask extends AsyncTask {
 
     @Override
     public void onProgressUpdate(Object... values) {
-        statusDialog.setMessage(values[0].toString());
+        if(values!=null) {
+            statusDialog.setMessage(values[0].toString());
+        }
 
     }
 

@@ -1,4 +1,4 @@
-package com.example.paulfranken.myapplication;
+package com.frankensterzenbach.paulfranken.myapplication;
 
 /**
  * Created by timst on 28.01.2018.
@@ -7,7 +7,6 @@ package com.example.paulfranken.myapplication;
 import android.util.Log;
 
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Message;

@@ -44,6 +44,12 @@
         <item>Chor</item>
         <item>Orchester</item>
         <item>Big Band</item>
+        <item>LRS</item>
+        <item>LEGO</item>
+        <item>Diff</item>
+        <item>Förder</item>
+        <item>Bläser</item>
+
     </string-array>
     <string name="Klasse">Klasse</string>
     <string-array name="klassen">
