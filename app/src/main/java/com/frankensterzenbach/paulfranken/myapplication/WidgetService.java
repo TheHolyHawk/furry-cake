@@ -1,4 +1,4 @@
-package com.example.paulfranken.myapplication;
+package com.frankensterzenbach.paulfranken.myapplication;
 
 import android.content.Intent;
 import android.widget.RemoteViewsService;

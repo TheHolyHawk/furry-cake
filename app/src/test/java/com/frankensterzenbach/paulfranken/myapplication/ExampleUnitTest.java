@@ -1,4 +1,4 @@
-package com.example.paulfranken.myapplication;
+package com.frankensterzenbach.paulfranken.myapplication;
 
 import org.junit.Test;
 

@@ -1,5 +1,4 @@
-package com.example.paulfranken.myapplication;
-import android.*;
+package com.frankensterzenbach.paulfranken.myapplication;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -36,7 +35,6 @@ import com.google.android.gms.ads.AdView;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -53,22 +51,23 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
-import static com.example.paulfranken.myapplication.R.id.text102;
-import static com.example.paulfranken.myapplication.R.id.text108;
-import static com.example.paulfranken.myapplication.R.id.text16;
-import static com.example.paulfranken.myapplication.R.id.text26;
-import static com.example.paulfranken.myapplication.R.id.text31;
-import static com.example.paulfranken.myapplication.R.id.text37;
-import static com.example.paulfranken.myapplication.R.id.text4;
-import static com.example.paulfranken.myapplication.R.id.text41;
-import static com.example.paulfranken.myapplication.R.id.text46;
-import static com.example.paulfranken.myapplication.R.id.text56;
-import static com.example.paulfranken.myapplication.R.id.text65;
-import static com.example.paulfranken.myapplication.StundenSetzen.c;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text102;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text108;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text16;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text26;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text31;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text37;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text4;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text41;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text46;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text56;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text65;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener,View.OnLongClickListener {
 
@@ -247,10 +246,45 @@ public class MainActivity extends AppCompatActivity implements OnClickListener,V
         //Es wir überpüft ob die Werbung mit dem Code ausgeschaltet wurde
 
         //------------------------------------Der Werbung Block wird geschpeichert und eingestellt-------------------------------------
+        final SharedPreferences klasse=getSharedPreferences("Einstellungen",0);
+        String einstellung =klasse.getString("words",null);
+
+        if (einstellung==null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Willkommen bei Stundenplan 2.0. \nBitte wähle deine Klasse.");
+            List<String> Lines = Arrays.asList(getResources().getStringArray(R.array.klassen));
+
+            String[] array = Lines.toArray(new String[Lines.size()]);
+
+            builder.setItems(array, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    List<String> Lines = Arrays.asList(getResources().getStringArray(R.array.klassen));
+                    String[] array = Lines.toArray(new String[Lines.size()]);
+
+                    MainActivity.klasse=array[which];
+                    SharedPreferences settings=getSharedPreferences("Einstellungen",0);
+                    SharedPreferences.Editor editor=settings.edit();
+
+                    editor.putString("words",MainActivity.klasse);
+
+                    editor.commit();
+
+                    dialog.dismiss();
+                }
+            });
+
+            AlertDialog alert = builder.create();
+            alert.setCanceledOnTouchOutside(false);
+            alert.setCancelable(false);
+            alert.show();
 
 
+        }
 
-
+        final SharedPreferences klasse2=getSharedPreferences("Einstellungen",0);
+        String einstellung2 =klasse2.getString("words",null);
+MainActivity.klasse=einstellung2;
 
     }
 
@@ -384,7 +418,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener,V
 
             // Set up the input
             final EditText input = new EditText(this);
-            // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+            // Specify the type of input expected; this, for frankensterzenbach, sets the input as a password, and will mask the text
             input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
             builder.setView(input);
 

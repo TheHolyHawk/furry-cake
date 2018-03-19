@@ -1,4 +1,4 @@
-package com.example.paulfranken.myapplication;
+package com.frankensterzenbach.paulfranken.myapplication;
 
 /**
  * Created by timst on 28.01.2018.
@@ -8,8 +8,6 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
-
-import java.util.List;
 
 public class SendMailTask extends AsyncTask {
 

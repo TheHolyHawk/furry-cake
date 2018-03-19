@@ -1,27 +1,23 @@
-package com.example.paulfranken.myapplication;
+package com.frankensterzenbach.paulfranken.myapplication;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
-import android.view.Gravity;
-import android.widget.TextView;
 
-import static android.R.attr.id;
-import static com.example.paulfranken.myapplication.R.id.text102;
-import static com.example.paulfranken.myapplication.R.id.text108;
-import static com.example.paulfranken.myapplication.R.id.text16;
-import static com.example.paulfranken.myapplication.R.id.text26;
-import static com.example.paulfranken.myapplication.R.id.text31;
-import static com.example.paulfranken.myapplication.R.id.text37;
-import static com.example.paulfranken.myapplication.R.id.text4;
-import static com.example.paulfranken.myapplication.R.id.text41;
-import static com.example.paulfranken.myapplication.R.id.text46;
-import static com.example.paulfranken.myapplication.R.id.text56;
-import static com.example.paulfranken.myapplication.R.id.text65;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text102;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text108;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text16;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text26;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text31;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text37;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text4;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text41;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text46;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text56;
+import static com.frankensterzenbach.paulfranken.myapplication.R.id.text65;
 
 public class TextView2 extends android.support.v7.widget.AppCompatTextView {
 public String farbe="";

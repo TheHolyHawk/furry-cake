@@ -1,11 +1,7 @@
-package com.example.paulfranken.myapplication;
+package com.frankensterzenbach.paulfranken.myapplication;
 
 
 import java.io.IOException;
-
-
-import java.io.IOException;
-
 
 
 import org.jsoup.Jsoup;

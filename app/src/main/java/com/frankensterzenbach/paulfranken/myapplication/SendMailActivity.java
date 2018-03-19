@@ -1,4 +1,4 @@
-package com.example.paulfranken.myapplication;
+package com.frankensterzenbach.paulfranken.myapplication;
 
 /**
  * Erstellt by timst on 28.01.2018.
@@ -11,9 +11,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class SendMailActivity extends Activity {
     public static Activity fa;

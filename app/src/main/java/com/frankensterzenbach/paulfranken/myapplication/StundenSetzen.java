@@ -1,7 +1,6 @@
-package com.example.paulfranken.myapplication;
+package com.frankensterzenbach.paulfranken.myapplication;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -13,28 +12,19 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -44,12 +34,9 @@ import java.util.Locale;
 import java.util.Set;
 
 
-import static com.example.paulfranken.myapplication.StundenSetzen.c;
-import static com.example.paulfranken.myapplication.StundenSetzen.l;
-import static com.example.paulfranken.myapplication.StundenSetzen.list;
-import static com.example.paulfranken.myapplication.StundenSetzen.tasklaeuft;
-import static com.example.paulfranken.myapplication.WidgetProvider.raum2;
-import static com.example.paulfranken.myapplication.WidgetProvider.stunde;
+import static com.frankensterzenbach.paulfranken.myapplication.StundenSetzen.l;
+import static com.frankensterzenbach.paulfranken.myapplication.StundenSetzen.list;
+import static com.frankensterzenbach.paulfranken.myapplication.StundenSetzen.tasklaeuft;
 
 public class StundenSetzen extends AppCompatActivity {
     public static Context c;

@@ -49,6 +49,37 @@
           "status": 2
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:762103443974:android:ba22244a981239f2",
+        "android_client_info": {
+          "package_name": "com.frankensterzenbach.paulfranken.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "762103443974-j6sqgn8f83vkb304tnsm2lkr9vq043eg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDli29X6DvGiQ6y5X3KjGbiZI4SoZhxWEQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
     }
   ],
   "configuration_version": "1"

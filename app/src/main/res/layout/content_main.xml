@@ -8,7 +8,7 @@
     xmlns:ads="http://schemas.android.com/apk/res-auto"
 
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.paulfranken.myapplication.MainActivity"
+    tools:context="com.frankensterzenbach.paulfranken.myapplication.MainActivity"
     android:id="@+id/swipe"
     tools:showIn="@layout/app_bar_main">
 
@@ -121,7 +121,7 @@
             android:orientation="horizontal">
 
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text4"
                 android:layout_width="0dp"
 
@@ -132,7 +132,7 @@
                 android:background="@drawable/back2"
                 android:layout_weight="0.8" />
 
-            <com.example.paulfranken.myapplication.TextView2
+            <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text1"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
@@ -150,7 +150,7 @@
 
                 />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text5101"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
@@ -159,21 +159,21 @@
                 android:layout_weight="1" />
 
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text5201"
                 android:layout_width="0dp"
                  android:textAlignment="center"
                 android:background="@drawable/back2"
                 android:layout_height="@dimen/groesse"
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/t121"
                 android:layout_width="0dp"
                  android:textAlignment="center"
                 android:layout_height="@dimen/groesse"
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/text451"
                  android:textAlignment="center"
@@ -188,7 +188,7 @@
 
             android:orientation="horizontal">
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text16"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
@@ -199,7 +199,7 @@
                 android:text="\n2"
                 android:textAlignment="center" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text101"
                 android:layout_width="0dp"
                  android:textAlignment="center"
@@ -207,7 +207,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/back2" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text17"
                 android:layout_width="0dp"
                  android:textAlignment="center"
@@ -215,7 +215,7 @@
                 android:background="@drawable/back2"
                 android:layout_weight="1" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text18"
                 android:layout_width="0dp"
                  android:textAlignment="center"
@@ -223,14 +223,14 @@
                 android:background="@drawable/back2"
                 android:layout_height="@dimen/groesse"
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/text19"
                 android:layout_width="0dp"
                  android:textAlignment="center"
                 android:layout_height="@dimen/groesse"
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/text120"
                  android:textAlignment="center"
@@ -244,7 +244,7 @@
             android:layout_height="wrap_content"
 
             android:orientation="horizontal">
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text102"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
@@ -254,7 +254,7 @@
                 android:textAlignment="center"
                 android:layout_weight="0.8" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text21"
                  android:textAlignment="center"
                 android:layout_width="0dp"
@@ -262,7 +262,7 @@
                 android:background="@drawable/back2"
                 android:layout_weight="1" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text22"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
@@ -270,21 +270,21 @@
                 android:background="@drawable/back2"
                 android:layout_weight="1" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text23"
                 android:layout_width="0dp"
                  android:textAlignment="center"
                 android:background="@drawable/back2"
                 android:layout_height="@dimen/groesse"
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/text24"
                 android:layout_width="0dp"
                  android:textAlignment="center"
                 android:layout_height="@dimen/groesse"
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/text25"
                 android:layout_width="0dp"
@@ -299,7 +299,7 @@
 
             android:orientation="horizontal">
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text26"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
@@ -308,7 +308,7 @@
                 android:textColor="#000"
                 android:textAlignment="center"
                 android:layout_weight="0.8" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text103"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
@@ -316,7 +316,7 @@
                 android:background="@drawable/back2"
                 android:layout_weight="1" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text27"
                 android:layout_width="0dp"
                  android:textAlignment="center"
@@ -324,7 +324,7 @@
                 android:background="@drawable/back2"
                 android:layout_weight="1" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text28"
                 android:layout_width="0dp"
                  android:textAlignment="center"
@@ -332,7 +332,7 @@
                 android:background="@drawable/back2"
                 android:layout_height="@dimen/groesse"
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/text29"
                  android:textAlignment="center"
@@ -340,7 +340,7 @@
                 android:layout_height="@dimen/groesse"
 
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/text30"
                 android:layout_width="0dp"
@@ -355,7 +355,7 @@
 
             android:orientation="horizontal">
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text31"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
@@ -364,7 +364,7 @@
                 android:textColor="#000"
                 android:textAlignment="center"
                 android:layout_weight="0.8" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text104"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
@@ -372,7 +372,7 @@
                 android:background="@drawable/back2"
                 android:layout_weight="1" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text32"
                 android:layout_width="0dp"
                  android:textAlignment="center"
@@ -380,7 +380,7 @@
                 android:background="@drawable/back2"
                 android:layout_weight="1" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text33"
                 android:layout_width="0dp"
                  android:textAlignment="center"
@@ -388,14 +388,14 @@
                 android:background="@drawable/back2"
                 android:layout_height="@dimen/groesse"
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/text34"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
                  android:textAlignment="center"
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/text36"
                  android:textAlignment="center"
@@ -410,7 +410,7 @@
 
             android:orientation="horizontal">
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text37"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
@@ -419,7 +419,7 @@
                 android:textColor="#000"
                 android:textAlignment="center"
                 android:layout_weight="0.8" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text105"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
@@ -427,7 +427,7 @@
                 android:background="@drawable/back2"
                 android:layout_weight="1" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text38"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
@@ -435,21 +435,21 @@
                 android:background="@drawable/back2"
                 android:layout_weight="1" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text39"
                 android:layout_width="0dp"
                  android:textAlignment="center"
                 android:background="@drawable/back2"
                 android:layout_height="@dimen/groesse"
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/text8"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
                  android:textAlignment="center"
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/text40"
                  android:textAlignment="center"
@@ -464,7 +464,7 @@
 
             android:orientation="horizontal">
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text41"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
@@ -473,7 +473,7 @@
                 android:textColor="#000"
                 android:textAlignment="center"
                 android:layout_weight="0.8" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text106"
                  android:textAlignment="center"
                 android:layout_width="0dp"
@@ -481,7 +481,7 @@
                 android:background="@drawable/back2"
                 android:layout_weight="1" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text42"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
@@ -489,21 +489,21 @@
                 android:background="@drawable/back2"
                 android:layout_weight="1" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text43"
                 android:layout_width="0dp"
                  android:textAlignment="center"
                 android:background="@drawable/back2"
                 android:layout_height="@dimen/groesse"
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/text44"
                 android:layout_width="0dp"
                  android:textAlignment="center"
                 android:layout_height="@dimen/groesse"
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/text45"
                 android:layout_width="0dp"
@@ -518,7 +518,7 @@
 
             android:orientation="horizontal">
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text46"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
@@ -527,7 +527,7 @@
                 android:textColor="#000"
                 android:textAlignment="center"
                 android:layout_weight="0.8" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text107"
                  android:textAlignment="center"
                 android:layout_width="0dp"
@@ -535,7 +535,7 @@
                 android:background="@drawable/back2"
                 android:layout_weight="1" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text47"
                  android:textAlignment="center"
                 android:layout_width="0dp"
@@ -543,7 +543,7 @@
                 android:background="@drawable/back2"
                 android:layout_weight="1" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text48"
                 android:layout_width="0dp"
                  android:textAlignment="center"
@@ -551,14 +551,14 @@
                 android:background="@drawable/back2"
                 android:layout_height="@dimen/groesse"
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/text49"
                 android:layout_width="0dp"
                  android:textAlignment="center"
                 android:layout_height="@dimen/groesse"
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/text50"
                  android:textAlignment="center"
@@ -572,7 +572,7 @@
             android:layout_height="wrap_content"
 
             android:orientation="horizontal">
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text108"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
@@ -582,7 +582,7 @@
                 android:textAlignment="center"
                 android:layout_weight="0.8" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text51"
                 android:layout_width="0dp"
                  android:textAlignment="center"
@@ -591,7 +591,7 @@
                 android:background="@drawable/back2"
                 android:layout_weight="1" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text52"
                 android:layout_width="0dp"
                  android:textAlignment="center"
@@ -599,21 +599,21 @@
                 android:background="@drawable/back2"
                 android:layout_weight="1" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text53"
                 android:layout_width="0dp"
                  android:textAlignment="center"
                 android:background="@drawable/back2"
                 android:layout_height="@dimen/groesse"
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/text54"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
                  android:textAlignment="center"
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/text55"
                 android:layout_width="0dp"
@@ -628,7 +628,7 @@
 
             android:orientation="horizontal">
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text56"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
@@ -637,7 +637,7 @@
                 android:textColor="#000"
                 android:textAlignment="center"
                 android:layout_weight="0.8" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text109"
                 android:layout_width="0dp"
                  android:textAlignment="center"
@@ -645,7 +645,7 @@
                 android:background="@drawable/back2"
                 android:layout_weight="1" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text57"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
@@ -653,21 +653,21 @@
                 android:background="@drawable/back2"
                 android:layout_weight="1" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text58"
                 android:layout_width="0dp"
                  android:textAlignment="center"
                 android:background="@drawable/back2"
                 android:layout_height="@dimen/groesse"
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/text59"
                 android:layout_width="0dp"
                  android:textAlignment="center"
                 android:layout_height="@dimen/groesse"
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/text60"
                  android:textAlignment="center"
@@ -682,7 +682,7 @@
 
             android:orientation="horizontal">
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text65"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
@@ -691,7 +691,7 @@
                 android:textColor="#000"
                 android:textAlignment="center"
                 android:layout_weight="0.8" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text66"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
@@ -699,7 +699,7 @@
                 android:background="@drawable/back2"
                 android:layout_weight="1" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text76"
                 android:layout_width="0dp"
                  android:textAlignment="center"
@@ -707,7 +707,7 @@
                 android:background="@drawable/back2"
                 android:layout_weight="1" />
 
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:id="@+id/text68"
                 android:layout_width="0dp"
 
@@ -715,14 +715,14 @@
                 android:layout_height="@dimen/groesse"
                  android:textAlignment="center"
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/text69"
                  android:textAlignment="center"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/groesse"
                 android:layout_weight="1" />
-             <com.example.paulfranken.myapplication.TextView2
+             <com.frankensterzenbach.paulfranken.myapplication.TextView2
                 android:background="@drawable/back2"
                 android:id="@+id/text70"
                 android:layout_width="0dp"
