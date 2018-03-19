@@ -2,6 +2,7 @@ package com.frankensterzenbach.paulfranken.myapplication;
 
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -129,7 +130,7 @@ if(klasse!=null) {
 
             //noinspection SimplifiableIfStatement
             if (id == R.id.action_settings2) {
-
+                MainActivity.alleStunden.get(MainActivity.bearbeiteni).setTextColor(Color.BLACK);
                 testRaum();
 
                 MainActivity.alleStunden.get(MainActivity.bearbeiteni).setText(fach.getSelectedItem().toString()+"\n"+"\n"+raum2);

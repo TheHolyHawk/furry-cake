@@ -2,6 +2,7 @@ package com.frankensterzenbach.paulfranken.myapplication;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -87,7 +88,7 @@ public static  SwipeRefreshLayout l;
                                 if (isChecked) {
                                     // If the user checked the item, add it to the selected items
                                     seletedItems.add(indexSelected);
-                                    Toast.makeText(StundenSetzen.this, ""+seletedItems.get(0), Toast.LENGTH_SHORT).show();
+
                                 } else if (seletedItems.contains(indexSelected)) {
                                     // Else, if the item is already in the array, remove it
                                     seletedItems.remove(Integer.valueOf(indexSelected));
@@ -281,7 +282,7 @@ if(tasklaeuft==false) {
         }
 
 
-        Toast.makeText(c, ""+farbe, Toast.LENGTH_SHORT).show();
+
         return farbe;
     }
     public void löschen(){
@@ -324,8 +325,9 @@ this.finish();
                     if (list.get(i + 2).equals("Q1") ||list.get(i + 2).equals("Q2") || list.get(i + 2).equals("EF")) {
 
                         MainActivity.alleStunden.get(platzbestimmer(i)).löschen();
+                        MainActivity.alleStunden.get(platzbestimmer(i)).setTextColor(Color.BLACK);
 
-                        MainActivity.alleStunden.get(platzbestimmer(i)).umwandeln();
+
                         if(stunde.equals("BigB")) {
                             MainActivity.alleStunden.get(platzbestimmer(i)).fach = "BigB";
                             MainActivity.alleStunden.get(platzbestimmer(i)).farbe = String.valueOf(-5855578);
@@ -333,6 +335,7 @@ this.finish();
                             MainActivity.alleStunden.get(platzbestimmer(i)).farbe = String.valueOf(farbe("" + stunde.charAt(0) + stunde.charAt(1)));
                             MainActivity.alleStunden.get(platzbestimmer(i)).fach = "" + stunde.charAt(0) + stunde.charAt(1);
                         }
+                        MainActivity.alleStunden.get(platzbestimmer(i)).umwandeln();
                         MainActivity.alleStunden.get(platzbestimmer(i)).setText(MainActivity.alleStunden.get(platzbestimmer(i)).fach + "\n" + "\n" + list.get(i + 5));
 
 

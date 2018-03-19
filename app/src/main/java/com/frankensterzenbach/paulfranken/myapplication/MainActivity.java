@@ -1,4 +1,6 @@
 package com.frankensterzenbach.paulfranken.myapplication;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -49,6 +51,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.lang.Thread.UncaughtExceptionHandler;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -70,6 +73,8 @@ import static com.frankensterzenbach.paulfranken.myapplication.R.id.text56;
 import static com.frankensterzenbach.paulfranken.myapplication.R.id.text65;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener,View.OnLongClickListener {
+
+
 
 
     //---------------------------------------------ArrayList für verschidene Informationen---------------------------------------------
@@ -572,7 +577,7 @@ if(test!=null){
     }
     public void umwandelnzuruck() {
         int platz;
-        Toast.makeText(context, ""+speichern_laden.size(), Toast.LENGTH_SHORT).show();
+
 
 
         if(speichern_laden.size()!=0) {
@@ -734,7 +739,7 @@ if(test!=null){
             if (view.equals(alleStunden.get(i))) {
                 bearbeiten = alleStunden.get(i);
                 bearbeiteni = i;
-                Toast.makeText(context, ""+i, Toast.LENGTH_SHORT).show();
+
             }
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -1209,8 +1214,13 @@ if(MainActivity.klasse.equals("Q1")||MainActivity.klasse.equals("EF")||MainActiv
         }
 
         for(int i=0;i<alleStunden.size();i++){
-            table.addCell(""+alleStunden.get(i).getText());
+            if(i==0||i==6||i==12||i==18||i==24||i==30||i==36||i==42||i==48||i==54||i==60){
+                table.addCell("" + alleStunden.get(i).getText());
+            }else {
+                table.addCell("" + alleStunden.get(i).fach + "\n" + alleStunden.get(i).raum);
+            }
         }
+
 
         return table;
     }
