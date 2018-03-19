@@ -7,15 +7,14 @@ android {
         applicationId "com.frankensterzenbach.paulfranken.myapplication"
         minSdkVersion 17
         targetSdkVersion 23
-        versionCode 2
-        versionName "1.0"
+        versionCode 3
+        versionName "3.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            debuggable false
         }
     }
 }

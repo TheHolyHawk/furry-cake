@@ -51,8 +51,10 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import static com.frankensterzenbach.paulfranken.myapplication.R.id.text102;
@@ -243,10 +245,45 @@ public class MainActivity extends AppCompatActivity implements OnClickListener,V
         //Es wir überpüft ob die Werbung mit dem Code ausgeschaltet wurde
 
         //------------------------------------Der Werbung Block wird geschpeichert und eingestellt-------------------------------------
+        final SharedPreferences klasse=getSharedPreferences("Einstellungen",0);
+        String einstellung =klasse.getString("words",null);
+
+        if (einstellung==null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Willkommen bei Stundenplan 2.0. \nBitte wähle deine Klasse.");
+            List<String> Lines = Arrays.asList(getResources().getStringArray(R.array.klassen));
+
+            String[] array = Lines.toArray(new String[Lines.size()]);
+
+            builder.setItems(array, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    List<String> Lines = Arrays.asList(getResources().getStringArray(R.array.klassen));
+                    String[] array = Lines.toArray(new String[Lines.size()]);
+
+                    MainActivity.klasse=array[which];
+                    SharedPreferences settings=getSharedPreferences("Einstellungen",0);
+                    SharedPreferences.Editor editor=settings.edit();
+
+                    editor.putString("words",MainActivity.klasse);
+
+                    editor.commit();
+
+                    dialog.dismiss();
+                }
+            });
+
+            AlertDialog alert = builder.create();
+            alert.setCanceledOnTouchOutside(false);
+            alert.setCancelable(false);
+            alert.show();
 
 
+        }
 
-
+        final SharedPreferences klasse2=getSharedPreferences("Einstellungen",0);
+        String einstellung2 =klasse2.getString("words",null);
+MainActivity.klasse=einstellung2;
 
     }
 
