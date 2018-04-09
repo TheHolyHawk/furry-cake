@@ -227,11 +227,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener,V
 
         //------------------------------------Der Werbung Block wird geschpeichert und eingestellt-------------------------------------
 
-        adView = findViewById(R.id.testadview);
 
-        AdRequest adRequest = new AdRequest.Builder().build();
-
-        adView.loadAd(adRequest);
 
         //Das AdView wird geschpeichert und eigestellt
 
