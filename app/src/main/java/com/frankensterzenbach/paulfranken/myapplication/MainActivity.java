@@ -27,6 +27,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -102,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener,V
     public static String fach,stunde,test3 = " ", klasse="Q2";
     private File pdfFile;
     final private int REQUEST_CODE_ASK_PERMISSIONS = 111;
+    public static String c="";
     //Static Strings:fach=welches fach,stunde=welche stunde,test3=nicht anrühren,(MyTask2)klasse=welche klasse man ist(Standard=Q2)
     //---------------------------------------------Integer, Strings, Menu, Booleans----------------------------------------------------
 
@@ -772,6 +774,7 @@ if(test!=null){
     }
 
 
+
     public  void speichern(){
         umwandelnhin();
         if(speichern_laden.size()>0){
@@ -936,6 +939,7 @@ if(MainActivity.klasse.equals("Q1")||MainActivity.klasse.equals("EF")||MainActiv
 
 
     class MyTask2 extends AsyncTask<Void,Void,Void>{
+        public String code2="";
        Calendar datumheute = Calendar.getInstance();
 
         private Context mCon;
@@ -952,9 +956,21 @@ if(MainActivity.klasse.equals("Q1")||MainActivity.klasse.equals("EF")||MainActiv
     String formatted = format1.format(datumheute.getTime());
     try {
         String code = "http://www.ohg-bensberg.de/WSK_extdata/vplan/" + formatted + "/Ver_Kla_" + klasse + ".htm";
+        code2=code;
         org.jsoup.nodes.Document doc = Jsoup.connect(code).ignoreHttpErrors(true).get();
 
         if (!doc.title().equals("Object not found!")) {
+            Elements table = doc.select("center font table");
+            int m=table.size();
+            if(m<3){
+MainActivity.c=code2;
+                Intent i = new Intent(context, PlanWebView.class);
+                i.putExtra("epuzzle", MainActivity.c);
+                context.startActivity(i);
+
+            }
+            else {
+
             Element tables = doc.select("center font table").get(1);
             Elements rows = tables.select("tr");
             // zählt wie viele
@@ -963,97 +979,93 @@ if(MainActivity.klasse.equals("Q1")||MainActivity.klasse.equals("EF")||MainActiv
             // gibt
             int spalten = rows.size() + 1;
 
-            for (int i = 2; i < spalten; i++) {
 
-                String test = ("center font tbody tr:nth-child(" + i + ") td:nth-child(4)");
-                String hallo = ("center font tbody tr:nth-child(" + i + ") td:nth-child(2)");
-                String art = ("center font tbody tr:nth-child(" + i + ") td:nth-child(6)");
-                String raum = ("center font tbody tr:nth-child(" + i + ") td:nth-child(5)");
+                for (int i = 2; i < spalten; i++) {
 
-
-                Elements values = doc.select(test);
-                for (Element elem : values) {
-                    fach = elem.text();
-
-                }
-
-                Elements values4 = doc.select(raum);
-                for (Element elem : values4) {
-                    raum2 = elem.text();
-
-                }
-
-                Elements values3 = doc.select(art);
-                for (Element elem : values3) {
-                    text = elem.text();
-
-                }
-                Elements values2 = doc.select(hallo);
-                for (Element elem : values2) {
-                    stunde = elem.text();
-
-                }
-
-                String c = kurs;
+                    String test = ("center font tbody tr:nth-child(" + i + ") td:nth-child(4)");
+                    String hallo = ("center font tbody tr:nth-child(" + i + ") td:nth-child(2)");
+                    String art = ("center font tbody tr:nth-child(" + i + ") td:nth-child(6)");
+                    String raum = ("center font tbody tr:nth-child(" + i + ") td:nth-child(5)");
 
 
-                if (!fach.equals(test3) && !fach.equals("---")) {
-                    if (fach.length() == 5) {
-                        kurs = String.valueOf(fach.charAt(3));
-                        kursid = String.valueOf(fach.charAt(4));
-                    } else if (fach.length() == 4) {
-                        kurs = String.valueOf(fach.charAt(2));
-                        kursid = String.valueOf(fach.charAt(3));
-                    }
-                    if (fach.equals("---")) {
-                        kurs = "---";
-                        kursid = "---";
-                    }
-                    if (kurs == null) {
-                        kurs = "";
-                    }
-
-
-                    fach = String.valueOf(fach.charAt(0) + String.valueOf(fach.charAt(1)));
-
-
-                    c = kurs;
-                    StundeVplan vplan;
-
-                    if(stunde.length()==1){
-                        vplan = new StundeVplan(fach, datumheute, c, kursid, text, raum2,stunde);
-                        MainActivity.vertreungsplan_daten.add(vplan);
-                    }else if (stunde.length()==5){
-                        String stunde1=String.valueOf(stunde.charAt(0));
-                        String stunde2=String.valueOf(stunde.charAt(4));
-                        vplan = new StundeVplan(fach, datumheute, c, kursid, text, raum2,stunde1);
-                        MainActivity.vertreungsplan_daten.add(vplan);
-
-                        vplan = new StundeVplan(fach, datumheute, c, kursid, text, raum2,stunde2);
-                        MainActivity.vertreungsplan_daten.add(vplan);
-
-
-                    }
-                    else if (stunde.length()==7){
-                        String stunde1=String.valueOf(stunde.charAt(0)+String.valueOf(stunde.charAt(1)));
-                        String stunde2=String.valueOf(stunde.charAt(5)+String.valueOf(stunde.charAt(6)));
-                        vplan = new StundeVplan(fach, datumheute, c, kursid, text, raum2,stunde1);
-                        MainActivity.vertreungsplan_daten.add(vplan);
-
-                        vplan = new StundeVplan(fach, datumheute, c, kursid, text, raum2,stunde2);
-                        MainActivity.vertreungsplan_daten.add(vplan);
-
+                    Elements values = doc.select(test);
+                    for (Element elem : values) {
+                        fach = elem.text();
 
                     }
 
+                    Elements values4 = doc.select(raum);
+                    for (Element elem : values4) {
+                        raum2 = elem.text();
+
+                    }
+
+                    Elements values3 = doc.select(art);
+                    for (Element elem : values3) {
+                        text = elem.text();
+
+                    }
+                    Elements values2 = doc.select(hallo);
+                    for (Element elem : values2) {
+                        stunde = elem.text();
+
+                    }
+
+                    String c = kurs;
 
 
+                    if (!fach.equals(test3) && !fach.equals("---")) {
+                        if (fach.length() == 5) {
+                            kurs = String.valueOf(fach.charAt(3));
+                            kursid = String.valueOf(fach.charAt(4));
+                        } else if (fach.length() == 4) {
+                            kurs = String.valueOf(fach.charAt(2));
+                            kursid = String.valueOf(fach.charAt(3));
+                        }
+                        if (fach.equals("---")) {
+                            kurs = "---";
+                            kursid = "---";
+                        }
+                        if (kurs == null) {
+                            kurs = "";
+                        }
 
 
+                        fach = String.valueOf(fach.charAt(0) + String.valueOf(fach.charAt(1)));
 
+
+                        c = kurs;
+                        StundeVplan vplan;
+
+                        if (stunde.length() == 1) {
+                            vplan = new StundeVplan(fach, datumheute, c, kursid, text, raum2, stunde);
+                            MainActivity.vertreungsplan_daten.add(vplan);
+                        } else if (stunde.length() == 5) {
+                            String stunde1 = String.valueOf(stunde.charAt(0));
+                            String stunde2 = String.valueOf(stunde.charAt(4));
+                            vplan = new StundeVplan(fach, datumheute, c, kursid, text, raum2, stunde1);
+                            MainActivity.vertreungsplan_daten.add(vplan);
+
+                            vplan = new StundeVplan(fach, datumheute, c, kursid, text, raum2, stunde2);
+                            MainActivity.vertreungsplan_daten.add(vplan);
+
+
+                        } else if (stunde.length() == 7) {
+                            String stunde1 = String.valueOf(stunde.charAt(0) + String.valueOf(stunde.charAt(1)));
+                            String stunde2 = String.valueOf(stunde.charAt(5) + String.valueOf(stunde.charAt(6)));
+                            vplan = new StundeVplan(fach, datumheute, c, kursid, text, raum2, stunde1);
+                            MainActivity.vertreungsplan_daten.add(vplan);
+
+                            vplan = new StundeVplan(fach, datumheute, c, kursid, text, raum2, stunde2);
+                            MainActivity.vertreungsplan_daten.add(vplan);
+
+
+                        }
+
+
+                    }
 
                 }
-
             }
 
         }

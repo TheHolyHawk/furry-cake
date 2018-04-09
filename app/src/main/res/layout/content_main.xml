@@ -731,21 +731,7 @@
                  android:textAlignment="center"
                 android:layout_weight="1" />
         </LinearLayout>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <com.google.android.gms.ads.AdView android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:id="@+id/testadview"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                ads:adSize="BANNER"
-                ads:adUnitId="ca-app-pub-8946228610769097/1219447711">
 
-            </com.google.android.gms.ads.AdView>
-
-
-        </RelativeLayout>
 
 
     </LinearLayout>

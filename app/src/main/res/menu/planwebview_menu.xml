@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.frankensterzenbach.paulfranken.myapplication.MainActivity">
+
+    <item
+        android:id="@+id/fertig"
+        android:orderInCategory="100"
+        android:title="Fertig"
+        android:icon="@drawable/check"
+        app:showAsAction="ifRoom" />
+
+</menu>

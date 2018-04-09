@@ -130,6 +130,7 @@
     <string name="ok_label">OK</string>
     <string name="dismiss_label">Dismiss</string>
     <string name="clear_all_label">Clear all</string>
+    <string name="title_activity_plan_web_view">Vertretungsplan</string>
 
 
 </resources>
