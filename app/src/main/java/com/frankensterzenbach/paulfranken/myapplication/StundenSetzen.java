@@ -13,6 +13,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -1480,9 +1481,15 @@ this.finish();
 
                     gkliste.add(stundenliste.get(i));
 
-            }else if(stundenliste.get(i).length()>=4) {
+            }
+
+            else if(stundenliste.get(i).length()>=4) {
                 String stunde1 = String.valueOf(stundenliste.get(i).charAt(3));
                  if(stunde1.equals("G")){
+                     gkliste.add(stundenliste.get(i));
+                 }
+
+                 if(stunde1.equals("Z")){
                      gkliste.add(stundenliste.get(i));
                  }
                 if(stunde1.equals("L")){
@@ -1497,6 +1504,7 @@ this.finish();
 
 
                 }
+
             }
 
 

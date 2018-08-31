@@ -959,7 +959,7 @@ if(MainActivity.klasse.equals("Q1")||MainActivity.klasse.equals("EF")||MainActiv
             Elements table = doc.select("center font table");
             int m=table.size();
             if(m<3){
-MainActivity.c=code2;
+                MainActivity.c=code2;
                 Intent i = new Intent(context, PlanWebView.class);
                 i.putExtra("epuzzle", MainActivity.c);
                 context.startActivity(i);

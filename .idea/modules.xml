@@ -3,12 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/awt-android-1.0/awt-android-1.0.iml" filepath="$PROJECT_DIR$/awt-android-1.0/awt-android-1.0.iml" />
       <module fileurl="file://$PROJECT_DIR$/awt-android-1.0/awt-android-1.0.iml" filepath="$PROJECT_DIR$/awt-android-1.0/awt-android-1.0.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/furry-cake.iml" filepath="$PROJECT_DIR$/.idea/furry-cake.iml" />
       <module fileurl="file://$PROJECT_DIR$/furry-cake.iml" filepath="$PROJECT_DIR$/furry-cake.iml" />
-      <module fileurl="file://$PROJECT_DIR$/jsoup-1.10.3/jsoup-1.10.3.iml" filepath="$PROJECT_DIR$/jsoup-1.10.3/jsoup-1.10.3.iml" />
       <module fileurl="file://$PROJECT_DIR$/jsoup-1.10.3/jsoup-1.10.3.iml" filepath="$PROJECT_DIR$/jsoup-1.10.3/jsoup-1.10.3.iml" />
     </modules>
   </component>
