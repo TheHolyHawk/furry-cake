@@ -846,6 +846,7 @@ if(!alleStunden.get(i).farbe.equals("")) {
 
 if(MainActivity.klasse.equals("Q1")||MainActivity.klasse.equals("EF")||MainActivity.klasse.equals("Q2")) {
     for (int m = 0; m < MainActivity.vertreungsplan_daten.size(); m++) {
+        Log.d("Tach",MainActivity.alleStunden.get(i).fach);
         if (MainActivity.vertreungsplan_daten.get(m).fach.equals(MainActivity.alleStunden.get(i).fach) && MainActivity.vertreungsplan_daten.get(m).kursid.equals(MainActivity.alleStunden.get(i).nummer) && MainActivity.vertreungsplan_daten.get(m).kurs.equals(MainActivity.alleStunden.get(i).kurs) && MainActivity.vertreungsplan_daten.get(m).tag.equals(MainActivity.alleStunden.get(i).tag) && MainActivity.vertreungsplan_daten.get(m).stunde.equals(MainActivity.alleStunden.get(i).stunde)) {
 
             if (vertreungsplan_daten.get(m).text.equals("Selbstlernen")) {
@@ -1008,7 +1009,7 @@ if(MainActivity.klasse.equals("Q1")||MainActivity.klasse.equals("EF")||MainActiv
                     Elements values2 = doc.select(hallo);
                     for (Element elem : values2) {
                         stunde = elem.text();
-                        Log.d("Hallowsafcewfverv",stunde);
+
 
                     }
 
@@ -1016,12 +1017,17 @@ if(MainActivity.klasse.equals("Q1")||MainActivity.klasse.equals("EF")||MainActiv
 
 
                     if (!fach.equals(test3) && !fach.equals("---")) {
-                        if (fach.length() == 5) {
+                        if (fach.length() == 6) {
+
                             kurs = String.valueOf(fach.charAt(3));
-                            kursid = String.valueOf(fach.charAt(4));
-                        } else if (fach.length() == 4) {
+                            kursid = String.valueOf(fach.charAt(5));
+
+                        } else if (fach.length() == 5) {
+                            Log.d("Moin",fach);
                             kurs = String.valueOf(fach.charAt(2));
-                            kursid = String.valueOf(fach.charAt(3));
+
+                            kursid = String.valueOf(fach.charAt(4));
+                            Log.d("Moin2",kursid);
                         }
                         if (fach.equals("---")) {
                             kurs = "---";
@@ -1031,8 +1037,12 @@ if(MainActivity.klasse.equals("Q1")||MainActivity.klasse.equals("EF")||MainActiv
                             kurs = "";
                         }
 
+if(fach.length()==6){
+    fach = String.valueOf(fach.charAt(0) + String.valueOf(fach.charAt(1)));
+}else if(fach.length()==5){
+    fach = String.valueOf(fach.charAt(0));
+}
 
-                        fach = String.valueOf(fach.charAt(0) + String.valueOf(fach.charAt(1)));
 
 
                         c = kurs;

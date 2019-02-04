@@ -49,19 +49,19 @@ public class StundeVplan {
             tag="Freitag";
         }
 
-        if (fach.equals("D ")) {
+        if (fach.equals("D")) {
             fach = "Deutsch";
-        }else if (fach.equals("E ")) {
+        }else if (fach.equals("E")) {
             fach = "Englisch";
-        }else if (fach.equals("F ")) {
+        }else if (fach.equals("F")) {
             fach = "Franz";
-        }else if (fach.equals("L ")) {
+        }else if (fach.equals("L")) {
             fach = "Latein";
-        }else if (fach.equals("S ")) {
+        }else if (fach.equals("S")) {
             fach = "Spanisch";
         }else if (fach.equals("S8")) {
             fach = "Spanisch8";
-        }else if (fach.equals("M ")) {
+        }else if (fach.equals("M")) {
             fach = "Mathe";
         }else if (fach.equals("PH")) {
             fach = "Physik";
