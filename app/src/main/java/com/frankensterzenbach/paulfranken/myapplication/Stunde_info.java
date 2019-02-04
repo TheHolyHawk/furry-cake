@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Stunde_info extends AppCompatActivity {
 private RelativeLayout layout;
@@ -19,6 +20,7 @@ private RelativeLayout layout;
         setContentView(R.layout.activity_stunde__info);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         String raum2="";
         String string;

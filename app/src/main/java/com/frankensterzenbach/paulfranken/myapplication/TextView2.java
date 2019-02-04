@@ -57,13 +57,13 @@ public String farbe="";
 
         if (fach.equals("D ")||fach.equals("D")) {
             fach = "Deutsch";
-        }else if (fach.equals("E ")||fach.equals("E5")) {
+        }else if (fach.equals("E")||fach.equals("E5")) {
             fach = "Englisch";
-        }else if (fach.equals("F ")||fach.equals("F6")) {
+        }else if (fach.equals("F")||fach.equals("F6")) {
             fach = "Franz";
-        }else if (fach.equals("L ")||fach.equals("L6")) {
+        }else if (fach.equals("L")||fach.equals("L6")) {
             fach = "Latein";
-        }else if (fach.equals("S ")) {
+        }else if (fach.equals("S")) {
             fach = "Spanisch";
         }else if (fach.equals("S8")) {
             fach = "Spanisch8";

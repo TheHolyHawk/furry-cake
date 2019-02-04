@@ -43,11 +43,11 @@ import static com.frankensterzenbach.paulfranken.myapplication.StundenSetzen.tas
 public class StundenSetzen extends AppCompatActivity {
     public static Context c;
     public static ArrayList<String> list, stundenliste, gkliste, lk1liste,unterstufenliste;
-    public static int dummy;
-    String url = "http://facharbeit.square7.ch/Facharbeit:HochundRunter/get.php";
-    Spinner LK1S, LK2S;
+
+    String url = "https://ifacharbeit.111mb.de/runterladen.php";
+
     String LK1, LK2;
-    Model modelItems[];
+
     public static ListView listView;
     public Spinner s1,s2;
     static StundenSetzen instance;
@@ -187,6 +187,8 @@ if(tasklaeuft==false) {
 
 
 
+
+
     }
     public void aktualisieren(){
         list.clear();
@@ -195,19 +197,20 @@ if(tasklaeuft==false) {
         stundenliste.clear();
         Test t=new Test();
         t.execute();
+
     }
 
     public int farbe(String fach){
         int farbe=000;
         if(fach.equals("D ")||fach.equals("D")){
             farbe=-1427400;
-        }else if(fach.equals("E ")||fach.equals("E5")){
+        }else if(fach.equals("E")||fach.equals("E5")){
             farbe=-1414344;
-        }else if(fach.equals("F ")||fach.equals("F6")){
+        }else if(fach.equals("F")||fach.equals("F6")){
             farbe=-1401288;
-        }else if(fach.equals("L ")||fach.equals("L6")){
+        }else if(fach.equals("L")||fach.equals("L6")){
             farbe=-1401288;
-        }else if(fach.equals("S ")||fach.equals("S8")){
+        }else if(fach.equals("S")||fach.equals("S8")){
             farbe=-1396936;
         }
 
@@ -319,827 +322,1656 @@ this.finish();
     public void stundeSetzen(String stunde) {
 
 
+
         for (int i = 0; i < list.size() - 7; i++) {
             //-7 ist notwendig um noch alles ohne nullpointer durchsuchen zu können
             if (list.get(i + 4).equals(stunde)) {
+
                 if (list.get(i + 2).equals(MainActivity.klasse)) {
-                    if (list.get(i + 2).equals("Q1") ||list.get(i + 2).equals("Q2") || list.get(i + 2).equals("EF")) {
-
-                        MainActivity.alleStunden.get(platzbestimmer(i)).löschen();
-                        MainActivity.alleStunden.get(platzbestimmer(i)).setTextColor(Color.BLACK);
-
-
-                        if(stunde.equals("BigB")) {
-                            MainActivity.alleStunden.get(platzbestimmer(i)).fach = "BigB";
-                            MainActivity.alleStunden.get(platzbestimmer(i)).farbe = String.valueOf(-5855578);
-                        }else{
-                            MainActivity.alleStunden.get(platzbestimmer(i)).farbe = String.valueOf(farbe("" + stunde.charAt(0) + stunde.charAt(1)));
-                            MainActivity.alleStunden.get(platzbestimmer(i)).fach = "" + stunde.charAt(0) + stunde.charAt(1);
-                        }
-                        MainActivity.alleStunden.get(platzbestimmer(i)).umwandeln();
-                        MainActivity.alleStunden.get(platzbestimmer(i)).setText(MainActivity.alleStunden.get(platzbestimmer(i)).fach + "\n" + "\n" + list.get(i + 5));
-
-
-
-                        if(stunde.length()>2) {
-                            MainActivity.alleStunden.get(platzbestimmer(i)).kurs = "" + stunde.charAt(3);
-                        }
-                        MainActivity.alleStunden.get(platzbestimmer(i)).platz = String.valueOf(platzbestimmer(i));
-                        if(stunde.length()>4) {
-                            MainActivity.alleStunden.get(platzbestimmer(i)).nummer = "" + stunde.charAt(4);
-                        }
-                        MainActivity.alleStunden.get(platzbestimmer(i)).raum = list.get(i + 5);
-                        MainActivity.alleStunden.get(platzbestimmer(i)).lehrer = list.get(i + 3);
-
-                        MainActivity.alleStunden.get(platzbestimmer(i)).umwandeln();
-
-                        String weekDay;
-                        SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", Locale.US);
-
-                        Calendar calendar = Calendar.getInstance();
-                        weekDay = dayFormat.format(calendar.getTime());
-
-                        if (weekDay.equals("Monday")) {
-
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
-                                datumheute.add(Calendar.DATE, 0);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
-                                datumheute.add(Calendar.DATE, 1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
-                                datumheute.add(Calendar.DATE, 2);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
-                                datumheute.add(Calendar.DATE, 3);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
-                                datumheute.add(Calendar.DATE, 4);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
-                                datumheute.add(Calendar.DATE, 5);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
-                                datumheute.add(Calendar.DATE, 6);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                        }
-                        if (weekDay.equals("Tuesday")) {
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
-                                datumheute.add(Calendar.DATE, -1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
-                                datumheute.add(Calendar.DATE, 0);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
-                                datumheute.add(Calendar.DATE, 1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
-                                datumheute.add(Calendar.DATE, 2);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
-                                datumheute.add(Calendar.DATE, 3);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
-                                datumheute.add(Calendar.DATE, 4);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
-                                datumheute.add(Calendar.DATE, 5);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                        }
-                        if (weekDay.equals("Wednesday")) {
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
-                                datumheute.add(Calendar.DATE, -2);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
-                                datumheute.add(Calendar.DATE, -1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
-                                datumheute.add(Calendar.DATE, 0);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
-                                datumheute.add(Calendar.DATE, 1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
-                                datumheute.add(Calendar.DATE, 2);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
-                                datumheute.add(Calendar.DATE, 3);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
-                                datumheute.add(Calendar.DATE, 4);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                        }
-                        if (weekDay.equals("Thursday")) {
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
-                                datumheute.add(Calendar.DATE, -3);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
-                                datumheute.add(Calendar.DATE, -2);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
-                                datumheute.add(Calendar.DATE, -1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
-                                datumheute.add(Calendar.DATE, 0);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
-                                datumheute.add(Calendar.DATE, 1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
-                                datumheute.add(Calendar.DATE, 2);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
-                                datumheute.add(Calendar.DATE, 3);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                        }
-                        if (weekDay.equals("Friday")) {
-
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
-                                datumheute.add(Calendar.DATE, -4);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
-                                datumheute.add(Calendar.DATE, -3);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
-                                datumheute.add(Calendar.DATE, -2);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
-                                datumheute.add(Calendar.DATE, -1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
-                                datumheute.add(Calendar.DATE, 0);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
-                                datumheute.add(Calendar.DATE, 1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
-                                datumheute.add(Calendar.DATE, 2);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                        }
-                        if (weekDay.equals("Saturday")) {
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
-                                datumheute.add(Calendar.DATE, -5);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
-                                datumheute.add(Calendar.DATE, -4);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
-                                datumheute.add(Calendar.DATE, -3);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
-                                datumheute.add(Calendar.DATE, -2);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
-                                datumheute.add(Calendar.DATE, -1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
-                                datumheute.add(Calendar.DATE, 0);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
-                                datumheute.add(Calendar.DATE, 1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                        }
-                        if (weekDay.equals("Sunday")) {
-
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
-                                datumheute.add(Calendar.DATE, -6);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
-                                datumheute.add(Calendar.DATE, -5);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
-                                datumheute.add(Calendar.DATE, -4);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
-                                datumheute.add(Calendar.DATE, -3);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
-                                datumheute.add(Calendar.DATE, -2);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
-                                datumheute.add(Calendar.DATE, -1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
-                                datumheute.add(Calendar.DATE, 0);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                        }
-
-                        MainActivity.alleStunden.get(platzbestimmer(i)).aktualisieren();
-                        speichern();
-
-                        widget_speichern();
-                        WidgetProvider.updateWidget(getApplicationContext());
-
-                    }
-                    else{
-                        MainActivity.alleStunden.get(platzbestimmer(i)).löschen();
-                        MainActivity.alleStunden.get(platzbestimmer(i)).fach = "" +stunde;
-                        MainActivity.alleStunden.get(platzbestimmer(i)).umwandeln();
-                        MainActivity.alleStunden.get(platzbestimmer(i)).setText(MainActivity.alleStunden.get(platzbestimmer(i)).fach + "\n" + "\n" + list.get(i + 5));
-                        MainActivity.alleStunden.get(platzbestimmer(i)).farbe = String.valueOf(farbe(""+stunde));
-
-                        MainActivity.alleStunden.get(platzbestimmer(i)).kurs = "";
-                        MainActivity.alleStunden.get(platzbestimmer(i)).platz = String.valueOf(platzbestimmer(i));
-                        MainActivity.alleStunden.get(platzbestimmer(i)).lehrer = list.get(i + 3);
-
-                        MainActivity.alleStunden.get(platzbestimmer(i)).nummer = "" ;
-                        MainActivity.alleStunden.get(platzbestimmer(i)).raum = list.get(i + 5);
-
-
-
-                        String weekDay;
-                        SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", Locale.US);
-
-                        Calendar calendar = Calendar.getInstance();
-                        weekDay = dayFormat.format(calendar.getTime());
-
-                        if (weekDay.equals("Monday")) {
-
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
-                                datumheute.add(Calendar.DATE, 0);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
-                                datumheute.add(Calendar.DATE, 1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
-                                datumheute.add(Calendar.DATE, 2);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
-                                datumheute.add(Calendar.DATE, 3);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
-                                datumheute.add(Calendar.DATE, 4);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
-                                datumheute.add(Calendar.DATE, 5);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
-                                datumheute.add(Calendar.DATE, 6);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                        }
-                        if (weekDay.equals("Tuesday")) {
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
-                                datumheute.add(Calendar.DATE, -1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
-                                datumheute.add(Calendar.DATE, 0);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
-                                datumheute.add(Calendar.DATE, 1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
-                                datumheute.add(Calendar.DATE, 2);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
-                                datumheute.add(Calendar.DATE, 3);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
-                                datumheute.add(Calendar.DATE, 4);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
-                                datumheute.add(Calendar.DATE, 5);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                        }
-                        if (weekDay.equals("Wednesday")) {
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
-                                datumheute.add(Calendar.DATE, -2);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
-                                datumheute.add(Calendar.DATE, -1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
-                                datumheute.add(Calendar.DATE, 0);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
-                                datumheute.add(Calendar.DATE, 1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
-                                datumheute.add(Calendar.DATE, 2);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
-                                datumheute.add(Calendar.DATE, 3);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
-                                datumheute.add(Calendar.DATE, 4);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                        }
-                        if (weekDay.equals("Thursday")) {
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
-                                datumheute.add(Calendar.DATE, -3);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
-                                datumheute.add(Calendar.DATE, -2);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
-                                datumheute.add(Calendar.DATE, -1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
-                                datumheute.add(Calendar.DATE, 0);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
-                                datumheute.add(Calendar.DATE, 1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
-                                datumheute.add(Calendar.DATE, 2);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
-                                datumheute.add(Calendar.DATE, 3);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                        }
-                        if (weekDay.equals("Friday")) {
-
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
-                                datumheute.add(Calendar.DATE, -4);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
-                                datumheute.add(Calendar.DATE, -3);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
-                                datumheute.add(Calendar.DATE, -2);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
-                                datumheute.add(Calendar.DATE, -1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
-                                datumheute.add(Calendar.DATE, 0);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
-                                datumheute.add(Calendar.DATE, 1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
-                                datumheute.add(Calendar.DATE, 2);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                        }
-                        if (weekDay.equals("Saturday")) {
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
-                                datumheute.add(Calendar.DATE, -5);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
-                                datumheute.add(Calendar.DATE, -4);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
-                                datumheute.add(Calendar.DATE, -3);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
-                                datumheute.add(Calendar.DATE, -2);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
-                                datumheute.add(Calendar.DATE, -1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
-                                datumheute.add(Calendar.DATE, 0);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
-                                datumheute.add(Calendar.DATE, 1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                        }
-                        if (weekDay.equals("Sunday")) {
-
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
-                                datumheute.add(Calendar.DATE, -6);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
-                                datumheute.add(Calendar.DATE, -5);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
-                                datumheute.add(Calendar.DATE, -4);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
-                                datumheute.add(Calendar.DATE, -3);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
-                                datumheute.add(Calendar.DATE, -2);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
-                                datumheute.add(Calendar.DATE, -1);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
-                                datumheute.add(Calendar.DATE, 0);
-                                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-                                String formatted = format1.format(datumheute.getTime());
-                                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
-
-                            }
-                        }
-
-                        MainActivity.alleStunden.get(platzbestimmer(i)).aktualisieren();
-                        speichern();
-
-                        widget_speichern();
-                        WidgetProvider.updateWidget(getApplicationContext());
-                    }
+
+
+if(stunde.length()==6) {
+
+    if (list.get(i + 2).equals("Q1") || list.get(i + 2).equals("Q2") || list.get(i + 2).equals("EF")) {
+
+
+        MainActivity.alleStunden.get(platzbestimmer(i)).löschen();
+        MainActivity.alleStunden.get(platzbestimmer(i)).setTextColor(Color.BLACK);
+
+
+        if (stunde.equals("BigB")) {
+            MainActivity.alleStunden.get(platzbestimmer(i)).fach = "BigB";
+            MainActivity.alleStunden.get(platzbestimmer(i)).farbe = String.valueOf(-5855578);
+        } else {
+            MainActivity.alleStunden.get(platzbestimmer(i)).farbe = String.valueOf(farbe("" + stunde.charAt(0) + stunde.charAt(1)));
+            MainActivity.alleStunden.get(platzbestimmer(i)).fach = "" + stunde.charAt(0) + stunde.charAt(1);
+        }
+        MainActivity.alleStunden.get(platzbestimmer(i)).umwandeln();
+
+        MainActivity.alleStunden.get(platzbestimmer(i)).setText(MainActivity.alleStunden.get(platzbestimmer(i)).fach + "\n" + "\n" + list.get(i + 5));
+
+
+        if (stunde.length() > 2) {
+            MainActivity.alleStunden.get(platzbestimmer(i)).kurs = "" + stunde.charAt(3);
+        }
+
+        MainActivity.alleStunden.get(platzbestimmer(i)).platz = String.valueOf(platzbestimmer(i));
+        if (stunde.length() > 4) {
+            MainActivity.alleStunden.get(platzbestimmer(i)).nummer = "" + stunde.charAt(5);
+
+        }
+        MainActivity.alleStunden.get(platzbestimmer(i)).raum = list.get(i + 5);
+        MainActivity.alleStunden.get(platzbestimmer(i)).lehrer = list.get(i + 3);
+
+        MainActivity.alleStunden.get(platzbestimmer(i)).umwandeln();
+
+        String weekDay;
+        SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", Locale.US);
+
+        Calendar calendar = Calendar.getInstance();
+        weekDay = dayFormat.format(calendar.getTime());
+
+        if (weekDay.equals("Monday")) {
+
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                datumheute.add(Calendar.DATE, 0);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                datumheute.add(Calendar.DATE, 1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                datumheute.add(Calendar.DATE, 2);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                datumheute.add(Calendar.DATE, 3);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                datumheute.add(Calendar.DATE, 4);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                datumheute.add(Calendar.DATE, 5);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                datumheute.add(Calendar.DATE, 6);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+        }
+        if (weekDay.equals("Tuesday")) {
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                datumheute.add(Calendar.DATE, -1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                datumheute.add(Calendar.DATE, 0);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                datumheute.add(Calendar.DATE, 1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                datumheute.add(Calendar.DATE, 2);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                datumheute.add(Calendar.DATE, 3);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                datumheute.add(Calendar.DATE, 4);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                datumheute.add(Calendar.DATE, 5);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+        }
+        if (weekDay.equals("Wednesday")) {
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                datumheute.add(Calendar.DATE, -2);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                datumheute.add(Calendar.DATE, -1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                datumheute.add(Calendar.DATE, 0);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                datumheute.add(Calendar.DATE, 1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                datumheute.add(Calendar.DATE, 2);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                datumheute.add(Calendar.DATE, 3);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                datumheute.add(Calendar.DATE, 4);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+        }
+        if (weekDay.equals("Thursday")) {
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                datumheute.add(Calendar.DATE, -3);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                datumheute.add(Calendar.DATE, -2);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                datumheute.add(Calendar.DATE, -1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                datumheute.add(Calendar.DATE, 0);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                datumheute.add(Calendar.DATE, 1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                datumheute.add(Calendar.DATE, 2);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                datumheute.add(Calendar.DATE, 3);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+        }
+        if (weekDay.equals("Friday")) {
+
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                datumheute.add(Calendar.DATE, -4);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                datumheute.add(Calendar.DATE, -3);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                datumheute.add(Calendar.DATE, -2);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                datumheute.add(Calendar.DATE, -1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                datumheute.add(Calendar.DATE, 0);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                datumheute.add(Calendar.DATE, 1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                datumheute.add(Calendar.DATE, 2);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+        }
+        if (weekDay.equals("Saturday")) {
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                datumheute.add(Calendar.DATE, -5);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                datumheute.add(Calendar.DATE, -4);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                datumheute.add(Calendar.DATE, -3);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                datumheute.add(Calendar.DATE, -2);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                datumheute.add(Calendar.DATE, -1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                datumheute.add(Calendar.DATE, 0);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                datumheute.add(Calendar.DATE, 1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+        }
+        if (weekDay.equals("Sunday")) {
+
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                datumheute.add(Calendar.DATE, -6);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                datumheute.add(Calendar.DATE, -5);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                datumheute.add(Calendar.DATE, -4);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                datumheute.add(Calendar.DATE, -3);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                datumheute.add(Calendar.DATE, -2);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                datumheute.add(Calendar.DATE, -1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                datumheute.add(Calendar.DATE, 0);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+        }
+
+        MainActivity.alleStunden.get(platzbestimmer(i)).aktualisieren();
+        speichern();
+
+        widget_speichern();
+        WidgetProvider.updateWidget(getApplicationContext());
+
+    } else {
+        MainActivity.alleStunden.get(platzbestimmer(i)).löschen();
+        MainActivity.alleStunden.get(platzbestimmer(i)).fach = "" + stunde;
+        MainActivity.alleStunden.get(platzbestimmer(i)).umwandeln();
+        MainActivity.alleStunden.get(platzbestimmer(i)).setText(MainActivity.alleStunden.get(platzbestimmer(i)).fach + "\n" + "\n" + list.get(i + 5));
+        MainActivity.alleStunden.get(platzbestimmer(i)).farbe = String.valueOf(farbe("" + stunde));
+
+        MainActivity.alleStunden.get(platzbestimmer(i)).kurs = "";
+        MainActivity.alleStunden.get(platzbestimmer(i)).platz = String.valueOf(platzbestimmer(i));
+        MainActivity.alleStunden.get(platzbestimmer(i)).lehrer = list.get(i + 3);
+
+        MainActivity.alleStunden.get(platzbestimmer(i)).nummer = "";
+        MainActivity.alleStunden.get(platzbestimmer(i)).raum = list.get(i + 5);
+
+
+        String weekDay;
+        SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", Locale.US);
+
+        Calendar calendar = Calendar.getInstance();
+        weekDay = dayFormat.format(calendar.getTime());
+
+        if (weekDay.equals("Monday")) {
+
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                datumheute.add(Calendar.DATE, 0);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                datumheute.add(Calendar.DATE, 1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                datumheute.add(Calendar.DATE, 2);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                datumheute.add(Calendar.DATE, 3);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                datumheute.add(Calendar.DATE, 4);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                datumheute.add(Calendar.DATE, 5);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                datumheute.add(Calendar.DATE, 6);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+        }
+        if (weekDay.equals("Tuesday")) {
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                datumheute.add(Calendar.DATE, -1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                datumheute.add(Calendar.DATE, 0);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                datumheute.add(Calendar.DATE, 1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                datumheute.add(Calendar.DATE, 2);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                datumheute.add(Calendar.DATE, 3);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                datumheute.add(Calendar.DATE, 4);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                datumheute.add(Calendar.DATE, 5);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+        }
+        if (weekDay.equals("Wednesday")) {
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                datumheute.add(Calendar.DATE, -2);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                datumheute.add(Calendar.DATE, -1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                datumheute.add(Calendar.DATE, 0);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                datumheute.add(Calendar.DATE, 1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                datumheute.add(Calendar.DATE, 2);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                datumheute.add(Calendar.DATE, 3);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                datumheute.add(Calendar.DATE, 4);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+        }
+        if (weekDay.equals("Thursday")) {
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                datumheute.add(Calendar.DATE, -3);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                datumheute.add(Calendar.DATE, -2);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                datumheute.add(Calendar.DATE, -1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                datumheute.add(Calendar.DATE, 0);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                datumheute.add(Calendar.DATE, 1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                datumheute.add(Calendar.DATE, 2);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                datumheute.add(Calendar.DATE, 3);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+        }
+        if (weekDay.equals("Friday")) {
+
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                datumheute.add(Calendar.DATE, -4);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                datumheute.add(Calendar.DATE, -3);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                datumheute.add(Calendar.DATE, -2);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                datumheute.add(Calendar.DATE, -1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                datumheute.add(Calendar.DATE, 0);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                datumheute.add(Calendar.DATE, 1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                datumheute.add(Calendar.DATE, 2);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+        }
+        if (weekDay.equals("Saturday")) {
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                datumheute.add(Calendar.DATE, -5);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                datumheute.add(Calendar.DATE, -4);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                datumheute.add(Calendar.DATE, -3);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                datumheute.add(Calendar.DATE, -2);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                datumheute.add(Calendar.DATE, -1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                datumheute.add(Calendar.DATE, 0);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                datumheute.add(Calendar.DATE, 1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+        }
+        if (weekDay.equals("Sunday")) {
+
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                datumheute.add(Calendar.DATE, -6);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                datumheute.add(Calendar.DATE, -5);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                datumheute.add(Calendar.DATE, -4);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                datumheute.add(Calendar.DATE, -3);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                datumheute.add(Calendar.DATE, -2);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                datumheute.add(Calendar.DATE, -1);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+            if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                datumheute.add(Calendar.DATE, 0);
+                SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                String formatted = format1.format(datumheute.getTime());
+                MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+            }
+        }
+
+        MainActivity.alleStunden.get(platzbestimmer(i)).aktualisieren();
+        speichern();
+
+        widget_speichern();
+        WidgetProvider.updateWidget(getApplicationContext());
+    }
+}else if(stunde.length()==5){
+    {
+
+        if (list.get(i + 2).equals("Q1") || list.get(i + 2).equals("Q2") || list.get(i + 2).equals("EF")) {
+
+
+            MainActivity.alleStunden.get(platzbestimmer(i)).löschen();
+            MainActivity.alleStunden.get(platzbestimmer(i)).setTextColor(Color.BLACK);
+
+
+            if (stunde.equals("BigB")) {
+                MainActivity.alleStunden.get(platzbestimmer(i)).fach = "BigB";
+                MainActivity.alleStunden.get(platzbestimmer(i)).farbe = String.valueOf(-5855578);
+            } else {
+                MainActivity.alleStunden.get(platzbestimmer(i)).farbe = String.valueOf(farbe("" + stunde.charAt(0) ));
+                MainActivity.alleStunden.get(platzbestimmer(i)).fach = "" + stunde.charAt(0);
+            }
+            MainActivity.alleStunden.get(platzbestimmer(i)).umwandeln();
+            MainActivity.alleStunden.get(platzbestimmer(i)).setText(MainActivity.alleStunden.get(platzbestimmer(i)).fach + "\n" + "\n" + list.get(i + 5));
+
+
+            if (stunde.length() > 2) {
+                MainActivity.alleStunden.get(platzbestimmer(i)).kurs = "" + stunde.charAt(2);
+            }
+
+            MainActivity.alleStunden.get(platzbestimmer(i)).platz = String.valueOf(platzbestimmer(i));
+            if (stunde.length() > 4) {
+                MainActivity.alleStunden.get(platzbestimmer(i)).nummer = "" + stunde.charAt(4);
+
+            }
+            MainActivity.alleStunden.get(platzbestimmer(i)).raum = list.get(i + 5);
+            MainActivity.alleStunden.get(platzbestimmer(i)).lehrer = list.get(i + 3);
+
+            MainActivity.alleStunden.get(platzbestimmer(i)).umwandeln();
+
+            String weekDay;
+            SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", Locale.US);
+
+            Calendar calendar = Calendar.getInstance();
+            weekDay = dayFormat.format(calendar.getTime());
+
+            if (weekDay.equals("Monday")) {
+
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                    datumheute.add(Calendar.DATE, 0);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                    datumheute.add(Calendar.DATE, 1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                    datumheute.add(Calendar.DATE, 2);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                    datumheute.add(Calendar.DATE, 3);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                    datumheute.add(Calendar.DATE, 4);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                    datumheute.add(Calendar.DATE, 5);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                    datumheute.add(Calendar.DATE, 6);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+            }
+            if (weekDay.equals("Tuesday")) {
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                    datumheute.add(Calendar.DATE, -1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                    datumheute.add(Calendar.DATE, 0);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                    datumheute.add(Calendar.DATE, 1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                    datumheute.add(Calendar.DATE, 2);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                    datumheute.add(Calendar.DATE, 3);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                    datumheute.add(Calendar.DATE, 4);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                    datumheute.add(Calendar.DATE, 5);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+            }
+            if (weekDay.equals("Wednesday")) {
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                    datumheute.add(Calendar.DATE, -2);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                    datumheute.add(Calendar.DATE, -1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                    datumheute.add(Calendar.DATE, 0);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                    datumheute.add(Calendar.DATE, 1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                    datumheute.add(Calendar.DATE, 2);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                    datumheute.add(Calendar.DATE, 3);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                    datumheute.add(Calendar.DATE, 4);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+            }
+            if (weekDay.equals("Thursday")) {
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                    datumheute.add(Calendar.DATE, -3);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                    datumheute.add(Calendar.DATE, -2);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                    datumheute.add(Calendar.DATE, -1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                    datumheute.add(Calendar.DATE, 0);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                    datumheute.add(Calendar.DATE, 1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                    datumheute.add(Calendar.DATE, 2);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                    datumheute.add(Calendar.DATE, 3);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+            }
+            if (weekDay.equals("Friday")) {
+
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                    datumheute.add(Calendar.DATE, -4);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                    datumheute.add(Calendar.DATE, -3);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                    datumheute.add(Calendar.DATE, -2);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                    datumheute.add(Calendar.DATE, -1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                    datumheute.add(Calendar.DATE, 0);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                    datumheute.add(Calendar.DATE, 1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                    datumheute.add(Calendar.DATE, 2);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+            }
+            if (weekDay.equals("Saturday")) {
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                    datumheute.add(Calendar.DATE, -5);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                    datumheute.add(Calendar.DATE, -4);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                    datumheute.add(Calendar.DATE, -3);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                    datumheute.add(Calendar.DATE, -2);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                    datumheute.add(Calendar.DATE, -1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                    datumheute.add(Calendar.DATE, 0);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                    datumheute.add(Calendar.DATE, 1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+            }
+            if (weekDay.equals("Sunday")) {
+
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                    datumheute.add(Calendar.DATE, -6);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                    datumheute.add(Calendar.DATE, -5);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                    datumheute.add(Calendar.DATE, -4);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                    datumheute.add(Calendar.DATE, -3);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                    datumheute.add(Calendar.DATE, -2);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                    datumheute.add(Calendar.DATE, -1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                    datumheute.add(Calendar.DATE, 0);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+            }
+
+            MainActivity.alleStunden.get(platzbestimmer(i)).aktualisieren();
+            speichern();
+
+            widget_speichern();
+            WidgetProvider.updateWidget(getApplicationContext());
+
+        } else {
+            MainActivity.alleStunden.get(platzbestimmer(i)).löschen();
+            MainActivity.alleStunden.get(platzbestimmer(i)).fach = "" + stunde;
+            MainActivity.alleStunden.get(platzbestimmer(i)).umwandeln();
+            MainActivity.alleStunden.get(platzbestimmer(i)).setText(MainActivity.alleStunden.get(platzbestimmer(i)).fach + "\n" + "\n" + list.get(i + 5));
+            MainActivity.alleStunden.get(platzbestimmer(i)).farbe = String.valueOf(farbe("" + stunde));
+
+            MainActivity.alleStunden.get(platzbestimmer(i)).kurs = "";
+            MainActivity.alleStunden.get(platzbestimmer(i)).platz = String.valueOf(platzbestimmer(i));
+            MainActivity.alleStunden.get(platzbestimmer(i)).lehrer = list.get(i + 3);
+
+            MainActivity.alleStunden.get(platzbestimmer(i)).nummer = "";
+            MainActivity.alleStunden.get(platzbestimmer(i)).raum = list.get(i + 5);
+
+
+            String weekDay;
+            SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", Locale.US);
+
+            Calendar calendar = Calendar.getInstance();
+            weekDay = dayFormat.format(calendar.getTime());
+
+            if (weekDay.equals("Monday")) {
+
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                    datumheute.add(Calendar.DATE, 0);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                    datumheute.add(Calendar.DATE, 1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                    datumheute.add(Calendar.DATE, 2);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                    datumheute.add(Calendar.DATE, 3);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                    datumheute.add(Calendar.DATE, 4);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                    datumheute.add(Calendar.DATE, 5);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                    datumheute.add(Calendar.DATE, 6);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+            }
+            if (weekDay.equals("Tuesday")) {
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                    datumheute.add(Calendar.DATE, -1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                    datumheute.add(Calendar.DATE, 0);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                    datumheute.add(Calendar.DATE, 1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                    datumheute.add(Calendar.DATE, 2);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                    datumheute.add(Calendar.DATE, 3);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                    datumheute.add(Calendar.DATE, 4);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                    datumheute.add(Calendar.DATE, 5);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+            }
+            if (weekDay.equals("Wednesday")) {
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                    datumheute.add(Calendar.DATE, -2);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                    datumheute.add(Calendar.DATE, -1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                    datumheute.add(Calendar.DATE, 0);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                    datumheute.add(Calendar.DATE, 1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                    datumheute.add(Calendar.DATE, 2);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                    datumheute.add(Calendar.DATE, 3);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                    datumheute.add(Calendar.DATE, 4);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+            }
+            if (weekDay.equals("Thursday")) {
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                    datumheute.add(Calendar.DATE, -3);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                    datumheute.add(Calendar.DATE, -2);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                    datumheute.add(Calendar.DATE, -1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                    datumheute.add(Calendar.DATE, 0);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                    datumheute.add(Calendar.DATE, 1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                    datumheute.add(Calendar.DATE, 2);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                    datumheute.add(Calendar.DATE, 3);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+            }
+            if (weekDay.equals("Friday")) {
+
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                    datumheute.add(Calendar.DATE, -4);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                    datumheute.add(Calendar.DATE, -3);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                    datumheute.add(Calendar.DATE, -2);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                    datumheute.add(Calendar.DATE, -1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                    datumheute.add(Calendar.DATE, 0);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                    datumheute.add(Calendar.DATE, 1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                    datumheute.add(Calendar.DATE, 2);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+            }
+            if (weekDay.equals("Saturday")) {
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                    datumheute.add(Calendar.DATE, -5);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                    datumheute.add(Calendar.DATE, -4);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                    datumheute.add(Calendar.DATE, -3);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                    datumheute.add(Calendar.DATE, -2);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                    datumheute.add(Calendar.DATE, -1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                    datumheute.add(Calendar.DATE, 0);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                    datumheute.add(Calendar.DATE, 1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+            }
+            if (weekDay.equals("Sunday")) {
+
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Montag")) {
+                    datumheute.add(Calendar.DATE, -6);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Dienstag")) {
+                    datumheute.add(Calendar.DATE, -5);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Mittwoch")) {
+                    datumheute.add(Calendar.DATE, -4);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Donnerstag")) {
+                    datumheute.add(Calendar.DATE, -3);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Freitag")) {
+                    datumheute.add(Calendar.DATE, -2);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Samstag")) {
+                    datumheute.add(Calendar.DATE, -1);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+                if (MainActivity.alleStunden.get(platzbestimmer(i)).tag.equals("Sonntag")) {
+                    datumheute.add(Calendar.DATE, 0);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+                    String formatted = format1.format(datumheute.getTime());
+                    MainActivity.alleStunden.get(platzbestimmer(i)).datum = formatted;
+
+                }
+            }
+
+            MainActivity.alleStunden.get(platzbestimmer(i)).aktualisieren();
+            speichern();
+
+            widget_speichern();
+            WidgetProvider.updateWidget(getApplicationContext());
+        }
+    }
+}
                 }
             }
 
@@ -1452,6 +2284,7 @@ this.finish();
 
 
                     stundenliste.add(list.get(i + 4));
+
                 }
 
                     }
@@ -1476,6 +2309,7 @@ this.finish();
 
 
         for(int i=0; i<stundenliste.size(); i++){
+           Log.d(stundenliste.get(i),""+stundenliste.get(i).length());
 
             if(stundenliste.get(i).length()==2||stundenliste.get(i).equals("BigB")) {
 
@@ -1484,17 +2318,21 @@ this.finish();
             }
 
             else if(stundenliste.get(i).length()>=4) {
+
                 String stunde1 = String.valueOf(stundenliste.get(i).charAt(3));
-                 if(stunde1.equals("G")){
+                String stunde2 = String.valueOf(stundenliste.get(i).charAt(2));
+
+                 if(stunde1.equals("G")||stunde2.equals("G")){
                      gkliste.add(stundenliste.get(i));
+
                  }
 
-                 if(stunde1.equals("Z")){
+                 if(stunde1.equals("Z")||stunde2.equals("Z")){
                      gkliste.add(stundenliste.get(i));
                  }
-                if(stunde1.equals("L")){
+                if(stunde1.equals("L")||stunde2.equals("L")){
                      stunde1 = String.valueOf(stundenliste.get(i).charAt(0));
-                     if(stunde1.equals("A")){
+                     if(stunde1.equals("A")||stunde2.equals("A")){
                          gkliste.add(stundenliste.get(i));
                      }else{
                          lk1liste.add(stundenliste.get(i));
@@ -1599,8 +2437,12 @@ class Test extends AsyncTask<Void,Void,Void> {
                 list.add(Raum);
                 list.add(Tag);
                 list.add(Stunde);
+                Log.d("Hallo",Klasse);
+
+
 
             }
+
 
 
 

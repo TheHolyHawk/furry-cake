@@ -978,15 +978,17 @@ if(MainActivity.klasse.equals("Q1")||MainActivity.klasse.equals("EF")||MainActiv
 
                 for (int i = 2; i < spalten; i++) {
 
-                    String test = ("center font tbody tr:nth-child(" + i + ") td:nth-child(4)");
-                    String hallo = ("center font tbody tr:nth-child(" + i + ") td:nth-child(2)");
-                    String art = ("center font tbody tr:nth-child(" + i + ") td:nth-child(6)");
-                    String raum = ("center font tbody tr:nth-child(" + i + ") td:nth-child(5)");
+                    String test = ("center font tbody tr:nth-child(" + i + ") td:nth-child(6)");
+
+                    String hallo = ("center font tbody tr:nth-child(" + i + ") td:nth-child(3)");
+                    String art = ("center font tbody tr:nth-child(" + i + ") td:nth-child(9)");
+                    String raum = ("center font tbody tr:nth-child(" + i + ") td:nth-child(8)");
 
 
                     Elements values = doc.select(test);
                     for (Element elem : values) {
                         fach = elem.text();
+
 
                     }
 
@@ -994,16 +996,19 @@ if(MainActivity.klasse.equals("Q1")||MainActivity.klasse.equals("EF")||MainActiv
                     for (Element elem : values4) {
                         raum2 = elem.text();
 
+
                     }
 
                     Elements values3 = doc.select(art);
                     for (Element elem : values3) {
                         text = elem.text();
 
+
                     }
                     Elements values2 = doc.select(hallo);
                     for (Element elem : values2) {
                         stunde = elem.text();
+                        Log.d("Hallowsafcewfverv",stunde);
 
                     }
 
