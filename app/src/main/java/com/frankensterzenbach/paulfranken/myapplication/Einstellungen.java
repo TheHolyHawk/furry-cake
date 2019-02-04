@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -27,6 +29,11 @@ Context context;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         context=getApplicationContext();
+
+        TextView  mLink = (TextView) findViewById(R.id.link);
+        if (mLink != null) {
+            mLink.setMovementMethod(LinkMovementMethod.getInstance());
+        }
 
         klasse=(Spinner)findViewById(R.id.spinner);
         klasse.setOnItemSelectedListener(this);

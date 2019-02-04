@@ -105,6 +105,10 @@
         <item>5</item>
 
     </string-array>
+
+    <string name="link"><a href="https://github.com/TheHolyHawk/furry-cake/blob/master/PrivacyPolicy">Privacy Policy</a></string>
+
+
     <string name="title_activity_neue_stunde2">neueStunde2</string>
     <string name="title_activity_neue_stunde_java">neueStunde_java</string>
     <string name="title_activity_klausurplan">Klausurplan</string>

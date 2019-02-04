@@ -78,7 +78,20 @@
             android:text="Laden"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="130dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/link"
+            android:text="@string/link" />`
     </LinearLayout>
+
+
+
+
+
+
+
 
 
 
