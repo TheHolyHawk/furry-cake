@@ -2349,8 +2349,6 @@ if(stunde.length()==6) {
         }
 
         Collections.sort(gkliste);
-
-
         Collections.sort(lk1liste);
         lk1liste.add(0,"Wähle deine LK's.");
 
