@@ -44,7 +44,7 @@ public class StundenSetzen extends AppCompatActivity {
     public static Context c;
     public static ArrayList<String> list, stundenliste, gkliste, lk1liste,unterstufenliste;
 
-    String url = "https://ifacharbeit.111mb.de/runterladen.php";
+    String url = "https://gammy-bowls.000webhostapp.com/runterladen.php";
 
     String LK1, LK2;
 
