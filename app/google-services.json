@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "678670493288",
-    "firebase_url": "https://stundenplan2-0.firebaseio.com",
-    "project_id": "stundenplan2-0",
-    "storage_bucket": "stundenplan2-0.appspot.com"
+    "project_number": "963400958968",
+    "firebase_url": "https://furry-cake.firebaseio.com",
+    "project_id": "furry-cake",
+    "storage_bucket": "furry-cake.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:678670493288:android:ba22244a981239f2",
+        "mobilesdk_app_id": "1:963400958968:android:ba22244a981239f2",
         "android_client_info": {
           "package_name": "com.frankensterzenbach.paulfranken.myapplication"
         }
       },
       "oauth_client": [
         {
-          "client_id": "678670493288-rrl5gquipq6j2fvk3v144kacsplvllc7.apps.googleusercontent.com",
+          "client_id": "963400958968-95b22nem14croc3drav8rtr4rokfk9ec.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.frankensterzenbach.paulfranken.myapplication",
+            "certificate_hash": "2e3711dc3354e0136478317b1f9e88fe0f9eb3d5"
+          }
+        },
+        {
+          "client_id": "963400958968-lvbtei3o20egjc227j7b4ep1pqcgfeq6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC3F0yzUY1lj0u8YZF1ZEL02kR1GkTE0vE"
+          "current_key": "AIzaSyCSdOTwegZqE3oPMx8c55jJsQzb1aY2Saw"
         }
       ],
       "services": {
@@ -29,39 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:762103443974:android:ba22244a981239f2",
-        "android_client_info": {
-          "package_name": "com.frankensterzenbach.paulfranken.myapplication"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "762103443974-j6sqgn8f83vkb304tnsm2lkr9vq043eg.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDli29X6DvGiQ6y5X3KjGbiZI4SoZhxWEQ"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "963400958968-ttootkgp3oiei5r72diusn3sn5tr3upj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

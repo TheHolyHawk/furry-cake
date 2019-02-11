@@ -33,6 +33,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.itextpdf.text.BaseColor;
@@ -43,6 +50,8 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -58,8 +67,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import static com.frankensterzenbach.paulfranken.myapplication.R.id.text102;
 import static com.frankensterzenbach.paulfranken.myapplication.R.id.text108;
@@ -108,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener,V
     //---------------------------------------------Integer, Strings, Menu, Booleans----------------------------------------------------
 
 
-
+    private static final String URL_REGISTER_DEVICE = "https://gammy-bowls.000webhostapp.com/RegisterDevice.php";
     //----------------------------------------------Layout, Werbung und Context speichern----------------------------------------------
     public SwipeRefreshLayout l;
     //Das Main Layout wird unter l geschpeichert
@@ -131,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener,V
         setSupportActionBar(toolbar);
 
         context=getApplicationContext();
-
+sendTokenToServer();
 
         //Speichern des Layouts und festlegen der Toolbar, Speichern des ApplicationContexts
 
@@ -1247,7 +1258,50 @@ if(fach.length()==6){
 
         return table;
     }
+    private void sendTokenToServer() {
 
+
+        final String token = SharedPrefManager.getInstance(this).getDeviceToken();
+        final String email ="test";
+
+        if (token == null) {
+
+
+            return;
+        }
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGISTER_DEVICE,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONObject obj = new JSONObject(response);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+
+                    }
+                }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("email", email);
+                params.put("token", token);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
 
 
 
